@@ -1,3 +1,16 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+checkpoints/
+runs/
+outputs/
+wandb/
+data/train/
+data/heldout/
+*.pt
+*.pth
+*.safetensors

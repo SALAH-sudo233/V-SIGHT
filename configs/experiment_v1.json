@@ -1,0 +1,74 @@
+{
+  "schema_version": "vsight_experiment_v1",
+  "status": "protocol_frozen_no_checkpoint",
+  "method": {
+    "actions": ["keep", "switch", "reject"],
+    "candidate_sources": ["baseline", "binding_aware"],
+    "max_challengers": 1,
+    "allow_recovery_from_baseline_null": false,
+    "score_components": [
+      "object_support",
+      "binding_support",
+      "localization_quality"
+    ],
+    "joint_normalization": "candidate_and_null_listwise_softmax"
+  },
+  "verifier": {
+    "stage_1": "candidate_conditioned_full_verifier",
+    "input": [
+      "full_image_visual_tokens",
+      "candidate_region_pool",
+      "normalized_xyxy_embedding",
+      "complete_referring_expression"
+    ],
+    "adaptation": "multimodal_lora_plus_shared_candidate_heads",
+    "forbidden_inference_features": [
+      "ground_truth_box",
+      "query_label",
+      "hallucination_type",
+      "candidate_source_id"
+    ]
+  },
+  "loss_weights": {
+    "candidate_null_listwise": 1.0,
+    "same_class_hard_negative_ranking": 1.0,
+    "counterfactual_binding_consistency": 0.5,
+    "safe_switch_regression": 1.0,
+    "calibration": 0.1,
+    "compute_budget_stage_1": 0.0
+  },
+  "data": {
+    "train_manifest": null,
+    "dev": "legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+    "dev_usage": "audit_model_selection_and_thresholds_only",
+    "heldout": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",
+    "heldout_sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7",
+    "heldout_usage": "single_final_evaluation_after_freeze"
+  },
+  "selector_go_no_go": {
+    "dev_anchors": {
+      "t2_current_miou": 0.4874862257,
+      "t2_two_box_oracle_miou": 0.5305791144,
+      "t2_half_gap_target_miou": 0.5090326701,
+      "t4_current_miou": 0.4916172413,
+      "t4_two_box_oracle_miou": 0.5308750544,
+      "t4_half_gap_target_miou": 0.5112461478
+    },
+    "two_box_oracle_gap_capture_min": 0.5,
+    "t2_nonzero_to_zero_max": 8,
+    "t4_nonzero_to_zero_max": 11,
+    "bootstrap_confidence": 0.95,
+    "bootstrap_unit": "image_group"
+  },
+  "joint_go_no_go": {
+    "roh_false_grounding_reduction_points_min": 5.0,
+    "boh_false_grounding_reduction_points_min": 2.0,
+    "positive_miou_loss_vs_selector_max": 0.005,
+    "positive_false_rejection_increase_points_max": 2.0
+  },
+  "router_stage_2": {
+    "enabled": false,
+    "target_challenger_generation_rate_max": 0.35,
+    "retained_joint_gain_fraction_min": 0.9
+  }
+}

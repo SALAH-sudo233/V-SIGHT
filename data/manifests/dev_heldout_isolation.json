@@ -1,0 +1,32 @@
+{
+  "splits": {
+    "dev": {
+      "path": "legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+      "sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f",
+      "records": 2000,
+      "groups": 500,
+      "images": 500,
+      "pairs": 2000
+    },
+    "heldout": {
+      "path": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",
+      "sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7",
+      "records": 7984,
+      "groups": 1996,
+      "images": 1996,
+      "pairs": 7984
+    }
+  },
+  "comparisons": {
+    "dev__heldout": {
+      "is_disjoint": true,
+      "group_overlap_count": 0,
+      "image_overlap_count": 0,
+      "pair_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_examples": [],
+      "pair_overlap_examples": []
+    }
+  },
+  "all_disjoint": true
+}
