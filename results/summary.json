@@ -1,0 +1,269 @@
+{
+  "model_key": "ROH-VCD",
+  "model_name": "ROH-VCD (Qwen2.5-VL-7B + state-preserving binding-aware selection)",
+  "num_samples": 2000,
+  "num_positive_groups": 500,
+  "num_records": 7500,
+  "metrics": {
+    "t1_discriminative_vqa": {
+      "num_queries": 2500,
+      "tp": 421,
+      "fn": 79,
+      "fp": 447,
+      "tn": 1553,
+      "accuracy": {
+        "value": 0.7896,
+        "ci_lower": 0.7716,
+        "ci_upper": 0.8056,
+        "ci_level": 0.95
+      },
+      "precision": 0.48502304147465436,
+      "recall": 0.842,
+      "f1": {
+        "value": 0.6154970760233918,
+        "ci_lower": 0.5841816758026624,
+        "ci_upper": 0.6446164672765659,
+        "ci_level": 0.95
+      },
+      "hallucination_rate (HR)": {
+        "value": 0.2235,
+        "ci_lower": 0.20578200273233538,
+        "ci_upper": 0.2422781633007483,
+        "ci_level": 0.95
+      },
+      "over_refusal_rate (FNR)": {
+        "value": 0.158,
+        "ci_lower": 0.1286522063728175,
+        "ci_upper": 0.1925630327023204,
+        "ci_level": 0.95
+      },
+      "hallucination_rate_by_type": {
+        "object": {
+          "n": 500,
+          "count": 29,
+          "rate": 0.058
+        },
+        "co_occurrence": {
+          "n": 500,
+          "count": 89,
+          "rate": 0.178
+        },
+        "attribute": {
+          "n": 500,
+          "count": 121,
+          "rate": 0.242
+        },
+        "relation": {
+          "n": 500,
+          "count": 208,
+          "rate": 0.416
+        }
+      },
+      "macro_hallucination_rate": 0.22349999999999998,
+      "boh_hallucination_rate": 0.118,
+      "roh_hallucination_rate": 0.32899999999999996,
+      "roh_minus_boh_error_gap": 0.21099999999999997,
+      "balanced_accuracy_macro": 0.80925,
+      "avg_latency_sec": 0.1651193419456482,
+      "parse_failures": 0
+    },
+    "t2_vqa_grounding": {
+      "num_positive": 500,
+      "num_negative": 2000,
+      "mean_iou_all": {
+        "value": 0.4874862257165391,
+        "ci_lower": 0.45156240666364,
+        "ci_upper": 0.5242089739271906,
+        "ci_level": 0.95
+      },
+      "mean_iou_valid_only": 0.5208186172185246,
+      "acc@IoU_0.5": {
+        "value": 0.51,
+        "ci_lower": 0.4662728891685752,
+        "ci_upper": 0.5535746184608068,
+        "ci_level": 0.95
+      },
+      "valid_bbox_rate": 0.936,
+      "false_grounding_on_neg": {
+        "value": 0.345,
+        "ci_lower": 0.3244810789147785,
+        "ci_upper": 0.3661132275413804,
+        "ci_level": 0.95
+      },
+      "false_grounding_by_type": {
+        "object": {
+          "n": 500,
+          "count": 52,
+          "rate": 0.104
+        },
+        "co_occurrence": {
+          "n": 500,
+          "count": 148,
+          "rate": 0.296
+        },
+        "attribute": {
+          "n": 500,
+          "count": 188,
+          "rate": 0.376
+        },
+        "relation": {
+          "n": 500,
+          "count": 302,
+          "rate": 0.604
+        }
+      },
+      "macro_false_grounding": 0.345,
+      "boh_false_grounding": 0.19999999999999998,
+      "roh_false_grounding": 0.49,
+      "roh_minus_boh_error_gap": 0.29000000000000004,
+      "decision_balanced_accuracy_macro": 0.7955000000000001,
+      "vqa_accuracy": {
+        "value": 0.7112,
+        "ci_lower": 0.6931210094804093,
+        "ci_upper": 0.7286309096505773,
+        "ci_level": 0.95
+      },
+      "vqa_precision": 0.40414507772020725,
+      "vqa_recall": 0.936,
+      "vqa_f1": 0.5645355850422196,
+      "parse_failures": 0,
+      "avg_latency_sec": 0.40381538972854614
+    },
+    "t4_caption_grounding": {
+      "num_positive": 500,
+      "num_negative": 2000,
+      "target_coverage": 0.5749333333333329,
+      "mean_iou": {
+        "value": 0.5207809759123745,
+        "ci_lower": 0.4860473239175666,
+        "ci_upper": 0.5552308880691443,
+        "ci_level": 0.95
+      },
+      "acc@IoU_0.5": {
+        "value": 0.516,
+        "ci_lower": 0.4722406641485616,
+        "ci_upper": 0.5595153480584495,
+        "ci_level": 0.95
+      },
+      "valid_bbox_rate": 0.944,
+      "avg_amber_cosine": {
+        "value": 0.42556147658244864,
+        "ci_lower": 0.4175639616233564,
+        "ci_upper": 0.43321389616485795,
+        "ci_level": 0.95
+      },
+      "avg_amber_cosine_penalized": 0.3587023564450064,
+      "avg_clip_score_pred_bbox": {
+        "value": null
+      },
+      "avg_clip_score_full_img": null,
+      "avg_clip_score_target_expr": null,
+      "avg_clip_localization_gain": null,
+      "avg_clip_iou_weighted": {
+        "value": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "ci_level": 0.95
+      },
+      "avg_iou_times_gt_clip": {
+        "value": null
+      },
+      "avg_clip_delta": {
+        "value": null
+      },
+      "avg_iou_weighted_clip_delta": {
+        "value": null
+      },
+      "vqa_accuracy": {
+        "value": 0.718,
+        "ci_lower": 0.7000369352438268,
+        "ci_upper": 0.7352941176470588,
+        "ci_level": 0.95
+      },
+      "vqa_tp": 472,
+      "vqa_fn": 28,
+      "vqa_fp": 677,
+      "vqa_tn": 1323,
+      "vqa_precision": 0.41079199303742386,
+      "vqa_recall": 0.944,
+      "vqa_f1": 0.572468162522741,
+      "hallucination_rate (HR)": {
+        "value": 0.3385,
+        "ci_lower": 0.3180883085315592,
+        "ci_upper": 0.3595309204534065,
+        "ci_level": 0.95
+      },
+      "hallucination_rate_by_type": {
+        "object": {
+          "n": 500,
+          "count": 50,
+          "rate": 0.1
+        },
+        "co_occurrence": {
+          "n": 500,
+          "count": 145,
+          "rate": 0.29
+        },
+        "attribute": {
+          "n": 500,
+          "count": 163,
+          "rate": 0.326
+        },
+        "relation": {
+          "n": 500,
+          "count": 319,
+          "rate": 0.638
+        }
+      },
+      "macro_hallucination_rate": 0.3385,
+      "boh_hallucination_rate": 0.195,
+      "roh_hallucination_rate": 0.482,
+      "roh_minus_boh_error_gap": 0.287,
+      "decision_balanced_accuracy_macro": 0.80275,
+      "caption_grounding_coupling": {
+        "caption_hallucination_n": 80,
+        "caption_clean_n": 1920,
+        "false_grounding_given_caption_hallucination": 0.625,
+        "false_grounding_given_caption_clean": 0.3265625,
+        "coupling_gap": 0.2984375,
+        "joint_caption_and_grounding_hallucination_rate": 0.025
+      },
+      "over_refusal_rate (FNR)": {
+        "value": 0.056,
+        "ci_lower": 0.03902536261505807,
+        "ci_upper": 0.07974529864038413,
+        "ci_level": 0.95
+      },
+      "avg_latency_sec": 1.263587899017334
+    }
+  },
+  "record_count_by_task": {
+    "t1_discriminative_vqa": 2500,
+    "t2_vqa_grounding": 2500,
+    "t4_caption_grounding": 2500
+  },
+  "inference_reuse": {
+    "reused": 7500,
+    "generated": 0
+  },
+  "policy": {
+    "name": "state_preserving_binding_aware_v1",
+    "base_exists_decision": "frozen qwen canonical T1/T2/T4 decision",
+    "bbox_action": "replace only emitted T2/T4 bbox with exact-query binding_aware candidate",
+    "label_or_gt_used_at_decision_time": false
+  },
+  "provenance": {
+    "baseline_records": "/home/yanzhonghao/anyibo/ROH-VCD/eval_12models_500/qwen2.5-vl-7b.canonical_records.jsonl",
+    "baseline_sha256": "c3a5a7b82bc104896329d2c313ed091133bfcd3351736f4be3d2b1018142f63e",
+    "positive_candidate_glob": "/home/yanzhonghao/anyibo/ROH-VCD/eval_v023/candidates/shard_*.jsonl",
+    "negative_candidate_glob": "/home/yanzhonghao/anyibo/ROH-VCD/eval_v023/negative_candidates/shard_*.jsonl",
+    "positive_candidate_count": 500,
+    "negative_candidate_count": 2000,
+    "replacements": {
+      "t2_vqa_grounding:positive": 468,
+      "t2_vqa_grounding:negative": 690,
+      "t4_caption_grounding:positive": 472,
+      "t4_caption_grounding:negative": 677
+    }
+  }
+}

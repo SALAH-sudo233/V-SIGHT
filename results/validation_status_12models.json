@@ -1,0 +1,201 @@
+{
+  "benchmark": "repaired/refcocog_500_dev.semantic_strict.json",
+  "group_count": 500,
+  "pair_count": 2000,
+  "model_count": 12,
+  "total_record_count": 90000,
+  "all_valid": true,
+  "models": [
+    {
+      "model": "qwen2.5-vl-7b",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "LENS",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "visual-rft",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "Seg-R1",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "Seg-zero",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "VisionReasoner",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "TreeVGR",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "Orsta-7B",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "Vision-R1",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "UniVG-R1",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "Qwen3-VL-8B",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    },
+    {
+      "model": "ROH-VCD",
+      "valid": true,
+      "record_count": 7500,
+      "unique_key_count": 7500,
+      "task_role_counts": {
+        "t1_discriminative_vqa:negative": 2000,
+        "t1_discriminative_vqa:positive": 500,
+        "t2_vqa_grounding:negative": 2000,
+        "t2_vqa_grounding:positive": 500,
+        "t4_caption_grounding:negative": 2000,
+        "t4_caption_grounding:positive": 500
+      },
+      "errors": []
+    }
+  ],
+  "provenance": {
+    "baseline_run_root": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict",
+    "roh_summary": "eval_12models_500/ROH-VCD/summary.json",
+    "roh_validation": "eval_12models_500/validation_status.json",
+    "roh_policy": {
+      "name": "state_preserving_binding_aware_v1",
+      "base_exists_decision": "frozen qwen canonical T1/T2/T4 decision",
+      "bbox_action": "replace only emitted T2/T4 bbox with exact-query binding_aware candidate",
+      "label_or_gt_used_at_decision_time": false
+    }
+  }
+}

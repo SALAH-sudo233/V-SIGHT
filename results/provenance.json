@@ -1,0 +1,14 @@
+{
+  "baseline_records": "/home/yanzhonghao/anyibo/ROH-VCD/eval_12models_500/qwen2.5-vl-7b.canonical_records.jsonl",
+  "baseline_sha256": "c3a5a7b82bc104896329d2c313ed091133bfcd3351736f4be3d2b1018142f63e",
+  "positive_candidate_glob": "/home/yanzhonghao/anyibo/ROH-VCD/eval_v023/candidates/shard_*.jsonl",
+  "negative_candidate_glob": "/home/yanzhonghao/anyibo/ROH-VCD/eval_v023/negative_candidates/shard_*.jsonl",
+  "positive_candidate_count": 500,
+  "negative_candidate_count": 2000,
+  "replacements": {
+    "t2_vqa_grounding:positive": 468,
+    "t2_vqa_grounding:negative": 690,
+    "t4_caption_grounding:positive": 472,
+    "t4_caption_grounding:negative": 677
+  }
+}
