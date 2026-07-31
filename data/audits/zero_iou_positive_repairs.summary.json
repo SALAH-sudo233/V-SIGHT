@@ -1,0 +1,25 @@
+{
+  "input": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_positive_repairs.qwen3.7-max-2026-05-17.jsonl",
+  "input_sha256": "be2e751256953a975f774c509093f17f37ac767564cbffe52fe9d1399f94ad05",
+  "raw_unique_successes": 114,
+  "accepted_candidate_count": 93,
+  "rewrite_count": 73,
+  "keep_count": 20,
+  "raw_decision_counts": {
+    "keep": 20,
+    "rewrite": 73,
+    "reject": 20,
+    "needs_human": 1
+  },
+  "raw_truth_counts": {
+    "supported": 22,
+    "ambiguous": 69,
+    "contradicted": 22,
+    "uncertain": 1
+  },
+  "review_status": "pending_human_confirmation",
+  "eligible_for_training": false,
+  "output": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_positive_repairs.accepted.jsonl",
+  "review_csv": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_positive_repairs.review.csv",
+  "summary": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_positive_repairs.summary.json"
+}

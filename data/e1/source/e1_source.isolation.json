@@ -1,0 +1,93 @@
+{
+  "all_disjoint": true,
+  "comparisons": {
+    "calibration__dev": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    },
+    "calibration__heldout": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    },
+    "dev__heldout": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    },
+    "train__calibration": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    },
+    "train__dev": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    },
+    "train__heldout": {
+      "group_overlap_count": 0,
+      "group_overlap_examples": [],
+      "image_overlap_count": 0,
+      "image_overlap_examples": [],
+      "is_disjoint": true,
+      "pair_overlap_count": 0,
+      "pair_overlap_examples": []
+    }
+  },
+  "splits": {
+    "calibration": {
+      "groups": 1289,
+      "images": 1289,
+      "pairs": 0,
+      "path": "data/e1/source/e1_images.calibration.jsonl",
+      "records": 1289,
+      "sha256": "23063f492892138c093841fdacabca8318b131062f3b427155ed86a0bae94705"
+    },
+    "dev": {
+      "groups": 500,
+      "images": 500,
+      "pairs": 2000,
+      "path": "legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+      "records": 2000,
+      "sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f"
+    },
+    "heldout": {
+      "groups": 1996,
+      "images": 1996,
+      "pairs": 7984,
+      "path": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",
+      "records": 7984,
+      "sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7"
+    },
+    "train": {
+      "groups": 24495,
+      "images": 24495,
+      "pairs": 0,
+      "path": "data/e1/source/e1_images.train.jsonl",
+      "records": 24495,
+      "sha256": "5a156de5c5a591993e313224d33cc5a40714bba28fb41c188bbcea5efece832f"
+    }
+  }
+}

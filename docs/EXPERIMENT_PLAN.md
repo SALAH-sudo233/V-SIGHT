@@ -27,6 +27,27 @@ observable binding evidence, and ambiguity flag. Automatic COCO matching is a
 review hint, not ground truth. These labels characterize the development set;
 they cannot train the verifier or select a threshold.
 
+### E0 evidence that changes the design
+
+The completed attribute audit is recorded in
+`data/audits/zero_iou_stratified_analysis.md`. Within the valid-box IoU=0
+scope, 111/114 groups are relation expressions and the dominant model-audited
+failure is same-category instance confusion. The query itself contains very
+few explicit color/material atoms, so an independent text-only BOH/ROH or
+attribute classifier is not a sufficient grounding signal. The audit does not
+contain an independent BOH/ROH label; those names must not be inferred from
+the failure taxonomy.
+
+The first verifier implementation therefore uses candidate-level evidence in
+this order: object identity, target-reference relation, action/state, then
+attribute and localization quality. Same-category distractor count and
+candidate similarity are difficulty features for a later reject/router
+ablation, not a reason to unconditionally enlarge the candidate pool. A query
+whose relation or object atom is contradicted by the candidate region must be
+eligible for `REJECT`, even when another candidate has a superficially higher
+object score. Any claim about ROH/BOH gains remains gated on explicit labels in
+the training/evaluation protocol rather than these diagnostic annotations.
+
 ## E1: training corpus
 
 Use RefCOCO, RefCOCO+, and RefCOCOg train images after excluding every image in

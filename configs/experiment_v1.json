@@ -1,6 +1,6 @@
 {
   "schema_version": "vsight_experiment_v1",
-  "status": "protocol_frozen_no_checkpoint",
+  "status": "e1_static_supervision_built_no_checkpoint",
   "method": {
     "actions": ["keep", "switch", "reject"],
     "candidate_sources": ["baseline", "binding_aware"],
@@ -8,7 +8,9 @@
     "allow_recovery_from_baseline_null": false,
     "score_components": [
       "object_support",
-      "binding_support",
+      "target_reference_relation_support",
+      "action_attribute_support",
+      "contradiction_penalty",
       "localization_quality"
     ],
     "joint_normalization": "candidate_and_null_listwise_softmax"
@@ -19,26 +21,42 @@
       "full_image_visual_tokens",
       "candidate_region_pool",
       "normalized_xyxy_embedding",
-      "complete_referring_expression"
+      "complete_referring_expression",
+      "query_atom_features",
+      "candidate_relative_geometry",
+      "candidate_difficulty_statistics"
     ],
     "adaptation": "multimodal_lora_plus_shared_candidate_heads",
     "forbidden_inference_features": [
       "ground_truth_box",
       "query_label",
       "hallucination_type",
-      "candidate_source_id"
+      "candidate_source_id",
+      "audit_decision",
+      "human_review_label"
     ]
   },
   "loss_weights": {
     "candidate_null_listwise": 1.0,
     "same_class_hard_negative_ranking": 1.0,
     "counterfactual_binding_consistency": 0.5,
+    "relation_counterfactual_consistency": 0.75,
+    "contradiction_rejection": 1.0,
     "safe_switch_regression": 1.0,
     "calibration": 0.1,
     "compute_budget_stage_1": 0.0
   },
   "data": {
     "train_manifest": null,
+    "e1_source_manifest": "data/e1/source/e1_source.summary.json",
+    "e1_source_status": "positive_queries_frozen_model_candidates_and_nulls_pending",
+    "e1_candidate_supervision_manifest": "data/e1/supervision/e1_annotation_candidates.summary.json",
+    "e1_candidate_supervision_usage": "same_category_ranking_and_localization_auxiliary_losses_only",
+    "calibration_split_unit": "coco_image_id",
+    "calibration_fraction": 0.05,
+    "calibration_seed": "vsight-e1-image-split-v1",
+    "positive_repair_candidates": "data/audits/zero_iou_positive_repairs.accepted.jsonl",
+    "positive_repair_training_gate": "manual_confirmation_required",
     "dev": "legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
     "dev_usage": "audit_model_selection_and_thresholds_only",
     "heldout": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",

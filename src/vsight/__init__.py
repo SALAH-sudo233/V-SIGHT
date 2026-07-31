@@ -7,6 +7,7 @@ from .decision import (
     RegionCandidate,
     SupportScores,
 )
+from .verifier import CandidateEvidence, VerifierWeights, score_candidates
 
 __all__ = [
     "Action",
@@ -14,4 +15,7 @@ __all__ = [
     "DecisionPolicy",
     "RegionCandidate",
     "SupportScores",
+    "CandidateEvidence",
+    "VerifierWeights",
+    "score_candidates",
 ]

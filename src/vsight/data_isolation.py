@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import gzip
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,6 +20,9 @@ class DatasetIdentity:
 
 
 def read_records(path: Path) -> list[dict]:
+    if path.name.endswith(".jsonl.gz"):
+        with gzip.open(path, "rt", encoding="utf-8") as handle:
+            return [json.loads(line) for line in handle if line.strip()]
     if path.suffix == ".jsonl":
         return [
             json.loads(line)

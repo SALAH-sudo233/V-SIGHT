@@ -12,6 +12,32 @@
 Expression-level separation is insufficient because multiple referring
 expressions can share an image and target. All splits use image-group identity.
 
+## E1 source freeze
+
+The canonical positive sources are RefCOCO UNC, RefCOCO+ UNC, and RefCOCOg UMD
+train splits. Alternative Google splits are not mixed with them because they
+reuse referents under different split assignments. The build first removes the
+union of repaired-500 and repaired-1996 COCO image IDs, then assigns 5% of the
+remaining images to calibration using the frozen
+`vsight-e1-image-split-v1` hash seed.
+
+`scripts/build_e1_source_manifest.py` emits query-level deterministic gzip
+shards and separate image indexes. A source row contains `query_id`, `ref_id`,
+`sent_id`, `ann_id`, normalized and raw query text, COCO category, image
+metadata, GT `xywh/xyxy`, source version, split, and the number of annotated
+same-category distractors. Exact target/query duplicates across datasets are
+retained with provenance and must be controlled by the later sampler.
+All retained COCO file names are resolved against `--image-root` during the
+build; images themselves remain outside the repository.
+
+`scripts/build_e1_candidate_supervision.py` joins unique target annotations to
+COCO instances. It keeps at most five same-category instances ranked by a
+fixed size/center hardness score and creates deterministic partial, oversized,
+and jitter boxes. Same-category boxes with IoU >= 0.9 to the target are excluded
+as annotation duplicates or regionally indistinguishable negatives. This bank
+is valid for same-class ranking and localization losses only. It cannot produce
+target/reference swaps, typed nulls, or `KEEP/SWITCH/REJECT` labels.
+
 ## Training record schema
 
 Each record must contain image/group identity, query, query provenance,
@@ -39,6 +65,8 @@ the verifier must compare the expression with regional visual evidence.
    model input builder.
 4. Split calibration examples by image and keep them outside gradient updates.
 5. Record action/type distributions before any balancing sampler is applied.
+6. Verify every candidate-training query resolves to exactly one frozen
+   baseline output and one frozen binding-aware challenger.
 
 ## Held-out lock
 

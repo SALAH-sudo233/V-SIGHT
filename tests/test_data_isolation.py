@@ -1,4 +1,5 @@
 import json
+import gzip
 import sys
 import tempfile
 import unittest
@@ -8,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from vsight.data_isolation import audit_splits, identity  # noqa: E402
+from vsight.data_isolation import audit_splits, identity, read_records  # noqa: E402
 
 
 def row(group: str, image: str, pair: str) -> dict:
@@ -72,6 +73,14 @@ class DataIsolationTest(unittest.TestCase):
         self.assertEqual(
             report["comparisons"]["train__dev"]["image_overlap_count"], 1
         )
+
+    def test_reads_compressed_jsonl(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "records.jsonl.gz"
+            with gzip.open(path, "wt", encoding="utf-8") as handle:
+                handle.write(json.dumps(row("g1", "a.jpg", "p1")) + "\n")
+            records = read_records(path)
+        self.assertEqual(records, [row("g1", "a.jpg", "p1")])
 
 
 if __name__ == "__main__":

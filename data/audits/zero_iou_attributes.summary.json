@@ -1,0 +1,152 @@
+{
+  "schema_version": "vsight_zero_iou_attribute_summary_v1",
+  "generated_at_utc": "2026-07-31T14:25:11.568054+00:00",
+  "scope": {
+    "valid_box_zero_iou_groups": 114,
+    "valid_box_zero_iou_task_cases": 180,
+    "human_completed_in_scope": 19,
+    "model_success_groups": 114,
+    "human_model_overlap": 19,
+    "covered_union": 114,
+    "unresolved_groups": 0,
+    "unresolved_ids": [],
+    "unresolved_error_classes": {}
+  },
+  "models": {
+    "vision": [
+      "qwen3-vl-plus"
+    ],
+    "adjudication": [
+      "qwen3.7-max-2026-05-17"
+    ]
+  },
+  "model_results": {
+    "likely_zero_iou_cause": {
+      "same_category_instance_confusion": 85,
+      "wrong_category": 9,
+      "annotation_or_gt_issue": 12,
+      "target_reference_role_swap": 4,
+      "visually_ambiguous_reference": 1,
+      "localization_or_box_quality": 3
+    },
+    "instance_confusion_risk": {
+      "high": 93,
+      "medium": 8,
+      "low": 13
+    },
+    "query_binds_gt_target": {
+      "yes": 89,
+      "no": 19,
+      "uncertain": 6
+    },
+    "apparent_gender": {
+      "not_applicable": 64,
+      "male_presenting": 23,
+      "unclear": 11,
+      "female_presenting": 16
+    },
+    "gender_review_flags": {
+      "not_applicable": 64,
+      "no_automatic_flag": 24,
+      "unclear": 11,
+      "stereotype_sensitive_cue": 14,
+      "evidence_insufficient_or_self_contradictory": 1
+    },
+    "attribute_coverage": {
+      "colors": {
+        "samples": 109,
+        "items": 319,
+        "confidence": {
+          "high": 277,
+          "medium": 42
+        }
+      },
+      "materials": {
+        "samples": 109,
+        "items": 212,
+        "confidence": {
+          "high": 105,
+          "medium": 103,
+          "low": 4
+        }
+      },
+      "other": {
+        "samples": 109,
+        "items": 214,
+        "confidence": {
+          "high": 207,
+          "low": 2,
+          "medium": 5
+        }
+      },
+      "actions_or_states": {
+        "samples": 105,
+        "items": 136,
+        "confidence": {
+          "high": 131,
+          "medium": 5
+        }
+      }
+    },
+    "query_check_matrix": {
+      "object": {
+        "supported": 149,
+        "contradicted": 16,
+        "not_visible": 8
+      },
+      "color": {
+        "supported": 5
+      },
+      "material": {
+        "supported": 1
+      },
+      "attribute": {
+        "supported": 1
+      },
+      "action_state": {
+        "supported": 19,
+        "not_visible": 1,
+        "contradicted": 1
+      },
+      "count": {
+        "supported": 11,
+        "contradicted": 3,
+        "not_applicable": 1
+      },
+      "relation": {
+        "supported": 91,
+        "contradicted": 13,
+        "not_visible": 5,
+        "not_applicable": 1
+      }
+    },
+    "baseline_confusion_by_task": {
+      "t2_vqa_grounding": {
+        "same_category_other_instance": 79,
+        "background_or_bad_box": 2,
+        "different_category": 6,
+        "relation_anchor": 2
+      },
+      "t4_caption_grounding": {
+        "same_category_other_instance": 72,
+        "different_category": 12,
+        "background_or_bad_box": 3,
+        "relation_anchor": 3,
+        "uncertain": 1
+      }
+    }
+  },
+  "usage": {
+    "vision_total_tokens": 273829,
+    "adjudication_total_tokens": 536662,
+    "combined_total_tokens": 810491
+  },
+  "sources": {
+    "manifest": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_127.template.jsonl",
+    "manifest_sha256": "0be219cdbc490103233d1912748e50b77c146357875aac2ff8538b13645669c1",
+    "human_reviews": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_127.reviews.jsonl",
+    "human_reviews_sha256": "58986b1e6b5f6c805e1aba30b5e1a52bbd8a7f6c702eb7376e64a6aba12b4da3",
+    "model_output": "/home/u2025141034/SVD/V-SIGHT/data/audits/zero_iou_attributes.qwen3.7-max-2026-05-17.jsonl",
+    "model_output_sha256": "b5528edc0f8b408bcb51ad04eb571f49206c9d91966a97d6a891deabee2644fd"
+  }
+}

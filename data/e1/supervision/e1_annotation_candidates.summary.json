@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-07-31T14:59:57.951651+00:00",
+  "max_same_category_iou_exclusive": 0.9,
+  "max_same_category_per_target": 5,
+  "outputs": {
+    "calibration": {
+      "bytes": 715310,
+      "path": "data/e1/supervision/e1_annotation_candidates.calibration.jsonl.gz",
+      "sha256": "08daba2062f08b71a4f4e48698c2c7b6b8a67930c7d31e877e05b707d6af67cd"
+    },
+    "train": {
+      "bytes": 13552912,
+      "path": "data/e1/supervision/e1_annotation_candidates.train.jsonl.gz",
+      "sha256": "86bf15a0ea7855934babf5ba62304f7e77fd103c373047a80c4c9df4837ef4e6"
+    }
+  },
+  "schema_version": "vsight_e1_candidate_supervision_manifest_v1",
+  "selection": "top annotation_hardness: 0.6 size similarity + 0.4 inverse normalized center distance",
+  "source_manifest": {
+    "path": "data/e1/source/e1_source.summary.json",
+    "sha256": "a7fa20f0e458eb8ea49d889617f77529e6bd7a9707b5bccefba2e00b23440ba0"
+  },
+  "statistics": {
+    "calibration": {
+      "localization_candidates": 14261,
+      "localization_type_counts": {
+        "jitter_horizontal": 2812,
+        "jitter_vertical": 2765,
+        "oversized_context": 2888,
+        "partial_horizontal": 2898,
+        "partial_vertical": 2898
+      },
+      "overlap_candidates_excluded": 8,
+      "queries_linked": 14181,
+      "same_category_available_distribution": {
+        "0": 2,
+        "1": 1233,
+        "10": 50,
+        "11": 42,
+        "12": 120,
+        "2": 577,
+        "3": 399,
+        "4": 153,
+        "5": 90,
+        "6": 61,
+        "7": 91,
+        "8": 44,
+        "9": 36
+      },
+      "same_category_candidates": 6866,
+      "targets_with_same_category_candidates": 2896,
+      "targets_without_same_category_candidates": 2,
+      "unique_targets": 2898
+    },
+    "train": {
+      "localization_candidates": 270735,
+      "localization_type_counts": {
+        "jitter_horizontal": 53432,
+        "jitter_vertical": 52419,
+        "oversized_context": 54862,
+        "partial_horizontal": 55011,
+        "partial_vertical": 55011
+      },
+      "overlap_candidates_excluded": 42,
+      "queries_linked": 269068,
+      "same_category_available_distribution": {
+        "0": 16,
+        "1": 22912,
+        "10": 912,
+        "11": 902,
+        "12": 2187,
+        "13": 19,
+        "14": 3,
+        "15": 2,
+        "16": 2,
+        "2": 11564,
+        "20": 1,
+        "3": 7361,
+        "4": 2567,
+        "5": 1995,
+        "6": 1367,
+        "7": 1205,
+        "8": 1003,
+        "9": 993
+      },
+      "same_category_candidates": 131346,
+      "targets_with_same_category_candidates": 54995,
+      "targets_without_same_category_candidates": 16,
+      "unique_targets": 55011
+    }
+  },
+  "status": "annotation_candidates_ready_semantic_swaps_pending",
+  "training_eligibility": {
+    "candidate_listwise_action": false,
+    "counterfactual_binding": false,
+    "localization_quality": true,
+    "reason": "model candidates and query-level semantic swaps/nulls are pending",
+    "same_category_ranking": true
+  }
+}
