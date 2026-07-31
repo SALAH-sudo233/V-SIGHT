@@ -7,6 +7,7 @@ import json
 import math
 import pickle
 import re
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Iterator, Mapping, Sequence
@@ -17,6 +18,7 @@ from .data_isolation import read_records
 SOURCE_SCHEMA = "vsight_e1_positive_query_v1"
 IMAGE_SPLIT_SCHEMA = "vsight_e1_image_split_v1"
 CANDIDATE_BANK_SCHEMA = "vsight_e1_annotation_candidate_bank_v1"
+PILOT_QUEUE_SCHEMA = "vsight_e1_p1_inference_queue_v1"
 
 
 @dataclass(frozen=True)
@@ -169,6 +171,110 @@ def source_image_ids(
         for row in refs
         if row.get("split") == "train" and int(row["image_id"]) not in protected
     )
+
+
+def select_compute_subset(
+    records_by_source: Mapping[str, Sequence[Mapping]],
+    quotas: Mapping[str, int],
+    seed: str,
+) -> tuple[list[dict], dict]:
+    """Select a source-balanced, exact-query-deduplicated compute subset."""
+
+    if set(records_by_source) != set(quotas):
+        raise ValueError("records and quota sources differ")
+    if not quotas or any(value < 0 for value in quotas.values()):
+        raise ValueError("quotas must be non-negative")
+
+    ranked = {
+        source: sorted(
+            (dict(row) for row in records),
+            key=lambda row: (
+                hashlib.sha256(
+                    f"{seed}:{source}:{row['query_id']}".encode("utf-8")
+                ).digest(),
+                str(row["query_id"]),
+            ),
+        )
+        for source, records in records_by_source.items()
+    }
+    selected: list[dict] = []
+    counts = Counter()
+    seen_queries: set[str] = set()
+    seen_semantic: set[tuple[int, int, str]] = set()
+    used_images: set[int] = set()
+    rejected_exact_duplicates = 0
+
+    for require_new_image in (True, False):
+        positions = {source: 0 for source in ranked}
+        while any(counts[source] < quotas[source] for source in sorted(ranked)):
+            progressed = False
+            for source in sorted(ranked):
+                if counts[source] >= quotas[source]:
+                    continue
+                rows = ranked[source]
+                while positions[source] < len(rows):
+                    row = rows[positions[source]]
+                    positions[source] += 1
+                    query_id = str(row["query_id"])
+                    if query_id in seen_queries:
+                        continue
+                    semantic_key = (
+                        int(row["image_id"]),
+                        int(row["ann_id"]),
+                        str(row["query"]).strip().casefold(),
+                    )
+                    if semantic_key in seen_semantic:
+                        rejected_exact_duplicates += 1
+                        continue
+                    image_id = int(row["image_id"])
+                    if require_new_image and image_id in used_images:
+                        continue
+                    selected.append(row)
+                    counts[source] += 1
+                    seen_queries.add(query_id)
+                    seen_semantic.add(semantic_key)
+                    used_images.add(image_id)
+                    progressed = True
+                    break
+            if not progressed:
+                break
+        if all(counts[source] >= quotas[source] for source in ranked):
+            break
+
+    missing = {
+        source: quotas[source] - counts[source]
+        for source in sorted(quotas)
+        if counts[source] < quotas[source]
+    }
+    if missing:
+        raise ValueError(f"cannot satisfy compute-subset quotas: {missing}")
+    return selected, {
+        "selected": len(selected),
+        "selected_by_source": dict(sorted(counts.items())),
+        "unique_images": len(used_images),
+        "unique_target_queries": len(seen_semantic),
+        "exact_duplicates_rejected_during_selection": rejected_exact_duplicates,
+    }
+
+
+def inference_queue_record(row: Mapping, queue_rank: int) -> dict:
+    """Strip source supervision down to the frozen candidate-generation input."""
+
+    return {
+        "schema_version": PILOT_QUEUE_SCHEMA,
+        "record_type": "candidate_generation_input",
+        "queue_rank": queue_rank,
+        "query_id": str(row["query_id"]),
+        "group_id": str(row["group_id"]),
+        "data_split": str(row["data_split"]),
+        "source_dataset": str(row["source_dataset"]),
+        "source_split_by": str(row["source_split_by"]),
+        "image_id": int(row["image_id"]),
+        "image_filename": str(row["image_filename"]),
+        "image_width": int(row["image_width"]),
+        "image_height": int(row["image_height"]),
+        "query": str(row["query"]),
+    }
 
 
 def iter_query_records(

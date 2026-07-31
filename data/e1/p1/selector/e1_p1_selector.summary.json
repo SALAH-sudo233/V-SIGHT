@@ -1,0 +1,71 @@
+{
+  "candidate_manifest": {
+    "path": "data/e1/p1/candidates/e1_p1_candidates.summary.json",
+    "sha256": "9fef8daecdf10a8c8ce18fe83d5060e767329c1cfef576a003d141b27e04b816"
+  },
+  "generated_at": "2026-07-31T19:36:25.240678+00:00",
+  "label_policy": {
+    "baseline_null": "excluded because stage 1 disallows recovery",
+    "near_ties": "keep",
+    "parse_invalid": "excluded",
+    "switch_iou_margin": 0.05
+  },
+  "outputs": {
+    "calibration": {
+      "bytes": 210059,
+      "path": "data/e1/p1/selector/e1_p1_selector.calibration.jsonl.gz",
+      "sha256": "bc38d3a322d90def84117340ca552ede0767917549f1a16d698e1d5eed3962ce"
+    },
+    "train": {
+      "bytes": 1303258,
+      "path": "data/e1/p1/selector/e1_p1_selector.train.jsonl.gz",
+      "sha256": "9c4de3d8ed40a4ab806fe5ca0d764eb4e761a58a4cae81760541e04776db6bf9"
+    }
+  },
+  "schema_version": "vsight_e1_p1_selector_manifest_v1",
+  "statistics": {
+    "calibration": {
+      "actions": {
+        "excluded": 132,
+        "keep": 1712,
+        "switch": 156
+      },
+      "baseline_miou": 0.7282298556722228,
+      "baseline_zero": 207,
+      "challenger_miou": 0.7691480094690865,
+      "challenger_recovers_baseline_zero": 135,
+      "exclusions": {
+        "baseline_null_locked_stage1": 125,
+        "baseline_parse_invalid": 7
+      },
+      "oracle_gain_over_baseline": 0.028608052307053187,
+      "records": 2000,
+      "two_box_oracle_miou": 0.756837907979276
+    },
+    "train": {
+      "actions": {
+        "excluded": 753,
+        "keep": 10342,
+        "switch": 905
+      },
+      "baseline_miou": 0.7359981614023304,
+      "baseline_zero": 1149,
+      "challenger_miou": 0.775290497956963,
+      "challenger_recovers_baseline_zero": 787,
+      "exclusions": {
+        "baseline_null_locked_stage1": 730,
+        "baseline_parse_invalid": 22,
+        "challenger_parse_invalid": 1
+      },
+      "oracle_gain_over_baseline": 0.029004663175400763,
+      "records": 12000,
+      "two_box_oracle_miou": 0.7650028245777312
+    }
+  },
+  "status": "positive_selector_supervision_ready",
+  "training_eligibility": {
+    "e2_positive_selector": true,
+    "e3_joint_null_verifier": false,
+    "reason": "typed semantic null supervision is not built"
+  }
+}

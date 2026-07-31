@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-31
 
-**Phase:** E1 image-disjoint data construction
+**Phase:** E2 viability failed; task-matched E2b redesign required
 
 ## Completed
 
@@ -67,22 +67,50 @@
 - Static source and candidate records are deterministic compressed shards under
   `data/e1/`. Exact hashes, category distributions, duplicate counts, and
   eligibility gates are recorded in their summary manifests.
-- These artifacts do not yet authorize listwise verifier training. Frozen
-  baseline/challenger outputs, query-level target/reference swaps, and validated
-  typed nulls remain missing.
+- The static source and annotation bank alone did not authorize listwise
+  verifier training. P1 subsequently added frozen baseline/challenger outputs;
+  query-level target/reference swaps and validated typed nulls remain missing.
+
+## E1 P1 generated candidates
+
+- Froze 12,000 train and 2,000 calibration queries with one unique train image
+  per query. Generated exactly one baseline and one binding-aware challenger
+  with local Qwen2.5-VL-7B on eight GPUs.
+- Completed all 14,000 queries with zero inference errors. Baseline parsing is
+  valid on 11,978/12,000 train and 1,993/2,000 calibration queries; every
+  calibration challenger parses successfully.
+- Joined GT only after generation. E2 supervision has 10,342 KEEP / 905 SWITCH
+  train rows and 1,712 KEEP / 156 SWITCH calibration rows. Baseline refusals
+  remain locked and do not inflate the stage-1 oracle.
+
+## E2 verifier result
+
+- Implemented a permutation-equivariant shared CLIP candidate scorer using an
+  object crop, candidate-marked full scene, complete expression, and relative
+  geometry. Candidate source identity is not an input.
+- Trained and evaluated frozen CLIP, late-block CLIP adaptation, 18,000
+  annotation auxiliary pairs, and 3x RefCOCOg source reweighting.
+- Built a supervision-free randomized A/B pair-judge probe and completed
+  2,808/2,808 E1 calibration and repaired-500 comparisons. Zero-shot Qwen is
+  close to random. A one-epoch eight-GPU LoRA run adapted 5.05M parameters on
+  all 11,247 E1 train pairs but failed image-disjoint transfer.
+- Best E1 calibration result is the RefCOCOg-weighted frozen CLIP scorer:
+  0.738007 mIoU versus 0.731856 for the strongest fixed policy and 0.756838 for
+  the oracle, capturing 24.6% of the remaining gap with seven regressions.
+- No learned method beats the existing state-preserving challenger on both
+  repaired-500 tasks. The closest T2 result is 0.487260 versus 0.487486; its T4
+  result is only 0.467562 versus 0.491617. E2 therefore fails the 50% gate.
+- Full comparison and the stop decision are in `docs/E2_RESULTS.md`.
 
 ## Current gate
 
-1. Complete reviewer-1 failure-mode decisions for all 127 audit groups and
-   independently double-review at least 20% under a second reviewer ID.
-2. Construct and independently validate query-level object, co-occurrence,
-   attribute, relation nulls, and target/reference swaps from the E1 source.
-3. Freeze a compute-bounded E1 query subset and generate exactly one baseline
-   and one challenger per selected query.
-4. Join action labels without exposing GT, type, or source IDs to inference.
-5. Train the full candidate-conditioned verifier without an adaptive router.
-6. Continue only if it captures at least 50% of the two-box oracle gap while
-   halving nonzero-to-zero regressions on repaired-500.
+1. Do not advance these checkpoints to E3 or the sealed held-out split.
+2. Build task-matched T2/T4 generated hard pairs on relation-stratified
+   RefCOCOg train images using the exact frozen challenger policy.
+3. Add explicit target-reference box supervision for a learned relation head;
+   global CLIP context and annotation-only distractors are insufficient.
+4. Repeat E2 with the same two-candidate budget and advancement thresholds.
+5. Resume typed-null/E3 work only after E2b passes.
 
 ## Protected boundary
 

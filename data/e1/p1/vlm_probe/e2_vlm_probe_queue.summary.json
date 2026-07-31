@@ -1,0 +1,23 @@
+{
+  "schema_version": "vsight_e2_vlm_probe_queue_manifest_v1",
+  "status": "ready",
+  "generated_at": "2026-07-31T20:02:52.625530+00:00",
+  "records": 2808,
+  "counts": {
+    "calibration": 1868,
+    "t2": 468,
+    "t4": 472
+  },
+  "output": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/p1/vlm_probe/e2_vlm_probe_queue.jsonl.gz",
+    "sha256": "880b2b848431b8a29cb578b3078ebc2d3041b9d8782b18b8ed34c0dd80e20551",
+    "bytes": 103221
+  },
+  "forbidden_fields_checked": [
+    "gt_bbox_xyxy",
+    "baseline_iou",
+    "challenger_iou",
+    "selector_action",
+    "candidate_source"
+  ]
+}

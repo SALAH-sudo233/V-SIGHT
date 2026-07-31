@@ -18,6 +18,8 @@ from vsight.e1_data import (  # noqa: E402
     iter_query_records,
     localization_candidates,
     protected_image_ids,
+    inference_queue_record,
+    select_compute_subset,
     xywh_to_clipped_xyxy,
 )
 
@@ -149,6 +151,36 @@ class E1DataTest(unittest.TestCase):
         self.assertEqual(record["same_category_raw"], 1)
         self.assertEqual(record["same_category_overlap_excluded"], 1)
         self.assertEqual(record["same_category_candidates"], [])
+
+    def test_compute_subset_deduplicates_and_strips_supervision(self):
+        def item(source, index, image, ann, query):
+            return {
+                "query_id": f"{source}:{index}",
+                "group_id": f"{source}:ref:{index}",
+                "data_split": "train",
+                "source_dataset": source,
+                "source_split_by": "test",
+                "image_id": image,
+                "image_filename": f"{image}.jpg",
+                "image_width": 100,
+                "image_height": 80,
+                "ann_id": ann,
+                "query": query,
+                "gt_bbox_xyxy": [1, 2, 3, 4],
+            }
+
+        records = {
+            "a": [item("a", 1, 1, 10, "left person"), item("a", 2, 2, 20, "cat")],
+            "b": [item("b", 1, 1, 10, "left person"), item("b", 2, 3, 30, "dog")],
+        }
+        selected, stats = select_compute_subset(records, {"a": 1, "b": 1}, "seed")
+        semantic = {(row["image_id"], row["ann_id"], row["query"]) for row in selected}
+        self.assertEqual(len(selected), 2)
+        self.assertEqual(len(semantic), 2)
+        self.assertEqual(stats["selected_by_source"], {"a": 1, "b": 1})
+        queue = inference_queue_record(selected[0], 0)
+        self.assertNotIn("ann_id", queue)
+        self.assertNotIn("gt_bbox_xyxy", queue)
 
 
 if __name__ == "__main__":

@@ -20,13 +20,15 @@ evaluation strata, not a text-only inference router.
 
 ## Current status
 
-The repository contains the experiment protocol, decision-layer scaffold, and
-the first E1 data build. The image-disjoint positive source has 283,249 queries,
-and its annotation bank provides same-class and localization supervision for
-57,909 unique targets. Model-generated candidates, typed semantic nulls, a
-trained verifier, and a paper-facing held-out result do not exist yet.
-`repaired-500` is development-only, and `repaired-1996` is sealed until the
-method, checkpoint, prompts, and thresholds are frozen.
+E1 and the compute-bounded P1 candidate run are complete. The image-disjoint
+positive source has 283,249 queries; P1 generated one baseline and one
+challenger for 14,000 queries with zero inference errors. E2 trained CLIP and
+Qwen-LoRA candidate verifiers, but no learned selector passed the required
+oracle-gap and repaired-500 transfer gates. These are retained as reproducible
+negative results, not as the final V-SIGHT method. Read `docs/E2_RESULTS.md`.
+
+Typed semantic nulls and a paper-facing held-out result do not exist yet.
+`repaired-500` remains development-only, and `repaired-1996` remains sealed.
 
 The previously validated candidate experiment is retained unchanged under
 `legacy/candidate_pool_v1/`. It is evidence for the proposal component, not the

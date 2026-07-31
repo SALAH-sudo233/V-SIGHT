@@ -1,0 +1,31 @@
+{
+  "schema_version": "vsight_e2_annotation_auxiliary_manifest_v1",
+  "status": "training_only",
+  "generated_at": "2026-07-31T19:52:20.186664+00:00",
+  "records": 18000,
+  "counts": {
+    "RefCOCO:localization_quality": 2000,
+    "RefCOCO:same_category_instance": 4000,
+    "RefCOCO+:localization_quality": 2000,
+    "RefCOCO+:same_category_instance": 4000,
+    "RefCOCOg:localization_quality": 2000,
+    "RefCOCOg:same_category_instance": 4000
+  },
+  "output": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/p1/selector/e2_annotation_auxiliary.train.jsonl.gz",
+    "sha256": "f226447d54d5bbc9f33e69dc09c96036cd381b10a4473121af8ee4de3a9b0306",
+    "bytes": 1462746
+  },
+  "inference_features": [
+    "image",
+    "complete_query",
+    "candidate_views",
+    "source_agnostic_geometry"
+  ],
+  "forbidden_model_features": [
+    "gt_identity",
+    "candidate_source_id",
+    "source_dataset",
+    "auxiliary_type"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "vsight_experiment_v1",
-  "status": "e1_static_supervision_built_no_checkpoint",
+  "status": "e2_viability_failed_e2b_redesign_required",
   "method": {
     "actions": ["keep", "switch", "reject"],
     "candidate_sources": ["baseline", "binding_aware"],
@@ -47,9 +47,9 @@
     "compute_budget_stage_1": 0.0
   },
   "data": {
-    "train_manifest": null,
+    "train_manifest": "data/e1/p1/selector/e1_p1_selector.train.jsonl.gz",
     "e1_source_manifest": "data/e1/source/e1_source.summary.json",
-    "e1_source_status": "positive_queries_frozen_model_candidates_and_nulls_pending",
+    "e1_source_status": "positive_queries_and_frozen_p1_candidates_complete_typed_nulls_pending",
     "e1_candidate_supervision_manifest": "data/e1/supervision/e1_annotation_candidates.summary.json",
     "e1_candidate_supervision_usage": "same_category_ranking_and_localization_auxiliary_losses_only",
     "calibration_split_unit": "coco_image_id",
