@@ -16,10 +16,14 @@
   full verifier experiment from the later adaptive-compute router.
 - Defined data isolation, loss terms, metrics, ablations, efficiency reporting,
   and held-out access rules.
+- Added a loopback-only visual review UI for all 127 IoU=0 audit groups. It
+  overlays T2/T4 baseline, challenger, and GT boxes and writes reviewer-specific
+  decisions to an append-only JSONL log.
 
 ## Current gate
 
-1. Complete human failure-mode review for the 127-group audit manifest.
+1. Complete reviewer-1 failure-mode decisions for all 127 audit groups and
+   independently double-review at least 20% under a second reviewer ID.
 2. Build an image-disjoint training corpus; neither repaired-500 nor
    repaired-1996 may contribute training examples.
 3. Generate exactly one baseline and one challenger per training query.

@@ -53,3 +53,15 @@ python3 legacy/candidate_pool_v1/code/verify_effective_snapshot.py
 
 Read `docs/EXPERIMENT_PLAN.md` before generating training data or opening the
 held-out split.
+
+## Human audit
+
+Start the loopback-only 127-group IoU=0 review interface with:
+
+```bash
+python3 scripts/review_zero_iou.py
+```
+
+Reviews are appended to `data/audits/zero_iou_127.reviews.jsonl`. T2 and T4
+labels are stored separately inside each group record, and reviewer IDs keep
+independent second reviews from overwriting one another.
