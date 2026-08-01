@@ -119,7 +119,8 @@
   T4 0.655772 versus 0.696063, so E2b still fails.
 - Bailian is not required for the E2b data path. After the local CLIP+reference
   failure, it is now reserved for a bounded 100-query visual-teacher probe.
-  See `docs/E2B_PROGRESS.md`.
+  The probe entry point is `scripts/run_e2b_bailian_probe.py`; see
+  `docs/E2B_PROGRESS.md`.
 
 ## Current gate
 

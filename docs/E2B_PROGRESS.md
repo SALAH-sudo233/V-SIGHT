@@ -76,5 +76,11 @@ Run one of the following, in order:
 2. Expand API pseudo-labeling only if that probe materially beats the fixed
    challenger without exceeding the regression budget.
 
+The reproducible entry point is
+`scripts/run_e2b_bailian_probe.py`. It reads `DASHSCOPE_API_KEY` from the
+environment, writes only structured decisions and token usage, and stores no
+API credential or image payload. The default probe samples 50 T2 and 50 T4
+relation-eligible calibration queries.
+
 The sealed repaired-1996 split has not been used for inference, thresholding,
 or model selection.
