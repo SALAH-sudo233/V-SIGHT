@@ -50,15 +50,30 @@ The CLIP candidate-view plus explicit-reference model is implemented but has
 not trained because all eight GPUs are currently occupied by processes outside
 the visible PID namespace. No GPU reset or forced termination was attempted.
 
+## Local CLIP+reference result
+
+The GPU became available on 2026-08-01 and the implemented model was trained
+with the frozen CLIP backbone, the 103-dimensional relation context, and the
+same two-candidate budget. Training stopped after five epochs (best epoch 2)
+because calibration did not improve. The best calibration result was:
+
+| Split | Fixed challenger | CLIP+reference | Difference |
+| --- | ---: | ---: | ---: |
+| T2 | 0.732879 | 0.733351 | +0.000471 |
+| T4 | 0.696063 | 0.655772 | -0.040291 |
+
+The checkpoint captures only 2.4% of the T2 strongest-fixed oracle gap and
+has negative T4 capture. It therefore does not pass E2b and must not be used
+to open E3 or the sealed held-out split. The checkpoint and training history
+are retained under `outputs/e2b_clip_relation/` for reproducibility.
+
 ## Next bounded step
 
 Run one of the following, in order:
 
-1. When a GPU is available, train the implemented shared CLIP candidate scorer
-   with the 103-dimensional relation context.
-2. If that still fails, run a 100-query randomized A/B Bailian visual-teacher
+1. Run a 100-query randomized A/B Bailian visual-teacher
    probe with candidate boxes and DINO reference proposals marked in the image.
-3. Expand API pseudo-labeling only if that probe materially beats the fixed
+2. Expand API pseudo-labeling only if that probe materially beats the fixed
    challenger without exceeding the regression budget.
 
 The sealed repaired-1996 split has not been used for inference, thresholding,

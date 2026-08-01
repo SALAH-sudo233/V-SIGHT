@@ -114,10 +114,12 @@
   and T4. No GT, task ID, action, or candidate source enters the learned scorer.
 - Geometry-only MLP, utility-regression, and antisymmetric tree variants fail
   on T4, showing that explicit boxes alone do not encode visual binding. The
-  CLIP+reference fusion implementation is ready but awaits available GPU memory.
-- Bailian is not required for the E2b data path. It is reserved for a bounded
-  visual-teacher probe only if the local CLIP+reference model also fails. See
-  `docs/E2B_PROGRESS.md`.
+  CLIP+reference fusion was then trained on the matched relation data. Its best
+  calibration result is T2 0.733351 versus the fixed challenger 0.732879, but
+  T4 0.655772 versus 0.696063, so E2b still fails.
+- Bailian is not required for the E2b data path. After the local CLIP+reference
+  failure, it is now reserved for a bounded 100-query visual-teacher probe.
+  See `docs/E2B_PROGRESS.md`.
 
 ## Current gate
 
