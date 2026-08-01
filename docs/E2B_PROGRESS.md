@@ -82,5 +82,11 @@ environment, writes only structured decisions and token usage, and stores no
 API credential or image payload. The default probe samples 50 T2 and 50 T4
 relation-eligible calibration queries.
 
+The completed two-stage probe uses `qwen3-vl-plus` for evidence extraction and
+`qwen3.7-max-preview` for adjudication. It improves the 50-query T4 subset from
+the fixed challenger's 0.774290 mIoU to 0.796995 with zero nonzero-to-zero
+regressions, but T2 falls from 0.825390 to 0.822319. See
+`docs/E2B_BAILIAN_PROBE.md` for the full result and limitations.
+
 The sealed repaired-1996 split has not been used for inference, thresholding,
 or model selection.

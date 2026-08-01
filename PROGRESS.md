@@ -121,6 +121,12 @@
   failure, it is now reserved for a bounded 100-query visual-teacher probe.
   The probe entry point is `scripts/run_e2b_bailian_probe.py`; see
   `docs/E2B_PROGRESS.md`.
+- The completed two-stage Bailian probe uses `qwen3-vl-plus` visual evidence
+  followed by `qwen3.7-max-preview` adjudication. On 50 T4 calibration queries
+  it reaches 0.796995 versus 0.774290 for the fixed challenger and captures
+  71.8% of the remaining gap with zero nonzero-to-zero regressions. T2 remains
+  slightly worse than fixed (0.822319 versus 0.825390), so the API policy is a
+  teacher signal rather than the final verifier. See `docs/E2B_BAILIAN_PROBE.md`.
 
 ## Current gate
 
