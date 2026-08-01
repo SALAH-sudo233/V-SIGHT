@@ -1,0 +1,13 @@
+{
+  "schema_version": "vsight_e2b_dino_reference_validation_summary_v1",
+  "records": 808,
+  "proposal_coverage": 0.9975247524752475,
+  "top_iou_at_0_5": 0.8589108910891089,
+  "best_iou_at_0_5": 0.9702970297029703,
+  "mean_top_iou": 0.7965035592692941,
+  "mean_best_iou": 0.8895648365330766,
+  "warm_latency_per_query_median_sec": 0.2029884159564972,
+  "box_threshold": 0.2,
+  "text_threshold": 0.2,
+  "external_api_required": false
+}

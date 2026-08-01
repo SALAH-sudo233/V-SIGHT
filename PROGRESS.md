@@ -102,6 +102,23 @@
   result is only 0.467562 versus 0.491617. E2 therefore fails the 50% gate.
 - Full comparison and the stop decision are in `docs/E2_RESULTS.md`.
 
+## E2b task-matched relation data
+
+- Reused the P1 RefCOCOg T2 baseline/challenger and generated matching T4
+  outputs for 4,000 train and 666 calibration queries. All 4,666 inference jobs
+  completed without errors; 4,534 pass conservative structured parsing.
+- Added explicit target-reference parsing and local Grounding DINO proposal
+  sets. Validation against 808 unique COCO reference boxes reaches 97.0%
+  best-proposal IoU@0.5 with a maximum of five proposals per query.
+- Built 4,271 relation-eligible train pairs and 684 calibration pairs across T2
+  and T4. No GT, task ID, action, or candidate source enters the learned scorer.
+- Geometry-only MLP, utility-regression, and antisymmetric tree variants fail
+  on T4, showing that explicit boxes alone do not encode visual binding. The
+  CLIP+reference fusion implementation is ready but awaits available GPU memory.
+- Bailian is not required for the E2b data path. It is reserved for a bounded
+  visual-teacher probe only if the local CLIP+reference model also fails. See
+  `docs/E2B_PROGRESS.md`.
+
 ## Current gate
 
 1. Do not advance these checkpoints to E3 or the sealed held-out split.

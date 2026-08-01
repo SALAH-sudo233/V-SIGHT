@@ -18,3 +18,4 @@ core
 core.*
 data/e1/p1/**/logs/
 data/e1/p1/**/launcher.log
+data/e2b/**/logs/

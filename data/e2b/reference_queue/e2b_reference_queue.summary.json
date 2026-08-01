@@ -1,0 +1,81 @@
+{
+  "schema_version": "vsight_e2b_reference_queue_manifest_v1",
+  "status": "grounding_dino_inference_ready",
+  "generated_at": "2026-08-01T14:28:10.093811+00:00",
+  "source": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/reference/e2b_reference_candidates.summary.json",
+    "sha256": "1312fe2aefb8d34b050ebdee3ba991fb7dd5b507a315dcda1afa9b66cd70d17b"
+  },
+  "statistics": {
+    "train": {
+      "records": 2379,
+      "unique_images": 2379,
+      "relations": {
+        "above": 42,
+        "behind": 124,
+        "below": 39,
+        "beside": 64,
+        "between": 35,
+        "by": 54,
+        "held_by": 6,
+        "holding": 206,
+        "in_front_of": 83,
+        "next_to": 157,
+        "on": 589,
+        "riding": 25,
+        "sitting_on": 82,
+        "standing_on": 21,
+        "to_the_left_of": 47,
+        "to_the_right_of": 54,
+        "wearing": 236,
+        "with": 515
+      }
+    },
+    "calibration": {
+      "records": 377,
+      "unique_images": 375,
+      "relations": {
+        "above": 8,
+        "behind": 27,
+        "below": 13,
+        "beside": 14,
+        "between": 2,
+        "by": 5,
+        "held_by": 2,
+        "holding": 27,
+        "in_front_of": 14,
+        "next_to": 17,
+        "on": 97,
+        "riding": 3,
+        "sitting_on": 10,
+        "standing_on": 4,
+        "to_the_left_of": 6,
+        "to_the_right_of": 12,
+        "wearing": 39,
+        "with": 77
+      }
+    }
+  },
+  "forbidden_fields": [
+    "reference_candidates",
+    "reference_status",
+    "target_ann_id",
+    "target_bbox_xyxy",
+    "target_category_id",
+    "target_category_name",
+    "verifier_training_eligible"
+  ],
+  "outputs": {
+    "train": {
+      "path": "data/e2b/reference_queue/e2b_reference_queue.train.jsonl.gz",
+      "sha256": "e711bb5289b0d6aed5b6da7e0333f939e1ee512f21462a263f430253b5ec6c7c",
+      "bytes": 90103
+    },
+    "calibration": {
+      "path": "data/e2b/reference_queue/e2b_reference_queue.calibration.jsonl.gz",
+      "sha256": "a8edb7cd6e77b29e33784e2c639b80713d855054c261ca642fa07aecde858d6a",
+      "bytes": 14923
+    }
+  },
+  "external_api_required": false
+}

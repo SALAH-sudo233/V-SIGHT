@@ -36,6 +36,18 @@ CHALLENGER_PROMPT = (
     'Return JSON only: {{"boxes":[[x1,y1,x2,y2], ...]}}. Coordinates must be '
     "absolute image pixels."
 )
+T4_PROMPT = (
+    'Task: First describe the image in one concise sentence. Then check whether "{expr}" strictly matches a visible target.\n'
+    "Step 1 — Describe the image concisely.\n"
+    'Step 2 — Is there "{expr}" in the image?\n'
+    "The object identity, number, attributes, colors, and spatial relations must all match.\n"
+    "If yes, provide the bounding box in absolute image pixels as [x1, y1, x2, y2].\n"
+    'If no, output "not found".\n'
+    "Return JSON only:\n"
+    '{{"description":"one concise sentence", "exists":"yes", "bbox":[x1,y1,x2,y2]}}\n'
+    '{{"description":"one concise sentence", "exists":"no", "bbox":"not found"}}\n'
+    "Do not output explanations."
+)
 
 
 def prompt_hash(system_prompt: str, prompt_template: str) -> str:
@@ -57,6 +69,14 @@ def generation_spec() -> dict:
             "use_cache": True,
         },
         "challenger_selection": "first_box_from_ordered_binding_aware_output",
+    }
+
+
+def t4_generation_spec() -> dict:
+    return {
+        "system_prompt_sha256": prompt_hash(BASELINE_SYSTEM_PROMPT, T4_PROMPT),
+        "decoding": {"do_sample": False, "use_cache": True},
+        "task": "caption_plus_existence_plus_grounding",
     }
 
 
@@ -93,6 +113,82 @@ def parse_challenger_output(raw_text: str, image_size: tuple[int, int]) -> dict:
         "selected_bbox_xyxy": boxes[0] if boxes else None,
         "parse_valid": bool(boxes),
         "parse_method": "ordered_first_box" if boxes else "no_bbox",
+    }
+
+
+def parse_t4_output(raw_text: str, image_size: tuple[int, int]) -> dict:
+    """Parse the canonical Qwen T4 JSON without inferring missing decisions."""
+
+    answer = _answer_content(raw_text)
+    objects: list[Mapping[str, Any]] = []
+    candidates = [answer]
+    candidates.extend(re.findall(r"```(?:json)?\s*([\s\S]*?)```", answer, flags=re.I))
+    match = re.search(r"\{[\s\S]*\}", answer)
+    if match:
+        candidates.append(match.group(0))
+    for candidate in candidates:
+        try:
+            parsed = json.loads(candidate)
+        except (json.JSONDecodeError, TypeError):
+            try:
+                parsed, _ = json.JSONDecoder().raw_decode(str(candidate).lstrip())
+            except (json.JSONDecodeError, TypeError):
+                repaired = re.sub(
+                    r'("bbox(?:_2d)?"\s*:\s*\[[^\[\]]+\])"\s*}',
+                    r"\1}",
+                    str(candidate),
+                    count=1,
+                )
+                try:
+                    parsed = json.loads(repaired)
+                except (json.JSONDecodeError, TypeError):
+                    continue
+        if isinstance(parsed, Mapping):
+            objects.append(parsed)
+            break
+        if isinstance(parsed, list):
+            objects.extend(item for item in parsed if isinstance(item, Mapping))
+            if objects:
+                break
+    if not objects:
+        return {
+            "pred_exists": False,
+            "pred_found": False,
+            "pred_bbox_xyxy": None,
+            "generated_description": "",
+            "parse_valid": False,
+            "parse_method": "no_json_object",
+        }
+    payload = objects[0]
+    description = str(payload.get("description") or "").strip()
+    exists_value = str(payload.get("exists") or "").strip().casefold()
+    if exists_value not in {"yes", "no"}:
+        return {
+            "pred_exists": False,
+            "pred_found": False,
+            "pred_bbox_xyxy": None,
+            "generated_description": description,
+            "parse_valid": False,
+            "parse_method": "invalid_exists",
+        }
+    pred_exists = exists_value == "yes"
+    bbox_value = payload.get("bbox")
+    if bbox_value is None:
+        bbox_value = payload.get("bbox_2d")
+    boxes = parse_candidate_boxes(
+        json.dumps(bbox_value, ensure_ascii=False), image_size, max_candidates=1
+    )
+    box = boxes[0] if boxes else None
+    bbox_consistent = (pred_exists and box is not None) or (
+        not pred_exists and box is None and "not found" in str(bbox_value).casefold()
+    )
+    return {
+        "pred_exists": pred_exists,
+        "pred_found": box is not None,
+        "pred_bbox_xyxy": box,
+        "generated_description": description,
+        "parse_valid": bool(description) and bbox_consistent,
+        "parse_method": "canonical_json" if bbox_consistent else "inconsistent_exists_bbox",
     }
 
 

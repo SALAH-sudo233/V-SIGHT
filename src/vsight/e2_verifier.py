@@ -88,6 +88,8 @@ def selector_metrics(
     rows: Sequence[Mapping],
     score_differences: Mapping[str, float],
     threshold: float,
+    *,
+    unscored_policy: str = "baseline",
 ) -> dict:
     """Evaluate a conservative switch rule on the full natural-distribution set."""
 
@@ -96,6 +98,8 @@ def selector_metrics(
     count = len(rows)
     if count == 0:
         raise ValueError("at least one row is required")
+    if unscored_policy not in {"baseline", "challenger"}:
+        raise ValueError("unscored_policy must be baseline or challenger")
 
     totals = {
         "baseline": 0.0,
@@ -121,7 +125,13 @@ def selector_metrics(
             if bool(row.get("selector_eligible"))
             else baseline_iou
         )
-        switch = can_score and float(score_differences[query_id]) > threshold
+        switch = (
+            can_score and float(score_differences[query_id]) > threshold
+        ) or (
+            bool(row.get("selector_eligible"))
+            and not can_score
+            and unscored_policy == "challenger"
+        )
         selected_iou = challenger_iou if switch else baseline_iou
 
         totals["baseline"] += baseline_iou
@@ -204,13 +214,19 @@ def choose_safe_threshold(
     rows: Sequence[Mapping],
     score_differences: Mapping[str, float],
     max_nonzero_to_zero: int | None = None,
+    unscored_policy: str = "baseline",
 ) -> tuple[float, dict]:
     """Maximize mIoU subject to a hard nonzero-to-zero regression budget."""
 
     if max_nonzero_to_zero is not None and max_nonzero_to_zero < 0:
         raise ValueError("regression budget cannot be negative")
     evaluated = [
-        selector_metrics(rows, score_differences, threshold)
+        selector_metrics(
+            rows,
+            score_differences,
+            threshold,
+            unscored_policy=unscored_policy,
+        )
         for threshold in threshold_candidates(score_differences)
     ]
     feasible = [

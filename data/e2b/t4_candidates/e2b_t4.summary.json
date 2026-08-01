@@ -1,0 +1,64 @@
+{
+  "schema_version": "vsight_e2b_t4_manifest_v1",
+  "status": "complete",
+  "generated_at": "2026-08-01T14:07:40.381021+00:00",
+  "queue": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/queue/e2b_refcocog.summary.json",
+    "sha256": "6c89418ea8c07af3c2ae5236b86e0eed1876432eb9b1d107720a03b485f1e06e"
+  },
+  "coverage": {
+    "expected": 4666,
+    "attempted": 4666,
+    "missing": 0,
+    "errors": 0,
+    "parse_valid": 4534,
+    "parse_invalid": 132,
+    "extra_attempts": 0
+  },
+  "latency": {
+    "mean_sec": 1.2641380792375905,
+    "median_sec": 1.2532736831344664
+  },
+  "shards": [
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-00-of-08.jsonl",
+      "sha256": "45149c8d86f30e44b8611cd382e5adb92270b7afd3fea7f0a9df539a7310c1ba",
+      "bytes": 673372
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-01-of-08.jsonl",
+      "sha256": "a46bfa27850e1ca39e27cc44f8e6705f0ccce0ce8881c13dbdca9242352083b0",
+      "bytes": 610074
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-02-of-08.jsonl",
+      "sha256": "9b7cf2e4be9309fcb40f4f0369a1f6eef1b27afb8fefabdb797772735ebbb4e0",
+      "bytes": 647156
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-03-of-08.jsonl",
+      "sha256": "c2598c050977abd55b6a5fecf4a0a7d3573211014c1b633548f50c8e6efaf5c0",
+      "bytes": 621278
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-04-of-08.jsonl",
+      "sha256": "41b4b61f900fd52b647ac2895a1efc6a34eb8a753fc80c2090b9c053d82b5598",
+      "bytes": 639065
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-05-of-08.jsonl",
+      "sha256": "2eb5b326a7a0253cebfbd11c8aec50ec43d11e5838f8cebe929b20d20f004036",
+      "bytes": 635637
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-06-of-08.jsonl",
+      "sha256": "123c49c2fa66b02bf40cb1d87d5b1eb6112eb9e68cb96c900d4aae0778fd21f7",
+      "bytes": 644208
+    },
+    {
+      "path": "data/e2b/t4_candidates/e2b_t4.shard-07-of-08.jsonl",
+      "sha256": "3b78ba5fdadf45b612b761f36e7e1da8b06b40dc8a0dfc83b7d44e2d2ff58900",
+      "bytes": 678555
+    }
+  ]
+}

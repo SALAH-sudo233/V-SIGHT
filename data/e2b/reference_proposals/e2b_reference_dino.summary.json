@@ -1,0 +1,61 @@
+{
+  "schema_version": "vsight_e2b_reference_dino_manifest_v1",
+  "status": "complete",
+  "queue": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/reference_queue/e2b_reference_queue.summary.json",
+    "sha256": "cd239b88055967d1bc1c2d387b37a07c5e013a50ae8a82c82de4e9f2f4224907"
+  },
+  "coverage": {
+    "expected": 2756,
+    "attempted": 2756,
+    "missing": 0,
+    "errors": 0,
+    "with_proposals": 2728,
+    "without_proposals": 28
+  },
+  "latency_median_sec": 0.24846758297644556,
+  "max_proposals": 5,
+  "shards": [
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-00-of-08.jsonl",
+      "sha256": "2453d06b858d7befafaa58b5213bcd5ca7aca04592f9eff1d9337807406a6734",
+      "bytes": 203008
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-01-of-08.jsonl",
+      "sha256": "fc7f759c3052eb3755a60d10c46882ac2a0fa37be80b70b3ed8dd828be310f87",
+      "bytes": 174605
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-02-of-08.jsonl",
+      "sha256": "a483f884171a84b89e56bf9dac382b4998122f960bb179dedb4f0805ed01857b",
+      "bytes": 196840
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-03-of-08.jsonl",
+      "sha256": "43894062def2819a743b247a97b8377463ad8f1f17677446b49c6a52a9c8ba6a",
+      "bytes": 181021
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-04-of-08.jsonl",
+      "sha256": "dcdd1912d5aaf8e6a8611e5f382f1ea96bf6f6a8b91de11f6794e1411af5d518",
+      "bytes": 189167
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-05-of-08.jsonl",
+      "sha256": "79147722b6e595bc2bbcfed961249e59429da56ea6f2acb6c55a8eb4534afa82",
+      "bytes": 187556
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-06-of-08.jsonl",
+      "sha256": "8c45e31635b3a3cb5ae4c296bdea3e9cbb17a01aa828ac5a0128ecbf4ef97a5f",
+      "bytes": 200887
+    },
+    {
+      "path": "data/e2b/reference_proposals/e2b_reference_dino.shard-07-of-08.jsonl",
+      "sha256": "7568277f266ac9900aef725e801d8e19dee4d50b11782f56a72a205576d256a8",
+      "bytes": 199939
+    }
+  ],
+  "external_api_required": false
+}

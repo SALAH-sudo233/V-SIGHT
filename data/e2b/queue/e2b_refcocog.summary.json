@@ -1,0 +1,34 @@
+{
+  "schema_version": "vsight_e2b_refcocog_queue_v1",
+  "status": "t2_and_challenger_reused_t4_pending",
+  "generated_at": "2026-08-01T13:49:33.591643+00:00",
+  "p1_queue": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/p1/e1_p1_queries.summary.json",
+    "sha256": "9596a880b6d74dee7377a69d27e358e332f85093839a91fbe09aa54b0c8a453a"
+  },
+  "p1_candidates": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/p1/candidates/e1_p1_candidates.summary.json",
+    "sha256": "9fef8daecdf10a8c8ce18fe83d5060e767329c1cfef576a003d141b27e04b816"
+  },
+  "policy": {
+    "dataset": "RefCOCOg",
+    "t2_baseline": "reuse exact P1 output",
+    "challenger": "reuse exact P1 binding-aware output",
+    "t4_baseline": "generate canonical repaired-500 Qwen T4 prompt",
+    "external_api_required": false
+  },
+  "outputs": {
+    "train": {
+      "path": "data/e2b/queue/e2b_refcocog.train.jsonl.gz",
+      "sha256": "a0d8ad8d238210a98c8364fc82361586d38e4c3ef000a736986eda4b86bda3b4",
+      "records": 4000,
+      "unique_images": 4000
+    },
+    "calibration": {
+      "path": "data/e2b/queue/e2b_refcocog.calibration.jsonl.gz",
+      "sha256": "d2ae0f79c25e7c7a7831360fa159d363f9d2e4580ef3026d4478ad9c521535a5",
+      "records": 666,
+      "unique_images": 663
+    }
+  }
+}

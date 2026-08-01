@@ -1,0 +1,52 @@
+{
+  "schema_version": "vsight_e2b_relation_selector_manifest_v1",
+  "status": "training_ready",
+  "generated_at": "2026-08-01T14:33:28.878883+00:00",
+  "statistics": {
+    "train": {
+      "t2:excluded": 272,
+      "t2:keep": 3457,
+      "t2:reference_supervised": 484,
+      "t2:relation_eligible": 2189,
+      "t2:switch": 271,
+      "t4:excluded": 454,
+      "t4:keep": 2530,
+      "t4:reference_supervised": 464,
+      "t4:relation_eligible": 2082,
+      "t4:switch": 1016
+    },
+    "calibration": {
+      "t2:excluded": 44,
+      "t2:keep": 580,
+      "t2:reference_supervised": 71,
+      "t2:relation_eligible": 350,
+      "t2:switch": 42,
+      "t4:excluded": 78,
+      "t4:keep": 438,
+      "t4:reference_supervised": 67,
+      "t4:relation_eligible": 334,
+      "t4:switch": 150
+    }
+  },
+  "outputs": {
+    "train": {
+      "path": "data/e2b/selector/e2b_selector.train.jsonl.gz",
+      "sha256": "c5af77cc95180ea44f7469edc7f52180221be9bc00ce7edcd97eaba8d4ed6cf6",
+      "bytes": 884673
+    },
+    "calibration": {
+      "path": "data/e2b/selector/e2b_selector.calibration.jsonl.gz",
+      "sha256": "9bb35f39c9cf495223f6486bae34e456758885ba0e1b7f74f6118f8d19bff395",
+      "bytes": 145085
+    }
+  },
+  "model_forbidden_inputs": [
+    "task",
+    "gt_bbox_xyxy",
+    "baseline_iou",
+    "challenger_iou",
+    "selector_action",
+    "reference_best_index"
+  ],
+  "external_api_required": false
+}

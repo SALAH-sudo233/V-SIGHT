@@ -79,6 +79,16 @@ class SelectorMetricTest(unittest.TestCase):
         self.assertTrue(math.isfinite(result["selector_miou"]))
         self.assertEqual(result["nonzero_to_zero_regressions"], 0)
 
+    def test_unscored_challenger_policy_preserves_fixed_fallback(self):
+        result = selector_metrics(
+            self.rows,
+            {"gain": -1.0},
+            0.0,
+            unscored_policy="challenger",
+        )
+        self.assertEqual(result["switches"], 1)
+        self.assertEqual(result["nonzero_to_zero_regressions"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

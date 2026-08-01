@@ -159,7 +159,12 @@ class E2BatchCollator:
 class ClipCandidateVerifier(nn.Module):
     """A shared, permutation-equivariant scorer for exactly two candidates."""
 
-    def __init__(self, clip_model: nn.Module, hidden_dim: int = 256) -> None:
+    def __init__(
+        self,
+        clip_model: nn.Module,
+        hidden_dim: int = 256,
+        geometry_dim: int = GEOMETRY_DIM,
+    ) -> None:
         super().__init__()
         self.clip = clip_model
         projection_dim = int(self.clip.config.projection_dim)
@@ -172,7 +177,8 @@ class ClipCandidateVerifier(nn.Module):
             nn.Linear(512, hidden_dim),
             nn.GELU(),
         )
-        comparison_dim = hidden_dim * 3 + GEOMETRY_DIM * 3
+        self.geometry_dim = int(geometry_dim)
+        comparison_dim = hidden_dim * 3 + self.geometry_dim * 3
         self.shared_score = nn.Sequential(
             nn.LayerNorm(comparison_dim),
             nn.Linear(comparison_dim, hidden_dim),

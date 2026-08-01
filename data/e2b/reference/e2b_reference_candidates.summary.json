@@ -1,0 +1,80 @@
+{
+  "schema_version": "vsight_e2b_reference_coverage_v1",
+  "status": "automatic_coco_coverage_audited",
+  "generated_at": "2026-08-01T14:17:12.764777+00:00",
+  "queue": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/queue/e2b_refcocog.summary.json",
+    "sha256": "6c89418ea8c07af3c2ae5236b86e0eed1876432eb9b1d107720a03b485f1e06e"
+  },
+  "sources": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/source/e1_source.summary.json",
+    "sha256": "a7fa20f0e458eb8ea49d889617f77529e6bd7a9707b5bccefba2e00b23440ba0"
+  },
+  "statistics": {
+    "train": {
+      "multiple_reference_annotations": 497,
+      "multiple_reference_categories": 138,
+      "no_reference_category": 1210,
+      "no_relation_pattern": 1240,
+      "reference_category_no_annotation": 217,
+      "relation:above": 44,
+      "relation:behind": 124,
+      "relation:below": 39,
+      "relation:beside": 64,
+      "relation:between": 35,
+      "relation:by": 55,
+      "relation:held_by": 6,
+      "relation:holding": 206,
+      "relation:in_front_of": 83,
+      "relation:next_to": 157,
+      "relation:on": 603,
+      "relation:riding": 26,
+      "relation:sitting_on": 83,
+      "relation:standing_on": 21,
+      "relation:to_the_left_of": 47,
+      "relation:to_the_right_of": 54,
+      "relation:wearing": 236,
+      "relation:with": 515,
+      "unique_reference_annotation": 698
+    },
+    "calibration": {
+      "multiple_reference_annotations": 80,
+      "multiple_reference_categories": 26,
+      "no_reference_category": 204,
+      "no_relation_pattern": 216,
+      "reference_category_no_annotation": 30,
+      "relation:above": 8,
+      "relation:behind": 27,
+      "relation:below": 13,
+      "relation:beside": 14,
+      "relation:between": 2,
+      "relation:by": 6,
+      "relation:held_by": 2,
+      "relation:holding": 27,
+      "relation:in_front_of": 14,
+      "relation:next_to": 17,
+      "relation:on": 98,
+      "relation:riding": 3,
+      "relation:sitting_on": 11,
+      "relation:standing_on": 4,
+      "relation:to_the_left_of": 6,
+      "relation:to_the_right_of": 12,
+      "relation:wearing": 39,
+      "relation:with": 77,
+      "unique_reference_annotation": 110
+    }
+  },
+  "outputs": {
+    "train": {
+      "path": "data/e2b/reference/e2b_reference_candidates.train.jsonl.gz",
+      "sha256": "58d4611bf03b9212ebc1c8dd95a3f74ec1821119d6768d088bbeb845eb007d84",
+      "bytes": 337116
+    },
+    "calibration": {
+      "path": "data/e2b/reference/e2b_reference_candidates.calibration.jsonl.gz",
+      "sha256": "4052481399bfb2abc545f4e6b1f1cd50289a47bb615e5c1ebcc2e93d7f278064",
+      "bytes": 57639
+    }
+  },
+  "api_required_for_this_stage": false
+}
