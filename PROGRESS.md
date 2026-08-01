@@ -127,6 +127,11 @@
   71.8% of the remaining gap with zero nonzero-to-zero regressions. T2 remains
   slightly worse than fixed (0.822319 versus 0.825390), so the API policy is a
   teacher signal rather than the final verifier. See `docs/E2B_BAILIAN_PROBE.md`.
+- Local transfer also failed. Task-matched Qwen LoRA on all 4,271 pairs reaches
+  T2/T4 0.731945/0.636845, and 200-record evidence distillation collapses toward
+  abstention even after 10 epochs (570/684 abstentions; T4 0.635965). More API
+  rationale generation is stopped. The next representation is a detector-native
+  target/reference ROI pair encoder. See `docs/E2B_LOCAL_VLM_RESULTS.md`.
 
 ## Current gate
 

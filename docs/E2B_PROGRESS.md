@@ -88,5 +88,18 @@ the fixed challenger's 0.774290 mIoU to 0.796995 with zero nonzero-to-zero
 regressions, but T2 falls from 0.825390 to 0.822319. See
 `docs/E2B_BAILIAN_PROBE.md` for the full result and limitations.
 
+## Local transfer result
+
+The successful API structure did not transfer to the tested local Qwen
+variants. A task-matched short-answer LoRA trained on all 4,271 pairs, a
+single-call structured reasoning prompt, and 200-record evidence distillation
+at 3 and 10 epochs all failed T4. The 10-epoch model reduced loss to 1.1773 but
+abstained on 570/684 calibration pairs and reached only 0.635965 T4 mIoU versus
+0.696063 for the fixed challenger. See `docs/E2B_LOCAL_VLM_RESULTS.md`.
+
+The next experiment is a detector-native ROI pair encoder trained on target
+candidate and reference proposal features. More API rationale generation is
+stopped until that representation is tested.
+
 The sealed repaired-1996 split has not been used for inference, thresholding,
 or model selection.

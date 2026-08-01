@@ -1,0 +1,20 @@
+{
+  "schema_version": "vsight_e2b_vlm_probe_queue_manifest_v1",
+  "status": "ready",
+  "generated_at": "2026-08-01T16:33:20.684163+00:00",
+  "selector": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/selector/e2b_selector.summary.json",
+    "sha256": "498e546a3cf6eb5af7458f2853a120deb3f6db483565992af453d14c948d29d6"
+  },
+  "records": 684,
+  "counts": {
+    "t2": 350,
+    "t4": 334
+  },
+  "output": {
+    "path": "data/e2b/vlm_probe/e2b_vlm_probe_queue.jsonl.gz",
+    "sha256": "f99dff40a87d120bbc4ba2926c14668113ac6d3f80cac01c8c8eac6b281eac8e",
+    "bytes": 121020
+  },
+  "sealed_heldout_accessed": false
+}

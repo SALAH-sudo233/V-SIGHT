@@ -1,0 +1,54 @@
+{
+  "schema_version": "vsight_e2_vlm_lora_training_v1",
+  "status": "complete",
+  "generated_at": "2026-08-01T17:34:12.959263+00:00",
+  "base_model": "/home/u2025141034/.cache/huggingface/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "selector_manifest": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/selector/e2b_selector.summary.json",
+    "sha256": "498e546a3cf6eb5af7458f2853a120deb3f6db483565992af453d14c948d29d6"
+  },
+  "train_records": 200,
+  "relation_mode": true,
+  "teacher_records": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e2b/teacher_probe/e2b_bailian_train200.jsonl",
+    "sha256": "00329f35ec9da21caf80d3b0228180bbdce98e142a1beb04dfa99f8a2e9de7b3",
+    "usable": 200
+  },
+  "world_size": 8,
+  "epochs": 3,
+  "gradient_accumulation": 2,
+  "effective_batch_size": 16,
+  "learning_rate": 0.0001,
+  "lora": {
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ]
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.9728177362680435
+    },
+    {
+      "epoch": 2,
+      "loss": 1.6320354002714157
+    },
+    {
+      "epoch": 3,
+      "loss": 1.4805503228306771
+    }
+  ],
+  "duration_sec": 90.72373867593706,
+  "adapter": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/outputs/e2b_vlm_evidence_lora/adapter",
+    "model_sha256": "c1b5847edd63d2b392cc04cf56881b49e5aae9b1da7f8d0c295aae6e14c4c69f",
+    "bytes": 20218120
+  },
+  "sealed_heldout_accessed": false
+}

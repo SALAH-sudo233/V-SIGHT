@@ -21,9 +21,12 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from run_e2_vlm_probe_inference import (  # noqa: E402
     DEFAULT_MODEL,
+    RELATION_REASONING_PROMPT,
+    RELATION_USER_PROMPT,
     SYSTEM_PROMPT,
     USER_PROMPT,
     render_pair,
+    render_relation_pair,
 )
 from vsight.e1_data import sha256  # noqa: E402
 
@@ -36,6 +39,8 @@ def parse_args() -> argparse.Namespace:
         default=ROOT / "data/e1/p1/selector/e1_p1_selector.summary.json",
     )
     parser.add_argument("--model", type=Path, default=DEFAULT_MODEL)
+    parser.add_argument("--image-root", type=Path)
+    parser.add_argument("--teacher-records", type=Path)
     parser.add_argument(
         "--output-dir", type=Path, default=ROOT / "outputs/e2_vlm_lora"
     )
@@ -87,12 +92,36 @@ class PairwiseSftDataset:
 
         row = self.rows[index]
         boxes = [row["baseline_bbox_xyxy"], row["challenger_bbox_xyxy"]]
-        assignment = training_assignment(str(row["query_id"]), self.epoch)
+        teacher = row.get("_teacher")
+        assignment = (
+            tuple(int(value) for value in teacher["order"])
+            if isinstance(teacher, dict)
+            else training_assignment(str(row["query_id"]), self.epoch)
+        )
         target_candidate = 1 if str(row["selector_action"]) == "switch" else 0
         target_label = "A" if assignment[0] == target_candidate else "B"
         image_path = self.image_root / Path(row["image_filename"]).name
         with Image.open(image_path) as opened:
-            marked = render_pair(opened, boxes, assignment)
+            if row.get("reference_proposals"):
+                marked = render_relation_pair(
+                    opened, boxes, assignment, row["reference_proposals"]
+                )
+            else:
+                marked = render_pair(opened, boxes, assignment)
+        user_prompt = USER_PROMPT.format(query=str(row["query"]))
+        if isinstance(teacher, dict):
+            user_prompt = RELATION_REASONING_PROMPT.format(
+                query=str(row["query"]),
+                relation=str(row.get("relation") or ""),
+                reference_phrase=str(row.get("reference_phrase") or ""),
+            )
+            target_label = teacher_target(teacher)
+        elif row.get("reference_proposals"):
+            user_prompt = RELATION_USER_PROMPT.format(
+                query=str(row["query"]),
+                relation=str(row.get("relation") or ""),
+                reference_phrase=str(row.get("reference_phrase") or ""),
+            )
         user_messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {
@@ -101,7 +130,7 @@ class PairwiseSftDataset:
                     {"type": "image", "image": marked},
                     {
                         "type": "text",
-                        "text": USER_PROMPT.format(query=str(row["query"])),
+                        "text": user_prompt,
                     },
                 ],
             },
@@ -135,6 +164,36 @@ class PairwiseSftDataset:
         labels[:, : prompt["input_ids"].shape[1]] = -100
         full["labels"] = labels
         return dict(full)
+
+
+def teacher_target(teacher: dict) -> str:
+    evidence = teacher.get("visual_evidence") or {}
+    lines = []
+    for label, key in (("A", "candidate_A"), ("B", "candidate_B")):
+        item = evidence.get(key) or {}
+        visible = str(item.get("visible_object") or "unknown")
+        support = "; ".join(str(value) for value in (item.get("query_support") or [])[:2])
+        contradiction = "; ".join(
+            str(value) for value in (item.get("query_contradictions") or [])[:2]
+        )
+        lines.append(
+            f"{label}: object={visible}; support={support or 'none'}; "
+            f"contradiction={contradiction or 'none'}"
+        )
+    references = []
+    for item in (evidence.get("reference_evidence") or [])[:2]:
+        references.append(
+            f"{item.get('proposal')}: {item.get('visible_object')}; "
+            f"to_A={item.get('relation_to_A')}; to_B={item.get('relation_to_B')}"
+        )
+    lines.append("References: " + (" | ".join(references) or "none"))
+    uncertainties = "; ".join(
+        str(value) for value in (evidence.get("uncertainties") or [])[:2]
+    )
+    lines.append("Uncertainty: " + (uncertainties or "none"))
+    choice = str(teacher.get("choice") or "uncertain").upper()
+    lines.append(f"FINAL: {choice}")
+    return "\n".join(lines)
 
 
 def initialize_distributed():
@@ -179,24 +238,45 @@ def main() -> int:
     train_path = resolve_path(selector["outputs"]["train"]["path"])
     if sha256(train_path) != selector["outputs"]["train"]["sha256"]:
         raise ValueError("training selector hash mismatch")
-    rows = [row for row in read_gzip(train_path) if row.get("selector_eligible")]
+    relation_mode = selector.get("schema_version") == "vsight_e2b_relation_selector_manifest_v1"
+    eligibility_field = "relation_selector_eligible" if relation_mode else "selector_eligible"
+    rows = [row for row in read_gzip(train_path) if row.get(eligibility_field)]
+    teacher_records = None
+    if args.teacher_records is not None:
+        teacher_records = {
+            str(row["query_id"]): row
+            for row in (
+                json.loads(line)
+                for line in args.teacher_records.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            )
+            if row.get("status") == "ok"
+            and row.get("choice") in {"a", "b", "uncertain"}
+            and isinstance(row.get("visual_evidence"), dict)
+        }
+        rows = [row for row in rows if str(row["query_id"]) in teacher_records]
+        for row in rows:
+            row["_teacher"] = teacher_records[str(row["query_id"])]
     if args.max_records is not None:
         rows = rows[: args.max_records]
 
-    candidate_summary = json.loads(
-        resolve_path(selector["candidate_manifest"]["path"]).read_text(encoding="utf-8")
-    )
-    queue_summary = json.loads(
-        resolve_path(candidate_summary["queue_manifest"]["path"]).read_text(
-            encoding="utf-8"
+    if args.image_root is not None:
+        image_root = args.image_root
+    else:
+        candidate_summary = json.loads(
+            resolve_path(selector["candidate_manifest"]["path"]).read_text(encoding="utf-8")
         )
-    )
-    source_summary = json.loads(
-        resolve_path(queue_summary["source_manifest"]["path"]).read_text(
-            encoding="utf-8"
+        queue_summary = json.loads(
+            resolve_path(candidate_summary["queue_manifest"]["path"]).read_text(
+                encoding="utf-8"
+            )
         )
-    )
-    image_root = Path(source_summary["images"]["root"])
+        source_summary = json.loads(
+            resolve_path(queue_summary["source_manifest"]["path"]).read_text(
+                encoding="utf-8"
+            )
+        )
+        image_root = Path(source_summary["images"]["root"])
 
     processor = AutoProcessor.from_pretrained(str(args.model), local_files_only=True)
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
@@ -331,6 +411,16 @@ def main() -> int:
                 "sha256": sha256(args.selector_summary),
             },
             "train_records": len(rows),
+            "relation_mode": relation_mode,
+            "teacher_records": (
+                {
+                    "path": str(args.teacher_records.resolve()),
+                    "sha256": sha256(args.teacher_records),
+                    "usable": len(rows),
+                }
+                if args.teacher_records is not None
+                else None
+            ),
             "world_size": world_size,
             "epochs": args.epochs,
             "gradient_accumulation": args.gradient_accumulation,

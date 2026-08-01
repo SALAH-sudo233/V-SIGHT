@@ -6,7 +6,9 @@ PYTHON_BIN="${PYTHON_BIN:-/home/u2025141034/.miniconda3/envs/mllm_ayb/bin/python
 NUM_SHARDS="${NUM_SHARDS:-8}"
 LOG_DIR="${LOG_DIR:-${ROOT}/data/e1/p1/vlm_probe/logs}"
 OUTPUT_DIR="${OUTPUT_DIR:-${ROOT}/data/e1/p1/vlm_probe/outputs}"
+QUEUE="${QUEUE:-${ROOT}/data/e1/p1/vlm_probe/e2_vlm_probe_queue.jsonl.gz}"
 ADAPTER="${ADAPTER:-}"
+REASONING="${REASONING:-0}"
 
 mkdir -p "${LOG_DIR}"
 pids=()
@@ -16,7 +18,11 @@ for ((shard=0; shard<NUM_SHARDS; shard++)); do
   if [[ -n "${ADAPTER}" ]]; then
     extra_args+=(--adapter "${ADAPTER}")
   fi
+  if [[ "${REASONING}" == "1" ]]; then
+    extra_args+=(--reasoning)
+  fi
   "${PYTHON_BIN}" "${ROOT}/scripts/run_e2_vlm_probe_inference.py" \
+    --queue "${QUEUE}" \
     --gpu "${gpu}" \
     --num-shards "${NUM_SHARDS}" \
     --shard-index "${shard}" \

@@ -34,6 +34,24 @@ USER_PROMPT = (
     "Distinguish the target object from attribute or relation reference objects. "
     "Answer exactly A or B."
 )
+RELATION_USER_PROMPT = (
+    'Referring expression: "{query}"\n'
+    'Parsed relation: "{relation}"; reference phrase: "{reference_phrase}".\n'
+    "The image contains two marked candidate target boxes: A is red and B is blue. "
+    "Green boxes R1... are independent proposals for the reference object, not target candidates. "
+    "Choose which target box better satisfies the complete expression, including its relation "
+    "to the visible reference proposals. Answer exactly A or B."
+)
+RELATION_REASONING_PROMPT = (
+    'Referring expression: "{query}"\n'
+    'Parsed relation: "{relation}"; reference phrase: "{reference_phrase}".\n'
+    "A is the red target candidate and B is the blue target candidate. Green boxes R1... "
+    "are possible reference objects, not target candidates. First inspect A and B separately: "
+    "state the visible target object, query support or contradiction, and relation to the best "
+    "visible reference proposal. Then decide which candidate better satisfies the complete "
+    "expression. If pixels do not support a reliable distinction, abstain. End with exactly one "
+    "line FINAL: A, FINAL: B, or FINAL: UNCERTAIN."
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,6 +71,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--max-records", type=int)
     parser.add_argument("--log-every", type=int, default=25)
+    parser.add_argument("--reasoning", action="store_true")
     return parser.parse_args()
 
 
@@ -108,6 +127,25 @@ def render_pair(image, boxes, assignment):
     return marked
 
 
+def render_relation_pair(image, boxes, assignment, reference_proposals):
+    from PIL import ImageDraw, ImageFont
+
+    marked = render_pair(image, boxes, assignment)
+    draw = ImageDraw.Draw(marked)
+    width = max(3, min(marked.size) // 140)
+    font = ImageFont.load_default(size=max(14, min(marked.size) // 36))
+    for index, proposal in enumerate(reference_proposals, start=1):
+        box = proposal.get("bbox_xyxy") if isinstance(proposal, dict) else proposal
+        if not box or len(box) != 4:
+            continue
+        x1, y1, x2, y2 = (int(round(value)) for value in box)
+        x1, y1 = max(0, x1), max(0, y1)
+        x2, y2 = min(marked.width - 1, x2), min(marked.height - 1, y2)
+        draw.rectangle((x1, y1, x2, y2), outline=(32, 180, 64), width=width)
+        draw.text((x1 + 3, y1 + 2), f"R{index}", fill=(20, 130, 45), font=font)
+    return marked
+
+
 def load_model(path: Path, gpu: int, adapter: Path | None = None):
     import torch
     from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
@@ -145,17 +183,24 @@ def logsumexp(values) -> float:
     return maximum + math.log(sum(math.exp(value - maximum) for value in values))
 
 
-def infer_one(model, processor, image, query: str) -> tuple[str, float]:
+def infer_one(model, processor, image, query: str, row: dict | None = None) -> tuple[str, float]:
     import torch
     from qwen_vl_utils import process_vision_info
 
+    prompt = USER_PROMPT.format(query=query)
+    if row and row.get("reference_proposals"):
+        prompt = RELATION_USER_PROMPT.format(
+            query=query,
+            relation=str(row.get("relation") or ""),
+            reference_phrase=str(row.get("reference_phrase") or ""),
+        )
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {
             "role": "user",
             "content": [
                 {"type": "image", "image": image},
-                {"type": "text", "text": USER_PROMPT.format(query=query)},
+                {"type": "text", "text": prompt},
             ],
         },
     ]
@@ -185,6 +230,46 @@ def infer_one(model, processor, image, query: str) -> tuple[str, float]:
         [float(first_logits[index]) for index in answer_token_ids(processor.tokenizer, "B")]
     )
     return answer, b_score - a_score
+
+
+def infer_one_reasoning(model, processor, image, query: str, row: dict) -> tuple[str, float | None]:
+    import torch
+    from qwen_vl_utils import process_vision_info
+
+    prompt = RELATION_REASONING_PROMPT.format(
+        query=query,
+        relation=str(row.get("relation") or ""),
+        reference_phrase=str(row.get("reference_phrase") or ""),
+    )
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {
+            "role": "user",
+            "content": [
+                {"type": "image", "image": image},
+                {"type": "text", "text": prompt},
+            ],
+        },
+    ]
+    chat = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    images, videos = process_vision_info(messages)
+    inputs = processor(
+        text=[chat], images=images, videos=videos, padding=True, return_tensors="pt"
+    ).to(model.device)
+    with torch.inference_mode():
+        generated = model.generate(
+            **inputs,
+            max_new_tokens=384,
+            do_sample=False,
+            use_cache=True,
+        )
+    continuation = generated[0, inputs.input_ids.shape[1] :]
+    answer = processor.decode(continuation, skip_special_tokens=True).strip()
+    matches = re.findall(r"FINAL\s*:\s*(A|B|UNCERTAIN)", answer.upper())
+    if not matches:
+        raise ValueError("reasoning output lacks FINAL: A/B/UNCERTAIN")
+    choice = matches[-1]
+    return answer, None if choice == "UNCERTAIN" else 1.0 if choice == "B" else -1.0
 
 
 def main() -> int:
@@ -227,13 +312,31 @@ def main() -> int:
         try:
             image_path = Path(row["image_root"]) / Path(row["image_filename"]).name
             with Image.open(image_path) as opened:
-                marked = render_pair(opened, row["boxes_xyxy"], assignment)
-            answer, b_minus_a = infer_one(model, processor, marked, str(row["query"]))
+                if row.get("reference_proposals"):
+                    marked = render_relation_pair(
+                        opened,
+                        row["boxes_xyxy"],
+                        assignment,
+                        row["reference_proposals"],
+                    )
+                else:
+                    marked = render_pair(opened, row["boxes_xyxy"], assignment)
+            if args.reasoning:
+                answer, b_minus_a = infer_one_reasoning(
+                    model, processor, marked, str(row["query"]), row
+                )
+            else:
+                answer, b_minus_a = infer_one(
+                    model, processor, marked, str(row["query"]), row
+                )
             chosen = re.search(r"(?<![A-Za-z])([AB])(?![A-Za-z])", answer.upper())
             record["raw_answer"] = answer
             record["parse_valid"] = chosen is not None
+            record["abstain"] = b_minus_a is None
             record["candidate_1_minus_0_score"] = (
-                b_minus_a if assignment == (0, 1) else -b_minus_a
+                None
+                if b_minus_a is None
+                else b_minus_a if assignment == (0, 1) else -b_minus_a
             )
         except Exception as exc:
             record["error"] = f"{type(exc).__name__}: {exc}"
