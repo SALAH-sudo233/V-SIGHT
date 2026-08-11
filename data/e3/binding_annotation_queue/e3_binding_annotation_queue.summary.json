@@ -1,0 +1,42 @@
+{
+  "schema_version": "vsight_e3_binding_annotation_queue_v2",
+  "status": "human_review_ready",
+  "generated_at": "2026-08-04T09:08:15.231578+00:00",
+  "dataset_role": "train_annotation_queue",
+  "source": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/data/e1/p1/selector/e1_p1_selector.train.jsonl.gz",
+    "sha256": "9c4de3d8ed40a4ab806fe5ca0d764eb4e761a58a4cae81760541e04776db6bf9"
+  },
+  "statistics": {
+    "source_rows": 12000,
+    "source_unique_groups": 11248,
+    "queued_rows": 500,
+    "queued_unique_images": 500,
+    "strata": {
+      "attribute": 150,
+      "object": 150,
+      "relation": 200
+    }
+  },
+  "forbidden_fields": [
+    "ann_id",
+    "baseline_iou",
+    "challenger_bbox_xyxy",
+    "challenger_iou",
+    "gt_bbox_xyxy",
+    "raw_two_box_oracle_iou",
+    "selector_action",
+    "selector_eligible",
+    "switch_iou_margin",
+    "two_box_oracle_iou"
+  ],
+  "outputs": {
+    "train": {
+      "path": "data/e3/binding_annotation_queue/e3_binding_annotation_queue.train.jsonl.gz",
+      "sha256": "75d1ce93d317a1095d9988ce1bb2b61a6e4274aad4b736f676c55b373086ed2e",
+      "bytes": 25293
+    }
+  },
+  "requires_external_api": false,
+  "sealed_heldout_accessed": false
+}

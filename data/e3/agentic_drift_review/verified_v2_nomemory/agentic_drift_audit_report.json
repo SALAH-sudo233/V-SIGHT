@@ -1,0 +1,149 @@
+{
+  "agent_human_alignment": {
+    "agent_state_counts": {
+      "SUPPORTED_CORRECT": 3,
+      "UNOBSERVABLE_AMBIGUOUS": 45,
+      "WRONG_INSTANCE": 1
+    },
+    "confusion_matrix": {
+      "SUPPORTED_CORRECT": {
+        "UNOBSERVABLE_AMBIGUOUS": 2,
+        "WRONG_INSTANCE": 1
+      },
+      "UNOBSERVABLE_AMBIGUOUS": {
+        "ABSENT_UNSUPPORTED": 5,
+        "SUPPORTED_CORRECT": 22,
+        "UNOBSERVABLE_AMBIGUOUS": 12,
+        "WRONG_INSTANCE": 6
+      },
+      "WRONG_INSTANCE": {
+        "SUPPORTED_CORRECT": 1
+      }
+    },
+    "disagreement_count": 37,
+    "exact_state_agreement": 0.24489795918367346,
+    "human_state_counts": {
+      "ABSENT_UNSUPPORTED": 5,
+      "SUPPORTED_CORRECT": 23,
+      "UNOBSERVABLE_AMBIGUOUS": 14,
+      "WRONG_INSTANCE": 7
+    },
+    "wrong_instance": {
+      "agent_positive": 1,
+      "f1": 0.0,
+      "human_positive": 7,
+      "precision": 0.0,
+      "recall": 0.0,
+      "true_positive": 0
+    },
+    "wrong_instance_ranking_diagnostic": {
+      "drift_risk_auprc": 0.33125707486609735,
+      "drift_risk_auroc": 0.6122448979591837,
+      "positive_prevalence": 0.14285714285714285,
+      "records": 49,
+      "review_priority_auprc": 0.19270870394149492,
+      "review_priority_auroc": 0.5748299319727891,
+      "selection_bias_warning": "risk-enriched audit queue; not a natural-cohort estimate"
+    }
+  },
+  "annotation_protocol": "single_project_owner",
+  "candidate_coverage": {
+    "by_state": {
+      "reference|ABSENT_UNSUPPORTED|False": 1,
+      "reference|ABSENT_UNSUPPORTED|True": 2,
+      "reference|SUPPORTED_CORRECT|False": 9,
+      "reference|SUPPORTED_CORRECT|True": 8,
+      "reference|UNOBSERVABLE_AMBIGUOUS|False": 3,
+      "reference|UNOBSERVABLE_AMBIGUOUS|True": 8,
+      "reference|WRONG_INSTANCE|False": 2,
+      "reference|WRONG_INSTANCE|True": 3,
+      "target|SUPPORTED_CORRECT|False": 6,
+      "target|SUPPORTED_CORRECT|True": 17
+    },
+    "fixed_detector_evidence_records": 2500,
+    "iou_threshold": 0.5,
+    "proposal_cap": 5,
+    "reference_available": 36,
+    "reference_coverage_rate": 0.5833333333333334,
+    "reference_covered": 21,
+    "relation_edge_score_available": false,
+    "target_available": 23,
+    "target_coverage_rate": 0.7391304347826086,
+    "target_covered": 17
+  },
+  "cohort_kind": "diagnostic",
+  "cohort_metadata_source": "validated_queue_summary",
+  "cohort_selection_rule": null,
+  "completed_reviews": 49,
+  "dataset_role": "development_agentic_audit_not_training",
+  "effective_config_sha256": "a57eea39e6e3a20edcd63a4cca61101f304da76a5c50d3da713aed552f1b6139",
+  "effective_config_validation": {
+    "audit_records": 500,
+    "effective_config_sha256": "a57eea39e6e3a20edcd63a4cca61101f304da76a5c50d3da713aed552f1b6139",
+    "legacy_compatibility": false,
+    "missing_records": 0,
+    "status": "verified_unique"
+  },
+  "generated_at": "2026-08-11T03:06:19.508431+00:00",
+  "incomplete_annotation_ids": [
+    "agentic-review:114273d573c2a5fcc099"
+  ],
+  "inputs": {
+    "audit": "outputs/agentic_drift_audit_v2_nomemory/audit.jsonl.gz",
+    "audit_sha256": "8ca50c4896a4df5fc2fcc2c610cb92512edfd2eb6de733013ccc8588fafc089d",
+    "fixed_evidence_glob": "/home/u2025141034/SVD/V-SIGHT/data/e3/ccv/composite_evidence/evidence.shard-*.jsonl",
+    "queue": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_review_queue.jsonl.gz",
+    "queue_sha256": "9c38ea0051a3131ec4c50a1826ef0675d5143b34b402d7568612772caa8bbc15",
+    "queue_summary": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_review_queue.summary.json",
+    "queue_summary_sha256": "9a168ad269e5db244e91c0f52e4cc95d4973b20593dfe6403d8212e30fcbe48b",
+    "reviews": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_reviews.jsonl",
+    "reviews_sha256": "590b963996bc883eda2e449cefa0bdb78b3f37ebf85af39f7c92fc610c841bed",
+    "sidecar": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_hypotheses.private.jsonl.gz",
+    "sidecar_sha256": "20e1ead1b5009ecb63602570d6386c34ea1983a1eaa6eaa1fce937980435648e"
+  },
+  "inter_reviewer_agreement_reported": false,
+  "interpretation_warning": "审核队列按 agent 风险和控制带富集，以下 precision/recall 仅为审核队列诊断结果，不代表自然错误率。",
+  "latest_review_versions": 50,
+  "parser": {
+    "counts": {
+      "correct": 24,
+      "incorrect": 9,
+      "uncertain": 16
+    },
+    "incorrect_rate": 0.1836734693877551,
+    "uncertain_rate": 0.32653061224489793
+  },
+  "policy": {
+    "derived_action_counts": {
+      "ABSTAIN": 32,
+      "ACCEPT": 17
+    },
+    "oracle_attribution_proxy_counts": {
+      "NONE": 10,
+      "PARSE_ERR": 9,
+      "SEE_ERR": 13,
+      "UNRESOLVED": 17
+    },
+    "relocalization_eligible": 0,
+    "relocalization_note": "关系候选证据没有 typed edge score；RELOCALIZE 使用 target/reference Top-K 覆盖作为 witness proxy，不能宣称因果修复。"
+  },
+  "queue_hash_valid": true,
+  "queue_records": 50,
+  "queue_sha256": "9c38ea0051a3131ec4c50a1826ef0675d5143b34b402d7568612772caa8bbc15",
+  "review_authority": "项目负责人",
+  "review_completion_rate": 0.98,
+  "review_history_records": 62,
+  "reviewed_boxes": {
+    "human_corrected_target_boxes": 0,
+    "human_reference_boxes": 41
+  },
+  "schema_version": "vsight_agentic_drift_audit_report_v2",
+  "single_review_authorized": true,
+  "training": {
+    "additional_mllm_calls": 0,
+    "external_teacher_calls": 0,
+    "sealed_heldout_accessed": false,
+    "verified_memory_is_training_eligible": false,
+    "written_to_self_memory": false
+  }
+}

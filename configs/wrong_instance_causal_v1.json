@@ -1,0 +1,68 @@
+{
+  "schema_version": "vsight_wrong_instance_causal_config_v1",
+  "dataset_role": "train_reviewed_pilot_not_final_test",
+  "objective": "causal diagnosis and selective correction of same-class wrong-instance binding",
+  "candidate_cap_per_role": 5,
+  "cohorts": {
+    "natural_audit": {
+      "selection_uses_model_correctness": false,
+      "requires_same_class_multi_instance": true,
+      "requires_topk_coverage": false
+    },
+    "correction_eligible": {
+      "derived_from_natural_audit": true,
+      "requires_target_topk_coverage": true,
+      "requires_reference_topk_coverage_for_relation": true
+    }
+  },
+  "evidence_states": [
+    "SUPPORTED_CORRECT",
+    "WRONG_INSTANCE",
+    "ABSENT_UNSUPPORTED",
+    "UNOBSERVABLE_AMBIGUOUS"
+  ],
+  "policy_actions": [
+    "ACCEPT",
+    "ABSTAIN",
+    "RELOCALIZE"
+  ],
+  "oracle_attributions": [
+    "NONE",
+    "PARSE_ERR",
+    "SEE_ERR",
+    "TARGET_ERR",
+    "REF_ERR",
+    "REL_ERR",
+    "UNRESOLVED"
+  ],
+  "review": {
+    "annotation_protocol": "single_project_owner",
+    "minimum_reviewers": 1,
+    "minimum_confidence": 0.9,
+    "retain_ambiguous_for_evaluation": true,
+    "retain_non_relocalizable_wrong_instance": true
+  },
+  "promotion_gates": {
+    "max_added_fnr": 0.03,
+    "max_positive_miou_loss": 0.005,
+    "max_nonzero_to_zero_regression": 0.01,
+    "trajectory_min_delta_over_static": 0.05,
+    "trajectory_requires_bootstrap_ci_above_zero": true
+  },
+  "inference_budget": {
+    "upstream_mllm_calls": 1,
+    "detector_image_encoder_forwards": 1,
+    "external_teacher_calls": 0
+  },
+  "forbidden_inference_features": [
+    "model_identity",
+    "ground_truth_box",
+    "iou",
+    "hallucination_type",
+    "candidate_source_identity"
+  ],
+  "protected_boundaries": {
+    "prbench_for_fitting": false,
+    "sealed_repaired_1996_access_before_freeze": false
+  }
+}

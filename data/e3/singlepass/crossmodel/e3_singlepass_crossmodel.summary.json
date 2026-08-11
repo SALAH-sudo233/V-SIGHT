@@ -1,0 +1,201 @@
+{
+  "schema_version": "vsight_e3_singlepass_crossmodel_manifest_v1",
+  "status": "cross_validation_ready",
+  "generated_at": "2026-08-03T03:53:05.556003+00:00",
+  "dataset_role": "development_not_final_test",
+  "inputs": {
+    "benchmark": {
+      "path": "/home/u2025141034/SVD/V-SIGHT/legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+      "sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f"
+    },
+    "proposal_summary": {
+      "path": "/home/u2025141034/SVD/V-SIGHT/data/e3/singlepass/target_proposals/e3_singlepass_target_dino.summary.json",
+      "sha256": "bd44feb02cae9d4c9553b9ee24815513b67df791c8089071cd3adf85dcf56a5c"
+    },
+    "record_root": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict",
+    "record_files": [
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/LENS/records.jsonl",
+        "sha256": "9274b53db5275e0bc35af686889cf96cdd348f45134f12b432164929f14ba422"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/Orsta-7B/records.jsonl",
+        "sha256": "00cdddf30bc44e39a7103db6ee87eaab53e6a81b7e5d3886b4d008dae4a3fc50"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/Qwen3-VL-8B/records.jsonl",
+        "sha256": "cc4230614665651e9b0f2d6b052ba544e3ac29a80cf170ac9680eaa8983baf0a"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/Seg-R1/records.jsonl",
+        "sha256": "77c374be2b8c0c9bdecd75724e62a9f4c1349e070c1adf9214c8d19856410770"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/Seg-zero/records.jsonl",
+        "sha256": "f926213886a75f625ace6261053cd3e466351de077431fe38fb00a888bde7bf7"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/TreeVGR/records.jsonl",
+        "sha256": "a1a428eced88233062fb57a368d1ebc4c6ee2fa1849be3d8ee7d20a685cde557"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/UniVG-R1/records.jsonl",
+        "sha256": "419f702f10518fda05efd56f432303f930f6bdd3802161cfba3f01f01815b2e9"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/Vision-R1/records.jsonl",
+        "sha256": "95d251d667d5202e04b1dfc0693906af8eb7a700ea4a42b3f209c985419d7376"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/VisionReasoner/records.jsonl",
+        "sha256": "25a546e1f5047ccf92bd0c5be9fffb6dde1fd4c9f32422c1ccf78a8b58631936"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/qwen2.5-vl-7b/records.jsonl",
+        "sha256": "c3a5a7b82bc104896329d2c313ed091133bfcd3351736f4be3d2b1018142f63e"
+      },
+      {
+        "path": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/visual-rft/records.jsonl",
+        "sha256": "ed279157a43ca532d8b9b9e3b78fe2078a3c8c2c5c5694364d59efddf15e5d2a"
+      }
+    ]
+  },
+  "models": [
+    "LENS",
+    "Orsta-7B",
+    "Qwen3-VL-8B",
+    "Seg-R1",
+    "Seg-zero",
+    "TreeVGR",
+    "UniVG-R1",
+    "Vision-R1",
+    "VisionReasoner",
+    "qwen2.5-vl-7b",
+    "visual-rft"
+  ],
+  "inference_feature_fields": [
+    "original_found",
+    "candidate_valid",
+    "candidate_area",
+    "candidate_center_x",
+    "candidate_center_y",
+    "candidate_aspect_log",
+    "candidate_edge_distance",
+    "head_parsed",
+    "full_distinct",
+    "reference_parsed",
+    "head_proposal_count",
+    "head_max_score",
+    "head_mean_score",
+    "head_max_candidate_iou",
+    "head_score_weighted_candidate_iou",
+    "head_top_score_candidate_iou",
+    "head_best_iou_score",
+    "head_max_score_iou_product",
+    "head_overlap_count_010",
+    "head_max_overlap_score_010",
+    "head_overlap_count_030",
+    "head_max_overlap_score_030",
+    "head_overlap_count_050",
+    "head_max_overlap_score_050",
+    "full_proposal_count",
+    "full_max_score",
+    "full_mean_score",
+    "full_max_candidate_iou",
+    "full_score_weighted_candidate_iou",
+    "full_top_score_candidate_iou",
+    "full_best_iou_score",
+    "full_max_score_iou_product",
+    "full_overlap_count_010",
+    "full_max_overlap_score_010",
+    "full_overlap_count_030",
+    "full_max_overlap_score_030",
+    "full_overlap_count_050",
+    "full_max_overlap_score_050",
+    "reference_proposal_count",
+    "reference_max_score",
+    "reference_mean_score",
+    "reference_max_candidate_iou",
+    "reference_score_weighted_candidate_iou",
+    "reference_top_score_candidate_iou",
+    "reference_best_iou_score",
+    "reference_max_score_iou_product",
+    "reference_overlap_count_010",
+    "reference_max_overlap_score_010",
+    "reference_overlap_count_030",
+    "reference_max_overlap_score_030",
+    "reference_overlap_count_050",
+    "reference_max_overlap_score_050",
+    "full_minus_head_score",
+    "full_minus_head_iou",
+    "full_minus_head_joint_support",
+    "full_minus_head_overlap_score_030",
+    "reference_geometry_valid",
+    "reference_geometry_score_weighted_dx",
+    "reference_geometry_score_weighted_dy",
+    "reference_geometry_score_weighted_abs_dx",
+    "reference_geometry_score_weighted_abs_dy",
+    "reference_geometry_score_weighted_distance",
+    "reference_geometry_min_distance",
+    "reference_geometry_max_iou",
+    "reference_geometry_score_weighted_iou",
+    "reference_geometry_score_weighted_x_overlap",
+    "reference_geometry_score_weighted_y_overlap",
+    "reference_geometry_score_weighted_candidate_cover",
+    "reference_geometry_score_weighted_reference_cover",
+    "reference_geometry_candidate_left_fraction",
+    "reference_geometry_candidate_above_fraction",
+    "reference_geometry_horizontal_both_sides",
+    "reference_geometry_vertical_both_sides",
+    "relation_in_front_of",
+    "relation_next_to",
+    "relation_to_the_left_of",
+    "relation_to_the_right_of",
+    "relation_sitting_on",
+    "relation_standing_on",
+    "relation_held_by",
+    "relation_holding",
+    "relation_wearing",
+    "relation_riding",
+    "relation_between",
+    "relation_behind",
+    "relation_above",
+    "relation_below",
+    "relation_beside",
+    "relation_on",
+    "relation_with",
+    "relation_by"
+  ],
+  "forbidden_inference_fields": [
+    "model",
+    "label_exists",
+    "hallucination_type",
+    "gt_bbox_xyxy",
+    "original_iou"
+  ],
+  "statistics": {
+    "model:LENS": 5000,
+    "model:Orsta-7B": 5000,
+    "model:Qwen3-VL-8B": 5000,
+    "model:Seg-R1": 5000,
+    "model:Seg-zero": 5000,
+    "model:TreeVGR": 5000,
+    "model:UniVG-R1": 5000,
+    "model:Vision-R1": 5000,
+    "model:VisionReasoner": 5000,
+    "model:qwen2.5-vl-7b": 5000,
+    "model:visual-rft": 5000,
+    "original_found": 33633,
+    "rows": 55000,
+    "task:t2_vqa_grounding": 27500,
+    "task:t4_caption_grounding": 27500
+  },
+  "outputs": {
+    "development": {
+      "path": "data/e3/singlepass/crossmodel/e3_singlepass_crossmodel.development.jsonl.gz",
+      "sha256": "7b016c6f943a98542b3c9db34a0771dd49092bf89c9a602d7892f1575d57dd10",
+      "bytes": 13501691
+    }
+  },
+  "sealed_heldout_accessed": false
+}

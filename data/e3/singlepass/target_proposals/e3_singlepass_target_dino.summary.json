@@ -1,0 +1,61 @@
+{
+  "schema_version": "vsight_e2b_reference_dino_manifest_v1",
+  "status": "complete",
+  "queue": {
+    "path": "data/e3/singlepass/target_queue/e3_singlepass_target_queue.summary.json",
+    "sha256": "0117fe97b4d5af7775c863961a46a6e0f8b52bd98b3fc65f0ef5e7c3bb4eacc9"
+  },
+  "coverage": {
+    "expected": 5848,
+    "attempted": 5848,
+    "missing": 0,
+    "errors": 0,
+    "with_proposals": 5698,
+    "without_proposals": 150
+  },
+  "latency_median_sec": 0.22032294957898557,
+  "max_proposals": 5,
+  "shards": [
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-00-of-08.jsonl",
+      "sha256": "e303c47260d099eaf2ffe10c3ad1dec8e326fc03009759e10aed0cb0bcf48ed7",
+      "bytes": 432688
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-01-of-08.jsonl",
+      "sha256": "023ab4f513f0f086820afce3ba61746d84c800cfd54d68fd08efc435d7b776e2",
+      "bytes": 411686
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-02-of-08.jsonl",
+      "sha256": "f018e24028f4cc2bb7d93465f2008620b4d3f1d8ca808e6cf94d7dd513c4702f",
+      "bytes": 449109
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-03-of-08.jsonl",
+      "sha256": "b935fbee47a5b1e7531690d2335f761bdf64bf2809e44b151d75fe8e2762a27d",
+      "bytes": 456166
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-04-of-08.jsonl",
+      "sha256": "6052f149b8c8ad763a15de2a59ceb73bf13864b7f7abc78b6a8c8847b1d6a812",
+      "bytes": 431658
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-05-of-08.jsonl",
+      "sha256": "66b4e9a147fc9b001684cc2de0233dca72f0e161544aee95f5ce6d5e03887390",
+      "bytes": 434969
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-06-of-08.jsonl",
+      "sha256": "e6062f159655bef804f4222e850f6eb598a9ad2948c551329c1487141a04aee1",
+      "bytes": 399626
+    },
+    {
+      "path": "data/e3/singlepass/target_proposals/e2b_reference_dino.shard-07-of-08.jsonl",
+      "sha256": "d2921b6edd9de9be54f5429c1ca6929b5b75976db5048b25c2bccefd8907aeb6",
+      "bytes": 425408
+    }
+  ],
+  "external_api_required": false
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "vsight_e3_singlepass_target_queue_v1",
+  "status": "grounding_dino_inference_ready",
+  "generated_at": "2026-08-03T03:48:11.604899+00:00",
+  "dataset_role": "development_not_final_test",
+  "benchmark": {
+    "path": "/home/u2025141034/SVD/V-SIGHT/legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+    "sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f"
+  },
+  "statistics": {
+    "source_rows": 2000,
+    "semantic_queries": 2500,
+    "inference_rows": 5848,
+    "missing_coco_head": 72,
+    "views": {
+      "full": 1320,
+      "head": 2428,
+      "reference": 2100
+    }
+  },
+  "forbidden_fields": [
+    "chosen_bbox_xyxy",
+    "gt_bbox_xyxy",
+    "hallucination_type",
+    "label_exists",
+    "positive_bbox",
+    "query_role",
+    "selector_action"
+  ],
+  "outputs": {
+    "development": {
+      "path": "data/e3/singlepass/target_queue/e3_singlepass_target_queue.development.jsonl.gz",
+      "sha256": "17c6bb72a2568f48cd7f35df1cc78f60ac91d5da88b212d0d4c966cc8358efda",
+      "bytes": 163018
+    }
+  },
+  "external_api_required": false,
+  "sealed_heldout_accessed": false
+}

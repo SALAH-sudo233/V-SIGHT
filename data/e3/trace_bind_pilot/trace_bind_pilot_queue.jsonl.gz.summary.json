@@ -1,0 +1,33 @@
+{
+  "benchmark_metadata_sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f",
+  "gt_in_queue": false,
+  "image_groups": 91,
+  "labels_in_queue": false,
+  "output": "/home/u2025141034/SVD/V-SIGHT/data/e3/trace_bind_pilot/trace_bind_pilot_queue.jsonl.gz",
+  "output_sha256": "a7d2291663952c36e9e43dd0326ca2500ca61d8c39a2dd30a446612e6e18137e",
+  "records": 100,
+  "schema_version": "vsight_trace_bind_pilot_manifest_v1",
+  "sealed_heldout_accessed": false,
+  "source_evidence": "/home/u2025141034/SVD/V-SIGHT/outputs/cable_raft_attention_vlm2_pilot/evidence.jsonl",
+  "source_evidence_sha256": "d6f7063779a62fa4c0acb34374e7ba6aa82a43f973a9d5580837cf8f29c4bd00",
+  "upstream_record_stream_sha256": {
+    "LENS": "9274b53db5275e0bc35af686889cf96cdd348f45134f12b432164929f14ba422",
+    "Orsta-7B": "00cdddf30bc44e39a7103db6ee87eaab53e6a81b7e5d3886b4d008dae4a3fc50",
+    "Qwen3-VL-8B": "cc4230614665651e9b0f2d6b052ba544e3ac29a80cf170ac9680eaa8983baf0a",
+    "Seg-R1": "77c374be2b8c0c9bdecd75724e62a9f4c1349e070c1adf9214c8d19856410770",
+    "Seg-zero": "f926213886a75f625ace6261053cd3e466351de077431fe38fb00a888bde7bf7",
+    "TreeVGR": "a1a428eced88233062fb57a368d1ebc4c6ee2fa1849be3d8ee7d20a685cde557",
+    "UniVG-R1": "419f702f10518fda05efd56f432303f930f6bdd3802161cfba3f01f01815b2e9",
+    "Vision-R1": "95d251d667d5202e04b1dfc0693906af8eb7a700ea4a42b3f209c985419d7376",
+    "VisionReasoner": "25a546e1f5047ccf92bd0c5be9fffb6dde1fd4c9f32422c1ccf78a8b58631936",
+    "qwen2.5-vl-7b": "c3a5a7b82bc104896329d2c313ed091133bfcd3351736f4be3d2b1018142f63e",
+    "visual-rft": "ed279157a43ca532d8b9b9e3b78fe2078a3c8c2c5c5694364d59efddf15e5d2a"
+  },
+  "upstream_selection": "first_valid_box_in_sorted_model_order",
+  "upstream_source_counts": {
+    "LENS": 95,
+    "Seg-zero": 4,
+    "UniVG-R1": 1
+  },
+  "upstream_task": "t2_vqa_grounding"
+}

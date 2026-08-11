@@ -1,0 +1,40 @@
+{
+  "schema_version": "vsight_agentic_drift_loop_v1",
+  "mode": "offline_audit",
+  "max_rounds": 3,
+  "proposal_cap": 5,
+  "claim_support_accept": 0.4,
+  "alternative_support": 0.3,
+  "binding_margin": 0.12,
+  "counterfactual_margin": 0.15,
+  "witness_support": 0.25,
+  "edge_uncertainty_max": 0.4,
+  "contradiction_support": 0.7,
+  "existence_support": 0.25,
+  "accept_risk_max": 0.35,
+  "review_priority_min": 0.45,
+  "feedback_priority_weight": 0.2,
+  "weights": {
+    "alternative_margin": 0.25,
+    "counterfactual": 0.25,
+    "edge_uncertainty": 0.2,
+    "coverage_gap": 0.15,
+    "claim_weakness": 0.1,
+    "agent_conflict": 0.05
+  },
+  "inference_budget": {
+    "upstream_mllm_calls": 1,
+    "detector_image_encoder_forwards": 1,
+    "external_teacher_calls": 0,
+    "target_reference_candidate_cap": 5
+  },
+  "promotion": {
+    "agent_self_labels_trainable": false,
+    "annotation_protocol": "single_project_owner",
+    "minimum_reviewers": 1,
+    "split_unit": "image_group",
+    "max_added_fnr": 0.03,
+    "max_positive_miou_loss": 0.005,
+    "max_nonzero_to_zero_regression": 0.01
+  }
+}

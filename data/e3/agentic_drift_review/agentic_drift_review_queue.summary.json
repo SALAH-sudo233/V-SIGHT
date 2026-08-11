@@ -1,0 +1,35 @@
+{
+  "agent_hypotheses_in_queue": false,
+  "audit": "/home/u2025141034/SVD/V-SIGHT/outputs/agentic_drift_audit_v1/audit.jsonl.gz",
+  "audit_sha256": "db4a64d85022485e9bc193a0981d74a49e97504ba6fe488aab0b19c17c9082f4",
+  "dataset_role": "development_agentic_audit_not_training",
+  "gt_in_queue": false,
+  "image_groups": 35,
+  "image_root": "/home/u2025141034/benchmark/benchmark_images",
+  "iou_in_queue": false,
+  "minimum_reviewers": 1,
+  "missing_images": 0,
+  "model_identity_in_queue": false,
+  "private_hypothesis_sidecar": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_hypotheses.private.jsonl.gz",
+  "private_hypothesis_sidecar_sha256": "20e1ead1b5009ecb63602570d6386c34ea1983a1eaa6eaa1fce937980435648e",
+  "query_strata": {
+    "attribute": 3,
+    "object": 8,
+    "relation": 39
+  },
+  "queue": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_review/agentic_drift_review_queue.jsonl.gz",
+  "queue_sha256": "9c38ea0051a3131ec4c50a1826ef0675d5143b34b402d7568612772caa8bbc15",
+  "records": 50,
+  "review_authority": "\u9879\u76ee\u8d1f\u8d23\u4eba",
+  "schema_version": "vsight_agentic_drift_review_queue_summary_v1",
+  "sealed_heldout_accessed": false,
+  "selection_bands": {
+    "accept_control": 3,
+    "ambiguous_high_priority": 20,
+    "low_risk_control": 4,
+    "provisional_wrong_instance": 23
+  },
+  "served_sidecar_to_reviewer": false,
+  "single_review_authorized": true,
+  "training_eligible": false
+}

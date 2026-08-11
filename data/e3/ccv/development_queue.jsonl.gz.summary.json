@@ -1,0 +1,10 @@
+{
+  "schema_version": "vsight_ccv_development_queue_v1",
+  "records": 2500,
+  "input": "/home/u2025141034/SVD/V-SIGHT/data/e3/singlepass/target_queue/e3_singlepass_target_queue.development.jsonl.gz",
+  "input_sha256": "17c6bb72a2568f48cd7f35df1cc78f60ac91d5da88b212d0d4c966cc8358efda",
+  "output": "/home/u2025141034/SVD/V-SIGHT/data/e3/ccv/development_queue.jsonl.gz",
+  "output_sha256": "9c0edad68c3045fefed883c53d3f9747de88e0fb33d33f129f1b0817e19d7319",
+  "supervision_fields": [],
+  "sealed_heldout_accessed": false
+}

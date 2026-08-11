@@ -1,0 +1,79 @@
+{
+  "schema_version": "vsight_cable_experiment_v1",
+  "method": "CCV-CABLE: Counterfactual Atom-Binding Ledger with Gap-Balanced Selective Control",
+  "actions": ["ACCEPT", "REJECT", "RELOCALIZE"],
+  "binding_status": ["BOUND", "CONTRADICTED", "RESTORED", "BINDING_UNCERTAIN"],
+  "prompt_provenance": ["claim", "inverse", "decoy", "null"],
+  "single_pass": {
+    "upstream_mllm_calls_per_query": 1,
+    "detector_image_encoder_forwards_per_query": 1,
+    "proposal_cap": 5
+  },
+  "relation_algebra": {
+    "inverse_pairs": [
+      ["to_the_left_of", "to_the_right_of"],
+      ["above", "below"],
+      ["in_front_of", "behind"],
+      ["holding", "held_by"]
+    ],
+    "symmetric": ["next_to", "beside", "with"],
+    "support_contact": ["on", "sitting_on", "standing_on", "riding"],
+    "between_requires_distinguishable_references": 2,
+    "uninterpretable_relations_produce_negative_evidence": false
+  },
+  "train_free_thresholds": {
+    "existence_support": 0.25,
+    "claim_support": 0.22,
+    "atom_support": 0.15,
+    "alternative_support": 0.30,
+    "counterfactual_margin": 0.15,
+    "restoration_margin": 0.12,
+    "edge_uncertainty_max": 0.40,
+    "witness_support": 0.25,
+    "require_typed_relocalization": true
+  },
+  "main_comparisons": [
+    "unchanged_upstream",
+    "corrected_ccv",
+    "cable_train_free",
+    "cable_learned",
+    "cable_no_swap",
+    "cable_no_inverse_symmetry",
+    "cable_no_relation_algebra",
+    "flat_detector_score",
+    "optional_mtla_white_box"
+  ],
+  "controller": {
+    "branches": ["absence", "contradiction", "restoration"],
+    "inference_lookup_features": ["task", "atom_type", "calibration_fold"],
+    "forbidden_inference_features": ["model", "hallucination_type"],
+    "max_added_fnr_per_model_task": 0.03,
+    "max_positive_miou_loss_per_model_task": 0.005,
+    "max_roh_minus_boh_gap_delta": 0.0,
+    "no_blanket_rejection": true,
+    "research_target_min_roh_far_reduction": 0.01,
+    "research_target_roh_reduction_at_least_boh": true,
+    "requires_far_decrease": true,
+    "write_artifact_on_gate_failure": false
+  },
+  "review": {
+    "records": 500,
+    "strata": {"relation": 200, "attribute": 150, "object": 150},
+    "atom_states": ["supported", "contradicted", "unobservable"],
+    "annotation_protocol": "single_project_owner",
+    "minimum_reviewers": 1,
+    "minimum_confidence": 0.90
+  },
+  "conditional_crop_extension": {
+    "mainline": false,
+    "trigger": "BINDING_UNCERTAIN",
+    "target_crop_scale": 1.5,
+    "target_reference_union_scale": 1.25,
+    "maximum_additional_detector_forwards": 2,
+    "additional_mllm_calls": 0
+  },
+  "sealed_evaluation": {
+    "prbench_access_before_freeze": false,
+    "repaired_1996_access_before_freeze": false
+  }
+}

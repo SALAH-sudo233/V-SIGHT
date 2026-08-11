@@ -1,0 +1,15 @@
+{
+  "schema_version": "vsight_ccv_composite_run_v1",
+  "records": 817,
+  "shard_index": 0,
+  "num_shards": 3,
+  "upstream_mllm_calls_per_query": 1,
+  "detector_image_encoder_forwards_per_query": 1,
+  "proposal_cap": 5,
+  "latency_ms": {
+    "p50": 256.36253505945206,
+    "p95": 349.52511731535196
+  },
+  "gpu_peak_memory_mb": 2286.04638671875,
+  "output_sha256": "36b127eb0e3e6f5094a27eac44c1bace3d1dfd28df14a5b85a75593bd61a2383"
+}

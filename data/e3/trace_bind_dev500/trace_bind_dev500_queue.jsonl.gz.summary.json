@@ -1,0 +1,34 @@
+{
+  "dataset_role": "development_relation_proxy_not_final_test",
+  "gt_in_queue": false,
+  "image_groups": 500,
+  "image_root": "/home/u2025141034/benchmark/benchmark_images",
+  "label_counts": {
+    "contradicted": 252,
+    "supported": 248
+  },
+  "label_iou_threshold": 0.5,
+  "label_semantics": "full_query_grounding_iou_proxy_not_double_reviewed_binding",
+  "labels": "/home/u2025141034/SVD/V-SIGHT/data/e3/trace_bind_dev500/trace_bind_dev500_labels.jsonl.gz",
+  "labels_in_queue": false,
+  "labels_sha256": "d84a61499439cc78f1c83ce28eede6d323fe36cd24392d89b1f9efaca4f4af74",
+  "missing_images": 0,
+  "model_id_in_queue": false,
+  "query_strata": {
+    "relation": 500
+  },
+  "queue": "/home/u2025141034/SVD/V-SIGHT/data/e3/trace_bind_dev500/trace_bind_dev500_queue.jsonl.gz",
+  "queue_sha256": "9955b3998e1cb926dbf90498bbcb2a3c131682d6c7e8b777dcc2e4b06b544f4e",
+  "records": 500,
+  "schema_version": "vsight_trace_bind_dev500_manifest_v1",
+  "sealed_heldout_accessed": false,
+  "selection_rule": "all_positive_task_rows_in_source_order",
+  "source_benchmark": "/home/u2025141034/SVD/V-SIGHT/legacy/candidate_pool_v1/data/refcocog_500_dev.semantic_strict.json",
+  "source_benchmark_sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f",
+  "source_records": "/home/u2025141034/benchmark/refcocog_eval_11models_500_repaired/run_500_semantic_strict/LENS/records.jsonl",
+  "source_records_sha256": "9274b53db5275e0bc35af686889cf96cdd348f45134f12b432164929f14ba422",
+  "upstream_box_records": 487,
+  "upstream_model": "LENS",
+  "upstream_null_records": 13,
+  "upstream_task": "t2_vqa_grounding"
+}

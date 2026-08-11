@@ -1,0 +1,32 @@
+{
+  "agent_hypotheses_in_queue": false,
+  "dataset_role": "development_agentic_natural_audit_not_training",
+  "gt_in_queue": false,
+  "image_groups": 241,
+  "iou_in_queue": false,
+  "minimum_reviewers": 1,
+  "model_identity_in_queue": false,
+  "private_hypothesis_sidecar": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_natural_review_v1/agentic_drift_natural_hypotheses.private.jsonl.gz",
+  "query_strata": {
+    "action": 14,
+    "attribute": 12,
+    "object": 40,
+    "relation": 234
+  },
+  "queue": "/home/u2025141034/SVD/V-SIGHT/data/e3/agentic_drift_natural_review_v1/agentic_drift_natural_review_queue.jsonl.gz",
+  "queue_sha256": "971c8c7afe6ab94ef14bb36681cb40da0608a77313b44eb737419e832a132b84",
+  "records": 300,
+  "requested_query_strata": {
+    "action": 40,
+    "attribute": 40,
+    "object": 40,
+    "relation": 180
+  },
+  "review_authority": "项目负责人",
+  "schema_version": "vsight_agentic_drift_natural_review_queue_summary_v1",
+  "selection_rule": "unique image_group x task; hash-stratified query type; deterministic model rotation; no agent outcome fields used",
+  "single_review_authorized": true,
+  "source_audit": "/home/u2025141034/SVD/V-SIGHT/outputs/agentic_drift_shadow_v1_nomemory/audit.jsonl.gz",
+  "source_audit_sha256": "65b52200a49feb3624e35bd04c9af5f90f43963f573743cda3eefbd000589235",
+  "training_eligible": false
+}
