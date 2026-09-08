@@ -1,0 +1,146 @@
+{
+  "schema_version": "vsight_s3_attention_ablation_v1",
+  "n_total": 2000,
+  "n_ok": 2000,
+  "n_err": 0,
+  "elapsed_seconds": 7805.03576575598,
+  "signal_family": "RAFT attention-only (no learned head, no VLM)",
+  "by_signal": {
+    "top_transport": {
+      "BOH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.6335,
+        "separation_auroc": 0.557534
+      },
+      "ROH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.663,
+        "separation_auroc": 0.54507
+      },
+      "per_type": {
+        "object": {
+          "n": 500,
+          "pairwise_accuracy": 0.632,
+          "separation_auroc": 0.541016
+        },
+        "co_occurrence": {
+          "n": 500,
+          "pairwise_accuracy": 0.635,
+          "separation_auroc": 0.574052
+        },
+        "attribute": {
+          "n": 500,
+          "pairwise_accuracy": 0.703,
+          "separation_auroc": 0.54135
+        },
+        "relation": {
+          "n": 500,
+          "pairwise_accuracy": 0.623,
+          "separation_auroc": 0.54879
+        }
+      }
+    },
+    "neg_edge_uncertainty": {
+      "BOH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.5515,
+        "separation_auroc": 0.527938
+      },
+      "ROH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.533,
+        "separation_auroc": 0.524299
+      },
+      "per_type": {
+        "object": {
+          "n": 500,
+          "pairwise_accuracy": 0.548,
+          "separation_auroc": 0.531628
+        },
+        "co_occurrence": {
+          "n": 500,
+          "pairwise_accuracy": 0.555,
+          "separation_auroc": 0.524248
+        },
+        "attribute": {
+          "n": 500,
+          "pairwise_accuracy": 0.507,
+          "separation_auroc": 0.491704
+        },
+        "relation": {
+          "n": 500,
+          "pairwise_accuracy": 0.559,
+          "separation_auroc": 0.556894
+        }
+      }
+    },
+    "decoder_top_transport": {
+      "BOH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.5245,
+        "separation_auroc": 0.508552
+      },
+      "ROH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.744,
+        "separation_auroc": 0.61384
+      },
+      "per_type": {
+        "object": {
+          "n": 500,
+          "pairwise_accuracy": 0.584,
+          "separation_auroc": 0.519136
+        },
+        "co_occurrence": {
+          "n": 500,
+          "pairwise_accuracy": 0.465,
+          "separation_auroc": 0.497968
+        },
+        "attribute": {
+          "n": 500,
+          "pairwise_accuracy": 0.773,
+          "separation_auroc": 0.613518
+        },
+        "relation": {
+          "n": 500,
+          "pairwise_accuracy": 0.715,
+          "separation_auroc": 0.614162
+        }
+      }
+    },
+    "transport_relative_margin": {
+      "BOH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.5195,
+        "separation_auroc": 0.510482
+      },
+      "ROH": {
+        "n": 1000,
+        "pairwise_accuracy": 0.509,
+        "separation_auroc": 0.517733
+      },
+      "per_type": {
+        "object": {
+          "n": 500,
+          "pairwise_accuracy": 0.516,
+          "separation_auroc": 0.516176
+        },
+        "co_occurrence": {
+          "n": 500,
+          "pairwise_accuracy": 0.523,
+          "separation_auroc": 0.504788
+        },
+        "attribute": {
+          "n": 500,
+          "pairwise_accuracy": 0.473,
+          "separation_auroc": 0.481196
+        },
+        "relation": {
+          "n": 500,
+          "pairwise_accuracy": 0.545,
+          "separation_auroc": 0.55427
+        }
+      }
+    }
+  }
+}

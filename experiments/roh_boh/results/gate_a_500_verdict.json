@@ -1,0 +1,46 @@
+{
+  "s1_file": "roh_boh_gate_a_500dev/results/s1_500.jsonl",
+  "s1_key": "full",
+  "s2_file": "roh_boh_gate_a_500dev/results/s2b_500.jsonl",
+  "n_s1": 2000,
+  "n_s2": 2000,
+  "BOH": {
+    "s1_train_free_auroc": 0.496692,
+    "s1_n": 1000,
+    "s2_vlm_auroc": 0.791,
+    "s2_n": 1000,
+    "auroc_improvement": 0.294308,
+    "bootstrap_paired_win_delta": {
+      "n": 1000,
+      "delta_mean": 0.281,
+      "ci95": [
+        0.2555,
+        0.3065
+      ],
+      "p_delta_gt_0": 1.0
+    }
+  },
+  "ROH": {
+    "s1_train_free_auroc": 0.494526,
+    "s1_n": 1000,
+    "s2_vlm_auroc": 0.6695,
+    "s2_n": 1000,
+    "auroc_improvement": 0.17497399999999996,
+    "bootstrap_paired_win_delta": {
+      "n": 1000,
+      "delta_mean": 0.1805,
+      "ci95": [
+        0.1535,
+        0.2055
+      ],
+      "p_delta_gt_0": 1.0
+    }
+  },
+  "GATE_A": {
+    "roh_vlm_beats_chance": true,
+    "roh_vlm_beats_trainfree_auroc": true,
+    "roh_bootstrap_ci_above_zero": true,
+    "roh_p_delta_gt_0": 1.0,
+    "GATE_A_PASS": true
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schema": "vsight_report_gain_v1",
+  "operating_point": "ensemble, added-FNR<=3pp on correct positives",
+  "per_model": {
+    "LENS": {
+      "thr": 0.0127,
+      "safety": "pos_mIoU loss<=0.005",
+      "before": {
+        "pos_mIoU": 0.4874,
+        "IoU0%": 21.4,
+        "FalseRej%": 2.6,
+        "lost_correct": 0,
+        "lost_wrong": 13,
+        "FG@Neg%": 94.2,
+        "BOH_FG%": 90.4,
+        "ROH_FG%": 98.0,
+        "ROH-BOH_gap": 7.6
+      },
+      "after": {
+        "pos_mIoU": 0.4838,
+        "IoU0%": 22.6,
+        "FalseRej%": 5.0,
+        "lost_correct": 1,
+        "lost_wrong": 24,
+        "FG@Neg%": 71.8,
+        "BOH_FG%": 57.3,
+        "ROH_FG%": 86.2,
+        "ROH-BOH_gap": 28.9
+      },
+      "delta": {
+        "pos_mIoU": -0.0,
+        "IoU0%": 1.2,
+        "FalseRej%": 2.4,
+        "lost_correct": 1,
+        "lost_wrong": 11,
+        "FG@Neg%": -22.4,
+        "BOH_FG%": -33.1,
+        "ROH_FG%": -11.8,
+        "ROH-BOH_gap": 21.3
+      }
+    },
+    "Orsta-7B": {
+      "thr": 0.0061,
+      "safety": "pos_mIoU loss<=0.005",
+      "before": {
+        "pos_mIoU": 0.3169,
+        "IoU0%": 24.0,
+        "FalseRej%": 3.8,
+        "lost_correct": 0,
+        "lost_wrong": 19,
+        "FG@Neg%": 44.1,
+        "BOH_FG%": 27.9,
+        "ROH_FG%": 60.4,
+        "ROH-BOH_gap": 32.5
+      },
+      "after": {
+        "pos_mIoU": 0.3127,
+        "IoU0%": 26.2,
+        "FalseRej%": 8.8,
+        "lost_correct": 0,
+        "lost_wrong": 44,
+        "FG@Neg%": 43.1,
+        "BOH_FG%": 26.8,
+        "ROH_FG%": 59.4,
+        "ROH-BOH_gap": 32.6
+      },
+      "delta": {
+        "pos_mIoU": -0.0,
+        "IoU0%": 2.2,
+        "FalseRej%": 5.0,
+        "lost_correct": 0,
+        "lost_wrong": 25,
+        "FG@Neg%": -1.0,
+        "BOH_FG%": -1.1,
+        "ROH_FG%": -1.0,
+        "ROH-BOH_gap": 0.1
+      }
+    },
+    "Qwen3-VL-8B": {
+      "thr": 0.0249,
+      "safety": "pos_mIoU loss<=0.005",
+      "before": {
+        "pos_mIoU": 0.0554,
+        "IoU0%": 77.6,
+        "FalseRej%": 18.0,
+        "lost_correct": 0,
+        "lost_wrong": 90,
+        "FG@Neg%": 21.0,
+        "BOH_FG%": 10.0,
+        "ROH_FG%": 32.0,
+        "ROH-BOH_gap": 22.0
+      },
+      "after": {
+        "pos_mIoU": 0.0508,
+        "IoU0%": 82.8,
+        "FalseRej%": 80.4,
+        "lost_correct": 0,
+        "lost_wrong": 402,
+        "FG@Neg%": 7.0,
+        "BOH_FG%": 2.4,
+        "ROH_FG%": 11.7,
+        "ROH-BOH_gap": 9.3
+      },
+      "delta": {
+        "pos_mIoU": -0.0,
+        "IoU0%": 5.2,
+        "FalseRej%": 62.4,
+        "lost_correct": 0,
+        "lost_wrong": 312,
+        "FG@Neg%": -14.0,
+        "BOH_FG%": -7.6,
+        "ROH_FG%": -20.3,
+        "ROH-BOH_gap": -12.7
+      }
+    },
+    "Seg-zero": {
+      "thr": 0.0228,
+      "safety": "pos_mIoU loss<=0.005",
+      "before": {
+        "pos_mIoU": 0.5222,
+        "IoU0%": 18.8,
+        "FalseRej%": 0.0,
+        "lost_correct": 0,
+        "lost_wrong": 0,
+        "FG@Neg%": 97.1,
+        "BOH_FG%": 95.3,
+        "ROH_FG%": 98.9,
+        "ROH-BOH_gap": 3.6
+      },
+      "after": {
+        "pos_mIoU": 0.5173,
+        "IoU0%": 20.2,
+        "FalseRej%": 2.8,
+        "lost_correct": 2,
+        "lost_wrong": 12,
+        "FG@Neg%": 66.7,
+        "BOH_FG%": 51.3,
+        "ROH_FG%": 82.1,
+        "ROH-BOH_gap": 30.8
+      },
+      "delta": {
+        "pos_mIoU": -0.0,
+        "IoU0%": 1.4,
+        "FalseRej%": 2.8,
+        "lost_correct": 2,
+        "lost_wrong": 12,
+        "FG@Neg%": -30.4,
+        "BOH_FG%": -44.0,
+        "ROH_FG%": -16.8,
+        "ROH-BOH_gap": 27.2
+      }
+    }
+  }
+}

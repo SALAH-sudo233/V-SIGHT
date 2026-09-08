@@ -1,0 +1,315 @@
+{
+  "schema": "vsight_s5_plugin_filter_v2",
+  "per_model": {
+    "LENS": {
+      "tau": 0.0,
+      "n_drawn_boxes": 2371,
+      "n_pos": 487,
+      "n_pos_correct(iou>=.5)": 248,
+      "n_neg": 1884,
+      "n_neg_BOH": 904,
+      "n_neg_ROH": 980,
+      "hallucination_catch_BOH": 0.167,
+      "hallucination_catch_ROH": 0.0224,
+      "hallucination_catch_all": 0.0918,
+      "catch_gap_BOH_minus_ROH": 0.1446,
+      "positive_preservation": 1.0,
+      "added_FNR": 0.0,
+      "accepted_precision_before": 0.1046,
+      "accepted_precision_after": 0.1128,
+      "precision_gain": 0.0082,
+      "n_kept": 2198
+    },
+    "Orsta-7B": {
+      "tau": 0.0,
+      "n_drawn_boxes": 1364,
+      "n_pos": 481,
+      "n_pos_correct(iou>=.5)": 151,
+      "n_neg": 883,
+      "n_neg_BOH": 279,
+      "n_neg_ROH": 604,
+      "hallucination_catch_BOH": 0.0036,
+      "hallucination_catch_ROH": 0.0033,
+      "hallucination_catch_all": 0.0034,
+      "catch_gap_BOH_minus_ROH": 0.0003,
+      "positive_preservation": 1.0,
+      "added_FNR": 0.0,
+      "accepted_precision_before": 0.1107,
+      "accepted_precision_after": 0.1109,
+      "precision_gain": 0.0002,
+      "n_kept": 1361
+    },
+    "Qwen3-VL-8B": {
+      "tau": 0.0,
+      "n_drawn_boxes": 830,
+      "n_pos": 410,
+      "n_pos_correct(iou>=.5)": 12,
+      "n_neg": 420,
+      "n_neg_BOH": 100,
+      "n_neg_ROH": 320,
+      "hallucination_catch_BOH": 0.01,
+      "hallucination_catch_ROH": 0.0,
+      "hallucination_catch_all": 0.0024,
+      "catch_gap_BOH_minus_ROH": 0.01,
+      "positive_preservation": 1.0,
+      "added_FNR": 0.0,
+      "accepted_precision_before": 0.0145,
+      "accepted_precision_after": 0.0145,
+      "precision_gain": 0.0,
+      "n_kept": 829
+    },
+    "Seg-zero": {
+      "tau": 0.0,
+      "n_drawn_boxes": 1808,
+      "n_pos": 500,
+      "n_pos_correct(iou>=.5)": 275,
+      "n_neg": 1308,
+      "n_neg_BOH": 644,
+      "n_neg_ROH": 664,
+      "hallucination_catch_BOH": 0.1304,
+      "hallucination_catch_ROH": 0.0136,
+      "hallucination_catch_all": 0.0711,
+      "catch_gap_BOH_minus_ROH": 0.1169,
+      "positive_preservation": 1.0,
+      "added_FNR": 0.0,
+      "accepted_precision_before": 0.1521,
+      "accepted_precision_after": 0.1603,
+      "precision_gain": 0.0082,
+      "n_kept": 1715
+    }
+  },
+  "per_model_tau_sweep": {
+    "LENS": {
+      "-0.5": {
+        "catch_all": 0.0918,
+        "preserve": 1.0,
+        "prec_after": 0.1128,
+        "prec_gain": 0.0082
+      },
+      "-0.25": {
+        "catch_all": 0.0918,
+        "preserve": 1.0,
+        "prec_after": 0.1128,
+        "prec_gain": 0.0082
+      },
+      "0.0": {
+        "catch_all": 0.0918,
+        "preserve": 1.0,
+        "prec_after": 0.1128,
+        "prec_gain": 0.0082
+      },
+      "0.25": {
+        "catch_all": 0.7367,
+        "preserve": 0.8589,
+        "prec_after": 0.2396,
+        "prec_gain": 0.135
+      },
+      "0.5": {
+        "catch_all": 0.7367,
+        "preserve": 0.8589,
+        "prec_after": 0.2396,
+        "prec_gain": 0.135
+      },
+      "0.75": {
+        "catch_all": 0.7367,
+        "preserve": 0.8589,
+        "prec_after": 0.2396,
+        "prec_gain": 0.135
+      }
+    },
+    "Orsta-7B": {
+      "-0.5": {
+        "catch_all": 0.0034,
+        "preserve": 1.0,
+        "prec_after": 0.1109,
+        "prec_gain": 0.0002
+      },
+      "-0.25": {
+        "catch_all": 0.0034,
+        "preserve": 1.0,
+        "prec_after": 0.1109,
+        "prec_gain": 0.0002
+      },
+      "0.0": {
+        "catch_all": 0.0034,
+        "preserve": 1.0,
+        "prec_after": 0.1109,
+        "prec_gain": 0.0002
+      },
+      "0.25": {
+        "catch_all": 0.453,
+        "preserve": 0.8477,
+        "prec_after": 0.1499,
+        "prec_gain": 0.0392
+      },
+      "0.5": {
+        "catch_all": 0.453,
+        "preserve": 0.8477,
+        "prec_after": 0.1499,
+        "prec_gain": 0.0392
+      },
+      "0.75": {
+        "catch_all": 0.453,
+        "preserve": 0.8477,
+        "prec_after": 0.1499,
+        "prec_gain": 0.0392
+      }
+    },
+    "Qwen3-VL-8B": {
+      "-0.5": {
+        "catch_all": 0.0024,
+        "preserve": 1.0,
+        "prec_after": 0.0145,
+        "prec_gain": 0.0
+      },
+      "-0.25": {
+        "catch_all": 0.0024,
+        "preserve": 1.0,
+        "prec_after": 0.0145,
+        "prec_gain": 0.0
+      },
+      "0.0": {
+        "catch_all": 0.0024,
+        "preserve": 1.0,
+        "prec_after": 0.0145,
+        "prec_gain": 0.0
+      },
+      "0.25": {
+        "catch_all": 0.5714,
+        "preserve": 0.5833,
+        "prec_after": 0.0195,
+        "prec_gain": 0.005
+      },
+      "0.5": {
+        "catch_all": 0.5714,
+        "preserve": 0.5833,
+        "prec_after": 0.0195,
+        "prec_gain": 0.005
+      },
+      "0.75": {
+        "catch_all": 0.5714,
+        "preserve": 0.5833,
+        "prec_after": 0.0195,
+        "prec_gain": 0.005
+      }
+    },
+    "Seg-zero": {
+      "-0.5": {
+        "catch_all": 0.0711,
+        "preserve": 1.0,
+        "prec_after": 0.1603,
+        "prec_gain": 0.0082
+      },
+      "-0.25": {
+        "catch_all": 0.0711,
+        "preserve": 1.0,
+        "prec_after": 0.1603,
+        "prec_gain": 0.0082
+      },
+      "0.0": {
+        "catch_all": 0.0711,
+        "preserve": 1.0,
+        "prec_after": 0.1603,
+        "prec_gain": 0.0082
+      },
+      "0.25": {
+        "catch_all": 0.7332,
+        "preserve": 0.8364,
+        "prec_after": 0.3075,
+        "prec_gain": 0.1554
+      },
+      "0.5": {
+        "catch_all": 0.7332,
+        "preserve": 0.8364,
+        "prec_after": 0.3075,
+        "prec_gain": 0.1554
+      },
+      "0.75": {
+        "catch_all": 0.7332,
+        "preserve": 0.8364,
+        "prec_after": 0.3075,
+        "prec_gain": 0.1554
+      }
+    }
+  },
+  "score_auroc": {
+    "LENS": {
+      "AUROC_correct_vs_BOHhalluc": 0.8767,
+      "AUROC_correct_vs_ROHhalluc": 0.7399,
+      "gap_BOH_minus_ROH": 0.1368,
+      "n_correct": 248,
+      "n_BOH": 904,
+      "n_ROH": 980
+    },
+    "Orsta-7B": {
+      "AUROC_correct_vs_BOHhalluc": 0.7042,
+      "AUROC_correct_vs_ROHhalluc": 0.6392,
+      "gap_BOH_minus_ROH": 0.065,
+      "n_correct": 151,
+      "n_BOH": 279,
+      "n_ROH": 604
+    },
+    "Qwen3-VL-8B": {
+      "AUROC_correct_vs_BOHhalluc": 0.6246,
+      "AUROC_correct_vs_ROHhalluc": 0.566,
+      "gap_BOH_minus_ROH": 0.0586,
+      "n_correct": 12,
+      "n_BOH": 100,
+      "n_ROH": 320
+    },
+    "Seg-zero": {
+      "AUROC_correct_vs_BOHhalluc": 0.8588,
+      "AUROC_correct_vs_ROHhalluc": 0.7302,
+      "gap_BOH_minus_ROH": 0.1286,
+      "n_correct": 275,
+      "n_BOH": 644,
+      "n_ROH": 664
+    }
+  },
+  "fnr_constrained": {
+    "LENS": {
+      "tau@FNR<=3pp": 0.0,
+      "catch_all": 0.0918,
+      "catch_BOH": 0.167,
+      "catch_ROH": 0.0224,
+      "preserve": 1.0,
+      "added_FNR": 0.0,
+      "prec_before": 0.1046,
+      "prec_after": 0.1128,
+      "prec_gain": 0.0082
+    },
+    "Orsta-7B": {
+      "tau@FNR<=3pp": 0.0,
+      "catch_all": 0.0034,
+      "catch_BOH": 0.0036,
+      "catch_ROH": 0.0033,
+      "preserve": 1.0,
+      "added_FNR": 0.0,
+      "prec_before": 0.1107,
+      "prec_after": 0.1109,
+      "prec_gain": 0.0002
+    },
+    "Qwen3-VL-8B": {
+      "tau@FNR<=3pp": 0.0,
+      "catch_all": 0.0024,
+      "catch_BOH": 0.01,
+      "catch_ROH": 0.0,
+      "preserve": 1.0,
+      "added_FNR": 0.0,
+      "prec_before": 0.0145,
+      "prec_after": 0.0145,
+      "prec_gain": 0.0
+    },
+    "Seg-zero": {
+      "tau@FNR<=3pp": 0.0,
+      "catch_all": 0.0711,
+      "catch_BOH": 0.1304,
+      "catch_ROH": 0.0136,
+      "preserve": 1.0,
+      "added_FNR": 0.0,
+      "prec_before": 0.1521,
+      "prec_after": 0.1603,
+      "prec_gain": 0.0082
+    }
+  }
+}

@@ -66,7 +66,7 @@ def main():
         boxes = [b.tolist() for b in res["boxes"]]
         return scores, boxes
 
-    out = open(os.environ.get("VSIGHT_RESULTS", "results") + "/cheap_signals.jsonl", "w")
+    out = open(os.environ.get("VSIGHT_RESULTS", "results") + "/cheap_signals_full.jsonl", "w")
     t0 = time.time(); n = 0
     for m in models:
         recs = [json.loads(l) for l in open(f"{T2ROOT}/{m}/records.jsonl")]
@@ -90,7 +90,7 @@ def main():
                 continue
             det_max = max(scores) if scores else 0.0
             best_iou = max((iou(b, box) for b in boxes), default=0.0)
-            rec = {"model": m, "htype": r["hallucination_type"], "label_exists": str(r["label_exists"]).lower() == "true",
+            rec = {"model": m, "sample_id": r.get("sample_id"), "htype": r["hallucination_type"], "label_exists": str(r["label_exists"]).lower() == "true",
                    "iou": (lambda v: float(v) if v not in (None, "None") else 0.0)(r.get("iou")),
                    "det_max": det_max, "det_best_iou": best_iou, "det_n": len(scores), "agree": det_max * best_iou}
             out.write(json.dumps(rec) + "\n"); out.flush(); n += 1
@@ -98,7 +98,7 @@ def main():
         print(f"{m} done", flush=True)
     out.close()
 
-    rows = [json.loads(l) for l in open(os.environ.get("VSIGHT_RESULTS", "results") + "/cheap_signals.jsonl")]
+    rows = [json.loads(l) for l in open(os.environ.get("VSIGHT_RESULTS", "results") + "/cheap_signals_full.jsonl")]
     print(f"\n=== correct-vs-halluc AUROC per cheap signal (n={len(rows)}) ===")
     for feat in ["det_max", "det_best_iou", "det_n", "agree"]:
         pc = [r[feat] for r in rows if r["label_exists"] and r["iou"] >= 0.5]
