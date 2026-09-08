@@ -1,0 +1,75 @@
+{
+  "schema": "vsight_p1_leakfree_v1",
+  "n_calib_imgs": 250,
+  "n_test_imgs": 250,
+  "per_model": {
+    "LENS": {
+      "n_test": 1175,
+      "n_pos_correct": 116,
+      "n_wrongbox_pos": 125,
+      "AUROC_BOH": 0.9149,
+      "AUROC_ROH": 0.7559,
+      "preset_thr": 0.0264,
+      "realized_FNR_test": 0.0259,
+      "catch_BOH@presetThr": 0.6494,
+      "catch_ROH@presetThr": 0.3088,
+      "catch_wrongbox_pos@presetThr": 0.16,
+      "catch@FNR3pp_recalib_on_test(reference)": {
+        "realFNR": 0.0259,
+        "catchBOH": 0.6562,
+        "catchROH": 0.319
+      }
+    },
+    "Orsta-7B": {
+      "n_test": 673,
+      "n_pos_correct": 74,
+      "n_wrongbox_pos": 164,
+      "AUROC_BOH": 0.7117,
+      "AUROC_ROH": 0.6203,
+      "preset_thr": 0.0309,
+      "realized_FNR_test": 0.1081,
+      "catch_BOH@presetThr": 0.2727,
+      "catch_ROH@presetThr": 0.2211,
+      "catch_wrongbox_pos@presetThr": 0.1646,
+      "catch@FNR3pp_recalib_on_test(reference)": {
+        "realFNR": 0.027,
+        "catchBOH": 0.1136,
+        "catchROH": 0.1056
+      }
+    },
+    "Qwen3-VL-8B": {
+      "n_test": 408,
+      "n_pos_correct": 7,
+      "n_wrongbox_pos": 194,
+      "AUROC_BOH": 0.8514,
+      "AUROC_ROH": 0.7516,
+      "preset_thr": 0.0313,
+      "realized_FNR_test": 0.0,
+      "catch_BOH@presetThr": 0.8,
+      "catch_ROH@presetThr": 0.6688,
+      "catch_wrongbox_pos@presetThr": 0.8505,
+      "catch@FNR3pp_recalib_on_test(reference)": {
+        "realFNR": 0.0,
+        "catchBOH": 0.8,
+        "catchROH": 0.6688
+      }
+    },
+    "Seg-zero": {
+      "n_test": 1216,
+      "n_pos_correct": 136,
+      "n_wrongbox_pos": 114,
+      "AUROC_BOH": 0.9079,
+      "AUROC_ROH": 0.7535,
+      "preset_thr": 0.0323,
+      "realized_FNR_test": 0.0662,
+      "catch_BOH@presetThr": 0.6554,
+      "catch_ROH@presetThr": 0.3712,
+      "catch_wrongbox_pos@presetThr": 0.1579,
+      "catch@FNR3pp_recalib_on_test(reference)": {
+        "realFNR": 0.0294,
+        "catchBOH": 0.5539,
+        "catchROH": 0.2657
+      }
+    }
+  }
+}

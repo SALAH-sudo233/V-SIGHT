@@ -1,0 +1,266 @@
+{
+  "schema": "vsight_b1a_calibrate_v1",
+  "target_preserve": 0.97,
+  "per_model": {
+    "LENS": {
+      "n_cal_pos": 112,
+      "calibrated_tau": -0.0,
+      "test": {
+        "tau": -0.0,
+        "added_FNR": 0.0,
+        "catch_all": 0.0985,
+        "catch_BOH": 0.1634,
+        "catch_ROH": 0.0341,
+        "prec_before": 0.1147,
+        "prec_after": 0.1243,
+        "prec_gain": 0.0096,
+        "n_test": 1186,
+        "n_poscorr": 136,
+        "n_negBOH": 465,
+        "n_negROH": 469
+      },
+      "efficiency_frontier": {
+        "FNR<=3pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0985,
+          "catch_BOH": 0.1634,
+          "catch_ROH": 0.0341,
+          "prec_after": 0.1243,
+          "prec_gain": 0.0096
+        },
+        "FNR<=5pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0985,
+          "catch_BOH": 0.1634,
+          "catch_ROH": 0.0341,
+          "prec_after": 0.1243,
+          "prec_gain": 0.0096
+        },
+        "FNR<=10pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0985,
+          "catch_BOH": 0.1634,
+          "catch_ROH": 0.0341,
+          "prec_after": 0.1243,
+          "prec_gain": 0.0096
+        },
+        "FNR<=15pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0985,
+          "catch_BOH": 0.1634,
+          "catch_ROH": 0.0341,
+          "prec_after": 0.1243,
+          "prec_gain": 0.0096
+        },
+        "FNR<=20pp": {
+          "tau": 0.95,
+          "added_FNR_test": 0.1397,
+          "catch_all": 0.7366,
+          "catch_BOH": 0.8645,
+          "catch_ROH": 0.6098,
+          "prec_after": 0.2606,
+          "prec_gain": 0.1459
+        }
+      }
+    },
+    "Orsta-7B": {
+      "n_cal_pos": 75,
+      "calibrated_tau": 0.0,
+      "test": {
+        "tau": 0.0,
+        "added_FNR": 0.0,
+        "catch_all": 0.0022,
+        "catch_BOH": 0.0067,
+        "catch_ROH": 0.0,
+        "prec_before": 0.1114,
+        "prec_after": 0.1116,
+        "prec_gain": 0.0002,
+        "n_test": 682,
+        "n_poscorr": 76,
+        "n_negBOH": 150,
+        "n_negROH": 308
+      },
+      "efficiency_frontier": {
+        "FNR<=3pp": {
+          "tau": 0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0022,
+          "catch_BOH": 0.0067,
+          "catch_ROH": 0.0,
+          "prec_after": 0.1116,
+          "prec_gain": 0.0002
+        },
+        "FNR<=5pp": {
+          "tau": 0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0022,
+          "catch_BOH": 0.0067,
+          "catch_ROH": 0.0,
+          "prec_after": 0.1116,
+          "prec_gain": 0.0002
+        },
+        "FNR<=10pp": {
+          "tau": 0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0022,
+          "catch_BOH": 0.0067,
+          "catch_ROH": 0.0,
+          "prec_after": 0.1116,
+          "prec_gain": 0.0002
+        },
+        "FNR<=15pp": {
+          "tau": 1.0,
+          "added_FNR_test": 0.1974,
+          "catch_all": 0.4825,
+          "catch_BOH": 0.5733,
+          "catch_ROH": 0.4383,
+          "prec_after": 0.1533,
+          "prec_gain": 0.0418
+        },
+        "FNR<=20pp": {
+          "tau": 1.0,
+          "added_FNR_test": 0.1974,
+          "catch_all": 0.4825,
+          "catch_BOH": 0.5733,
+          "catch_ROH": 0.4383,
+          "prec_after": 0.1533,
+          "prec_gain": 0.0418
+        }
+      }
+    },
+    "Qwen3-VL-8B": {
+      "n_cal_pos": 5,
+      "calibrated_tau": -0.0,
+      "test": {
+        "tau": -0.0,
+        "added_FNR": 0.0,
+        "catch_all": 0.0048,
+        "catch_BOH": 0.0179,
+        "catch_ROH": 0.0,
+        "prec_before": 0.0169,
+        "prec_after": 0.0169,
+        "prec_gain": 0.0,
+        "n_test": 415,
+        "n_poscorr": 7,
+        "n_negBOH": 56,
+        "n_negROH": 152
+      },
+      "efficiency_frontier": {
+        "FNR<=3pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0048,
+          "catch_BOH": 0.0179,
+          "catch_ROH": 0.0,
+          "prec_after": 0.0169,
+          "prec_gain": 0.0
+        },
+        "FNR<=5pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0048,
+          "catch_BOH": 0.0179,
+          "catch_ROH": 0.0,
+          "prec_after": 0.0169,
+          "prec_gain": 0.0
+        },
+        "FNR<=10pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0048,
+          "catch_BOH": 0.0179,
+          "catch_ROH": 0.0,
+          "prec_after": 0.0169,
+          "prec_gain": 0.0
+        },
+        "FNR<=15pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0048,
+          "catch_BOH": 0.0179,
+          "catch_ROH": 0.0,
+          "prec_after": 0.0169,
+          "prec_gain": 0.0
+        },
+        "FNR<=20pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0048,
+          "catch_BOH": 0.0179,
+          "catch_ROH": 0.0,
+          "prec_after": 0.0169,
+          "prec_gain": 0.0
+        }
+      }
+    },
+    "Seg-zero": {
+      "n_cal_pos": 131,
+      "calibrated_tau": -0.0,
+      "test": {
+        "tau": -0.0,
+        "added_FNR": 0.0,
+        "catch_all": 0.0647,
+        "catch_BOH": 0.1169,
+        "catch_ROH": 0.0142,
+        "prec_before": 0.1179,
+        "prec_after": 0.1244,
+        "prec_gain": 0.0064,
+        "n_test": 1221,
+        "n_poscorr": 144,
+        "n_negBOH": 479,
+        "n_negROH": 494
+      },
+      "efficiency_frontier": {
+        "FNR<=3pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0647,
+          "catch_BOH": 0.1169,
+          "catch_ROH": 0.0142,
+          "prec_after": 0.1244,
+          "prec_gain": 0.0064
+        },
+        "FNR<=5pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0647,
+          "catch_BOH": 0.1169,
+          "catch_ROH": 0.0142,
+          "prec_after": 0.1244,
+          "prec_gain": 0.0064
+        },
+        "FNR<=10pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0647,
+          "catch_BOH": 0.1169,
+          "catch_ROH": 0.0142,
+          "prec_after": 0.1244,
+          "prec_gain": 0.0064
+        },
+        "FNR<=15pp": {
+          "tau": -0.0,
+          "added_FNR_test": 0.0,
+          "catch_all": 0.0647,
+          "catch_BOH": 0.1169,
+          "catch_ROH": 0.0142,
+          "prec_after": 0.1244,
+          "prec_gain": 0.0064
+        },
+        "FNR<=20pp": {
+          "tau": 1.0,
+          "added_FNR_test": 0.1944,
+          "catch_all": 0.741,
+          "catch_BOH": 0.8476,
+          "catch_ROH": 0.6377,
+          "prec_after": 0.2619,
+          "prec_gain": 0.1439
+        }
+      }
+    }
+  }
+}

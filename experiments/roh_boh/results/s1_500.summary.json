@@ -1,0 +1,132 @@
+{
+  "schema_version": "vsight_s1_roh_boh_separation_v2",
+  "n_total": 2000,
+  "n_ok": 2000,
+  "n_err": 0,
+  "elapsed_seconds": 568.5780901180115,
+  "signal": "train-free box-conditioned GroundingDINO (conj + full)",
+  "config": {
+    "box_threshold": 0.05,
+    "iou_thr": 0.5
+  },
+  "conj": {
+    "per_type": {
+      "object": {
+        "group": "object",
+        "signal": "conj",
+        "n": 500,
+        "pairwise_accuracy": 0.511,
+        "separation_auroc": 0.503232,
+        "mean_chosen": 0.014350407898426057,
+        "mean_rejected": 0.008439132869243622
+      },
+      "co_occurrence": {
+        "group": "co_occurrence",
+        "signal": "conj",
+        "n": 500,
+        "pairwise_accuracy": 0.509,
+        "separation_auroc": 0.506184,
+        "mean_chosen": 0.014350407898426057,
+        "mean_rejected": 0.007528598189353943
+      },
+      "attribute": {
+        "group": "attribute",
+        "signal": "conj",
+        "n": 500,
+        "pairwise_accuracy": 0.504,
+        "separation_auroc": 0.502892,
+        "mean_chosen": 0.014350407898426057,
+        "mean_rejected": 0.013504401475191117
+      },
+      "relation": {
+        "group": "relation",
+        "signal": "conj",
+        "n": 500,
+        "pairwise_accuracy": 0.479,
+        "separation_auroc": 0.479768,
+        "mean_chosen": 0.014350407898426057,
+        "mean_rejected": 0.03488528850674629
+      }
+    },
+    "BOH": {
+      "group": "BOH",
+      "signal": "conj",
+      "n": 1000,
+      "pairwise_accuracy": 0.51,
+      "separation_auroc": 0.504708,
+      "mean_chosen": 0.014350407898426057,
+      "mean_rejected": 0.007983865529298782
+    },
+    "ROH": {
+      "group": "ROH",
+      "signal": "conj",
+      "n": 1000,
+      "pairwise_accuracy": 0.4915,
+      "separation_auroc": 0.49133,
+      "mean_chosen": 0.014350407898426057,
+      "mean_rejected": 0.024194844990968703
+    },
+    "gap_pairwise_acc_BOH_minus_ROH": 0.018500000000000016,
+    "gap_separation_auroc_BOH_minus_ROH": 0.013378000000000057
+  },
+  "full": {
+    "per_type": {
+      "object": {
+        "group": "object",
+        "signal": "full",
+        "n": 500,
+        "pairwise_accuracy": 0.529,
+        "separation_auroc": 0.506684,
+        "mean_chosen": 0.12065056559443474,
+        "mean_rejected": 0.1068930192515254
+      },
+      "co_occurrence": {
+        "group": "co_occurrence",
+        "signal": "full",
+        "n": 500,
+        "pairwise_accuracy": 0.491,
+        "separation_auroc": 0.4867,
+        "mean_chosen": 0.12065056559443474,
+        "mean_rejected": 0.1270695889890194
+      },
+      "attribute": {
+        "group": "attribute",
+        "signal": "full",
+        "n": 500,
+        "pairwise_accuracy": 0.482,
+        "separation_auroc": 0.490324,
+        "mean_chosen": 0.12065056559443474,
+        "mean_rejected": 0.12568037592619657
+      },
+      "relation": {
+        "group": "relation",
+        "signal": "full",
+        "n": 500,
+        "pairwise_accuracy": 0.496,
+        "separation_auroc": 0.498728,
+        "mean_chosen": 0.12065056559443474,
+        "mean_rejected": 0.12475520865619183
+      }
+    },
+    "BOH": {
+      "group": "BOH",
+      "signal": "full",
+      "n": 1000,
+      "pairwise_accuracy": 0.51,
+      "separation_auroc": 0.496692,
+      "mean_chosen": 0.12065056559443474,
+      "mean_rejected": 0.1169813041202724
+    },
+    "ROH": {
+      "group": "ROH",
+      "signal": "full",
+      "n": 1000,
+      "pairwise_accuracy": 0.489,
+      "separation_auroc": 0.494526,
+      "mean_chosen": 0.12065056559443474,
+      "mean_rejected": 0.1252177922911942
+    },
+    "gap_pairwise_acc_BOH_minus_ROH": 0.02100000000000002,
+    "gap_separation_auroc_BOH_minus_ROH": 0.0021660000000000013
+  }
+}

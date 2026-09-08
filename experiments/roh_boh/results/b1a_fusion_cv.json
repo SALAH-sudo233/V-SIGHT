@@ -1,0 +1,109 @@
+{
+  "schema": "vsight_b1a_fusion_cv_v1",
+  "leave_one_model_out": {
+    "LENS": {
+      "n_train": 4636,
+      "n_test": 2371,
+      "fusion_AUROC_BOH": 0.8887,
+      "fusion_AUROC_ROH": 0.7491,
+      "raw_AUROC_BOH": 0.8767,
+      "raw_AUROC_ROH": 0.7399,
+      "catch@FNR3pp": {
+        "thr": 0.029,
+        "realFNR": 0.0282,
+        "catch_BOH": 0.3352,
+        "catch_ROH": 0.1143
+      },
+      "catch@FNR5pp": {
+        "thr": 0.0321,
+        "realFNR": 0.0484,
+        "catch_BOH": 0.4569,
+        "catch_ROH": 0.2194
+      },
+      "catch@FNR10pp": {
+        "thr": 0.041,
+        "realFNR": 0.0968,
+        "catch_BOH": 0.7069,
+        "catch_ROH": 0.4806
+      }
+    },
+    "Orsta-7B": {
+      "n_train": 5643,
+      "n_test": 1364,
+      "fusion_AUROC_BOH": 0.7919,
+      "fusion_AUROC_ROH": 0.7007,
+      "raw_AUROC_BOH": 0.7042,
+      "raw_AUROC_ROH": 0.6392,
+      "catch@FNR3pp": {
+        "thr": 0.0307,
+        "realFNR": 0.0265,
+        "catch_BOH": 0.2975,
+        "catch_ROH": 0.2185
+      },
+      "catch@FNR5pp": {
+        "thr": 0.0316,
+        "realFNR": 0.0464,
+        "catch_BOH": 0.3369,
+        "catch_ROH": 0.245
+      },
+      "catch@FNR10pp": {
+        "thr": 0.0334,
+        "realFNR": 0.0993,
+        "catch_BOH": 0.3978,
+        "catch_ROH": 0.3179
+      }
+    },
+    "Qwen3-VL-8B": {
+      "n_train": 6177,
+      "n_test": 830,
+      "fusion_AUROC_BOH": 0.86,
+      "fusion_AUROC_ROH": 0.7992,
+      "raw_AUROC_BOH": 0.6246,
+      "raw_AUROC_ROH": 0.566,
+      "catch@FNR3pp": {
+        "thr": 0.0368,
+        "realFNR": 0.0,
+        "catch_BOH": 0.68,
+        "catch_ROH": 0.6
+      },
+      "catch@FNR5pp": {
+        "thr": 0.0368,
+        "realFNR": 0.0,
+        "catch_BOH": 0.68,
+        "catch_ROH": 0.6
+      },
+      "catch@FNR10pp": {
+        "thr": 0.0412,
+        "realFNR": 0.0833,
+        "catch_BOH": 0.74,
+        "catch_ROH": 0.6281
+      }
+    },
+    "Seg-zero": {
+      "n_train": 4565,
+      "n_test": 2442,
+      "fusion_AUROC_BOH": 0.8908,
+      "fusion_AUROC_ROH": 0.742,
+      "raw_AUROC_BOH": 0.8555,
+      "raw_AUROC_ROH": 0.7277,
+      "catch@FNR3pp": {
+        "thr": 0.0266,
+        "realFNR": 0.0291,
+        "catch_BOH": 0.4061,
+        "catch_ROH": 0.1689
+      },
+      "catch@FNR5pp": {
+        "thr": 0.0298,
+        "realFNR": 0.0473,
+        "catch_BOH": 0.5498,
+        "catch_ROH": 0.2983
+      },
+      "catch@FNR10pp": {
+        "thr": 0.0342,
+        "realFNR": 0.0982,
+        "catch_BOH": 0.7062,
+        "catch_ROH": 0.4671
+      }
+    }
+  }
+}

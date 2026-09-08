@@ -1,0 +1,109 @@
+{
+  "schema_version": "vsight_s2b_vlm_verify_v1",
+  "n_total": 2000,
+  "n_ok": 2000,
+  "n_err": 0,
+  "n_parse_fail": 0,
+  "elapsed_seconds": 1737.308810691,
+  "signal": "Qwen2.5-VL boxed-region binding verdict (1 call/query, target box drawn)",
+  "per_type": {
+    "object": {
+      "group": "object",
+      "n": 500,
+      "pairwise_accuracy": 0.819,
+      "separation_auroc": 0.819,
+      "mean_chosen": 0.194,
+      "mean_rejected": -0.444,
+      "chosen_verdicts": {
+        "yes": 347,
+        "no": 153
+      },
+      "rejected_verdicts": {
+        "no": 472,
+        "yes": 28
+      }
+    },
+    "co_occurrence": {
+      "group": "co_occurrence",
+      "n": 500,
+      "pairwise_accuracy": 0.763,
+      "separation_auroc": 0.763,
+      "mean_chosen": 0.194,
+      "mean_rejected": -0.332,
+      "chosen_verdicts": {
+        "yes": 347,
+        "no": 153
+      },
+      "rejected_verdicts": {
+        "yes": 84,
+        "no": 416
+      }
+    },
+    "attribute": {
+      "group": "attribute",
+      "n": 500,
+      "pairwise_accuracy": 0.683,
+      "separation_auroc": 0.683,
+      "mean_chosen": 0.194,
+      "mean_rejected": -0.172,
+      "chosen_verdicts": {
+        "yes": 347,
+        "no": 153
+      },
+      "rejected_verdicts": {
+        "no": 336,
+        "yes": 164
+      }
+    },
+    "relation": {
+      "group": "relation",
+      "n": 500,
+      "pairwise_accuracy": 0.656,
+      "separation_auroc": 0.656,
+      "mean_chosen": 0.194,
+      "mean_rejected": -0.118,
+      "chosen_verdicts": {
+        "yes": 347,
+        "no": 153
+      },
+      "rejected_verdicts": {
+        "yes": 191,
+        "no": 309
+      }
+    }
+  },
+  "BOH": {
+    "group": "BOH",
+    "n": 1000,
+    "pairwise_accuracy": 0.791,
+    "separation_auroc": 0.791,
+    "mean_chosen": 0.194,
+    "mean_rejected": -0.388,
+    "chosen_verdicts": {
+      "yes": 694,
+      "no": 306
+    },
+    "rejected_verdicts": {
+      "no": 888,
+      "yes": 112
+    }
+  },
+  "ROH": {
+    "group": "ROH",
+    "n": 1000,
+    "pairwise_accuracy": 0.6695,
+    "separation_auroc": 0.6695,
+    "mean_chosen": 0.194,
+    "mean_rejected": -0.145,
+    "chosen_verdicts": {
+      "yes": 694,
+      "no": 306
+    },
+    "rejected_verdicts": {
+      "no": 645,
+      "yes": 355
+    }
+  },
+  "gap_pairwise_acc_BOH_minus_ROH": 0.12150000000000005,
+  "gap_separation_auroc_BOH_minus_ROH": 0.12150000000000005
+}

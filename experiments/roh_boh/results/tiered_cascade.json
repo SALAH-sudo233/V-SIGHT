@@ -1,0 +1,260 @@
+{
+  "schema": "vsight_tiered_cascade_v1",
+  "bands": {
+    "tau_agree>=0.05": {
+      "per_model": {
+        "LENS": {
+          "vlm_call_rate": 0.91,
+          "n": 2371,
+          "catch@FNR3pp": {
+            "realFNR": 0.0282,
+            "catchBOH": 0.2865,
+            "catchROH": 0.1122,
+            "thr": 0.2451
+          }
+        },
+        "Orsta-7B": {
+          "vlm_call_rate": 0.955,
+          "n": 1364,
+          "catch@FNR3pp": {
+            "realFNR": 0.0265,
+            "catchBOH": 0.129,
+            "catchROH": 0.0844,
+            "thr": 0.2451
+          }
+        },
+        "Qwen3-VL-8B": {
+          "vlm_call_rate": 0.373,
+          "n": 830,
+          "catch@FNR3pp": {
+            "realFNR": 0.0,
+            "catchBOH": 0.01,
+            "catchROH": 0.0125,
+            "thr": 0.0019
+          }
+        },
+        "Seg-zero": {
+          "vlm_call_rate": 0.91,
+          "n": 2442,
+          "catch@FNR3pp": {
+            "realFNR": 0.0291,
+            "catchBOH": 0.3295,
+            "catchROH": 0.1355,
+            "thr": 0.3486
+          }
+        }
+      },
+      "pooled_vlm_call_rate": 0.855,
+      "pooled_catch@FNR3pp": {
+        "realFNR": 0.0277,
+        "catchBOH": 0.2804,
+        "catchROH": 0.1732,
+        "thr": 0.2227
+      }
+    },
+    "tau_agree>=0.1": {
+      "per_model": {
+        "LENS": {
+          "vlm_call_rate": 0.878,
+          "n": 2371,
+          "catch@FNR3pp": {
+            "realFNR": 0.0282,
+            "catchBOH": 0.3175,
+            "catchROH": 0.1316,
+            "thr": 0.2451
+          }
+        },
+        "Orsta-7B": {
+          "vlm_call_rate": 0.935,
+          "n": 1364,
+          "catch@FNR3pp": {
+            "realFNR": 0.0265,
+            "catchBOH": 0.1147,
+            "catchROH": 0.0811,
+            "thr": 0.148
+          }
+        },
+        "Qwen3-VL-8B": {
+          "vlm_call_rate": 0.284,
+          "n": 830,
+          "catch@FNR3pp": {
+            "realFNR": 0.0,
+            "catchBOH": 0.0,
+            "catchROH": 0.0063,
+            "thr": 0.0019
+          }
+        },
+        "Seg-zero": {
+          "vlm_call_rate": 0.882,
+          "n": 2442,
+          "catch@FNR3pp": {
+            "realFNR": 0.0291,
+            "catchBOH": 0.3578,
+            "catchROH": 0.1496,
+            "thr": 0.3486
+          }
+        }
+      },
+      "pooled_vlm_call_rate": 0.82,
+      "pooled_catch@FNR3pp": {
+        "realFNR": 0.0277,
+        "catchBOH": 0.292,
+        "catchROH": 0.1801,
+        "thr": 0.1824
+      }
+    },
+    "tau_agree>=0.2": {
+      "per_model": {
+        "LENS": {
+          "vlm_call_rate": 0.834,
+          "n": 2371,
+          "catch@FNR3pp": {
+            "realFNR": 0.0282,
+            "catchBOH": 0.3518,
+            "catchROH": 0.149,
+            "thr": 0.1824
+          }
+        },
+        "Orsta-7B": {
+          "vlm_call_rate": 0.849,
+          "n": 1364,
+          "catch@FNR3pp": {
+            "realFNR": 0.0265,
+            "catchBOH": 0.1219,
+            "catchROH": 0.0927,
+            "thr": 0.0331
+          }
+        },
+        "Qwen3-VL-8B": {
+          "vlm_call_rate": 0.158,
+          "n": 830,
+          "catch@FNR3pp": {
+            "realFNR": 0.0,
+            "catchBOH": 0.0,
+            "catchROH": 0.0063,
+            "thr": 0.0019
+          }
+        },
+        "Seg-zero": {
+          "vlm_call_rate": 0.83,
+          "n": 2442,
+          "catch@FNR3pp": {
+            "realFNR": 0.0291,
+            "catchBOH": 0.3746,
+            "catchROH": 0.1699,
+            "thr": 0.2227
+          }
+        }
+      },
+      "pooled_vlm_call_rate": 0.755,
+      "pooled_catch@FNR3pp": {
+        "realFNR": 0.0292,
+        "catchBOH": 0.3095,
+        "catchROH": 0.2026,
+        "thr": 0.0601
+      }
+    },
+    "tau_agree>=0.3": {
+      "per_model": {
+        "LENS": {
+          "vlm_call_rate": 0.761,
+          "n": 2371,
+          "catch@FNR3pp": {
+            "realFNR": 0.0282,
+            "catchBOH": 0.2832,
+            "catchROH": 0.1286,
+            "thr": 0.0516
+          }
+        },
+        "Orsta-7B": {
+          "vlm_call_rate": 0.717,
+          "n": 1364,
+          "catch@FNR3pp": {
+            "realFNR": 0.0265,
+            "catchBOH": 0.129,
+            "catchROH": 0.0944,
+            "thr": 0.0331
+          }
+        },
+        "Qwen3-VL-8B": {
+          "vlm_call_rate": 0.07,
+          "n": 830,
+          "catch@FNR3pp": {
+            "realFNR": 0.0,
+            "catchBOH": 0.0,
+            "catchROH": 0.0,
+            "thr": 0.0019
+          }
+        },
+        "Seg-zero": {
+          "vlm_call_rate": 0.757,
+          "n": 2442,
+          "catch@FNR3pp": {
+            "realFNR": 0.0291,
+            "catchBOH": 0.3253,
+            "catchROH": 0.1547,
+            "thr": 0.0582
+          }
+        }
+      },
+      "pooled_vlm_call_rate": 0.669,
+      "pooled_catch@FNR3pp": {
+        "realFNR": 0.0292,
+        "catchBOH": 0.2674,
+        "catchROH": 0.1614,
+        "thr": 0.0444
+      }
+    },
+    "tau_agree>=1.01": {
+      "per_model": {
+        "LENS": {
+          "vlm_call_rate": 0.0,
+          "n": 2371,
+          "catch@FNR3pp": {
+            "realFNR": 0.0282,
+            "catchBOH": 0.2832,
+            "catchROH": 0.1286,
+            "thr": 0.0583
+          }
+        },
+        "Orsta-7B": {
+          "vlm_call_rate": 0.0,
+          "n": 1364,
+          "catch@FNR3pp": {
+            "realFNR": 0.0265,
+            "catchBOH": 0.129,
+            "catchROH": 0.0993,
+            "thr": 0.0409
+          }
+        },
+        "Qwen3-VL-8B": {
+          "vlm_call_rate": 0.0,
+          "n": 830,
+          "catch@FNR3pp": {
+            "realFNR": 0.0,
+            "catchBOH": 0.55,
+            "catchROH": 0.5156,
+            "thr": 0.0454
+          }
+        },
+        "Seg-zero": {
+          "vlm_call_rate": 0.0,
+          "n": 2442,
+          "catch@FNR3pp": {
+            "realFNR": 0.0291,
+            "catchBOH": 0.34,
+            "catchROH": 0.1618,
+            "thr": 0.07
+          }
+        }
+      },
+      "pooled_vlm_call_rate": 0.0,
+      "pooled_catch@FNR3pp": {
+        "realFNR": 0.0292,
+        "catchBOH": 0.2509,
+        "catchROH": 0.1611,
+        "thr": 0.0464
+      }
+    }
+  }
+}

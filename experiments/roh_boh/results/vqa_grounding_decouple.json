@@ -1,0 +1,112 @@
+{
+  "schema": "vsight_vqa_grounding_decouple_v1",
+  "per_model": {
+    "LENS": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.788,
+      "ground_acc_pos": 0.496,
+      "P(ground_ok | vqa_ok)": 0.5203045685279187,
+      "phi_pos(vqa,ground)": 0.09371885788604264,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.9140811455847255
+    },
+    "Orsta-7B": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.88,
+      "ground_acc_pos": 0.302,
+      "P(ground_ok | vqa_ok)": 0.32272727272727275,
+      "phi_pos(vqa,ground)": 0.12225360998084871,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.2406526172671652
+    },
+    "Qwen3-VL-8B": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.894,
+      "ground_acc_pos": 0.024,
+      "P(ground_ok | vqa_ok)": 0.026845637583892617,
+      "phi_pos(vqa,ground)": 0.053996409867494904,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.01834862385321101
+    },
+    "Seg-R1": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.78,
+      "ground_acc_pos": 0.522,
+      "P(ground_ok | vqa_ok)": 0.5538461538461539,
+      "phi_pos(vqa,ground)": 0.12004490988674034,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.5170454545454546
+    },
+    "Seg-zero": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.966,
+      "ground_acc_pos": 0.55,
+      "P(ground_ok | vqa_ok)": 0.5548654244306418,
+      "phi_pos(vqa,ground)": 0.05212934097621003,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.947463768115942
+    },
+    "TreeVGR": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.99,
+      "ground_acc_pos": 0.262,
+      "P(ground_ok | vqa_ok)": 0.26262626262626265,
+      "phi_pos(vqa,ground)": 0.014170829267919443,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.6134686346863468
+    },
+    "UniVG-R1": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.44,
+      "ground_acc_pos": 0.06,
+      "P(ground_ok | vqa_ok)": 0.08636363636363636,
+      "phi_pos(vqa,ground)": 0.09840067679305611,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.9973975276512687
+    },
+    "Vision-R1": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.926,
+      "ground_acc_pos": 0.296,
+      "P(ground_ok | vqa_ok)": 0.31533477321814257,
+      "phi_pos(vqa,ground)": 0.14982922422909992,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.11270638908829864
+    },
+    "VisionReasoner": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.958,
+      "ground_acc_pos": 0.506,
+      "P(ground_ok | vqa_ok)": 0.5052192066805845,
+      "phi_pos(vqa,ground)": -0.007458568200686327,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.6799307958477508
+    },
+    "qwen2.5-vl-7b": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.842,
+      "ground_acc_pos": 0.484,
+      "P(ground_ok | vqa_ok)": 0.5201900237529691,
+      "phi_pos(vqa,ground)": 0.1671740403291153,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.15647134578235672
+    },
+    "visual-rft": {
+      "n_pos": 500,
+      "vqa_acc_pos": 0.876,
+      "ground_acc_pos": 0.052,
+      "P(ground_ok | vqa_ok)": 0.0547945205479452,
+      "phi_pos(vqa,ground)": 0.033453585943595286,
+      "n_neg": 2000,
+      "P(box_drawn | vqa_rejected)": 0.11504424778761062
+    }
+  },
+  "pooled": {
+    "n_models": 11,
+    "n_pos_total": 5500,
+    "pooled_P(ground_ok | vqa_ok)": 0.3475374732334047,
+    "pooled_phi_pos(vqa,ground)": 0.12399657265201267,
+    "mean_over_models_P(ground_ok|vqa_ok)": 0.3384652254823109,
+    "mean_over_models_phi": 0.08161026517813058
+  }
+}
