@@ -59,6 +59,44 @@ prompt**（各 7984，四类幻觉各 3992）；评测用 500-dev 全量 4000 pr
 因此不是 train-on-test。采样 num_generations=8，全局 256 rollout/step，4×RTX4090 DDP，lr 1e-5、KL β=0.001。
 奖励迭代：v1 二元决策 → v2 加 ROH×2 加权 + Brier 校准 → v3 把决策与校准合并成单一对数评分（proper scoring rule）。
 
+**完整超参 / batch 设置：**
+
+| 项 | 值 |
+|---|---|
+| 基座模型 | Qwen2.5-VL-3B-Instruct |
+| 训练框架 | ms-swift 4.5.3，GRPO（`--rlhf_type grpo`） |
+| 微调方式 | LoRA，r=8，α=16，target = q_proj/k_proj/v_proj/o_proj |
+| 可训练参数 | 3.69M（占 0.098%），base 冻结，bf16 |
+| per_device_train_batch_size | 8 |
+| GPU 数 / 并行 | 4×RTX4090-24G，DDP 数据并行（NPROC_PER_NODE=4） |
+| 全局 prompt batch | 8 × 4 = 32 prompt/step |
+| num_generations（每 prompt rollout） | 8 |
+| 有效 rollout/step | 32 × 8 = **256** |
+| gradient_accumulation_steps | 1 |
+| learning_rate | 1e-5 |
+| KL 系数 β | 0.001 |
+| 采样温度 | 1.0 |
+| max_completion_length | 64 |
+| gradient_checkpointing | true |
+| epoch / max_steps | v1：2 epoch（7984 步）；v2/v3：1 epoch（3992 步） |
+| save_steps / limit | v1 每 200；v2/v3 每 100，保留 8 |
+| 训练集 | 15968 prompt（1996-heldout 反事实对，KEEP/REJECT 各 7984） |
+| 评测集 | 500-dev 全量 4000 prompt（与训练集图像级零重叠） |
+
+> 训练规模很轻：3B + 0.1% LoRA 参数、单卡显存 ~12GB、可验证奖励零 reward-model 开销。
+> ROH 收益集中在前 600 步，因此 v2/v3 缩到 1 epoch 已足够覆盖饱和区。
+
+**GRPO 收敛曲线（reward vs 训练步）：**
+
+![GRPO reward curves](figs/grpo_reward_curves.png)
+
+三轮的 total-reward 随步数变化（窗口 25 的移动平均）：v1/v2 为正向 reward（左轴，判对趋高），
+v3 为对数评分（右轴，负值，判对趋近 0、判错趋于大负，两轴量纲不同不可直接比高低）；
+共同特征是 reward 在前 ~300–600 步快速上升后进入平台，与 ROH 准确率 600 步饱和一致。
+三条线步数不同是**有意为之**：v1 跑满 2 epoch（7984 步）后才发现 ROH 早已饱和且后期过训，
+故 v3 缩到 1 epoch（3992 步）；v2 在结论明确（ROH 加权有效、Brier 校准塌缩）后于 ~2150 步手动停止，
+把 GPU 让给 v3，不再空耗。
+
 **训练曲线（500-dev 全量 decision 准确率）：**
 
 | checkpoint | 步 | ALL | BOH | ROH |
