@@ -1,0 +1,82 @@
+{
+  "LENS": {
+    "AUROC_BOH": 0.8967,
+    "AUROC_ROH": 0.7714,
+    "n_correct": 248,
+    "catch@FNR3pp": {
+      "realFNR": 0.0282,
+      "catchBOH": 0.604,
+      "catchROH": 0.2592
+    },
+    "catch@FNR5pp": {
+      "realFNR": 0.0484,
+      "catchBOH": 0.6493,
+      "catchROH": 0.298
+    },
+    "catch@FNR10pp": {
+      "realFNR": 0.0968,
+      "catchBOH": 0.7588,
+      "catchROH": 0.4847
+    }
+  },
+  "Seg-zero": {
+    "AUROC_BOH": 0.8845,
+    "AUROC_ROH": 0.7511,
+    "n_correct": 275,
+    "catch@FNR3pp": {
+      "realFNR": 0.0182,
+      "catchBOH": 0.5561,
+      "catchROH": 0.2144
+    },
+    "catch@FNR5pp": {
+      "realFNR": 0.0473,
+      "catchBOH": 0.6338,
+      "catchROH": 0.3104
+    },
+    "catch@FNR10pp": {
+      "realFNR": 0.0836,
+      "catchBOH": 0.7062,
+      "catchROH": 0.4216
+    }
+  },
+  "Orsta-7B": {
+    "AUROC_BOH": 0.6751,
+    "AUROC_ROH": 0.6229,
+    "n_correct": 151,
+    "catch@FNR3pp": {
+      "realFNR": 0.0199,
+      "catchBOH": 0.1362,
+      "catchROH": 0.0662
+    },
+    "catch@FNR5pp": {
+      "realFNR": 0.0397,
+      "catchBOH": 0.1398,
+      "catchROH": 0.0844
+    },
+    "catch@FNR10pp": {
+      "realFNR": 0.0927,
+      "catchBOH": 0.2294,
+      "catchROH": 0.1407
+    }
+  },
+  "Qwen3-VL-8B": {
+    "AUROC_BOH": 0.6092,
+    "AUROC_ROH": 0.5706,
+    "n_correct": 12,
+    "catch@FNR3pp": {
+      "realFNR": 0.0,
+      "catchBOH": 0.28,
+      "catchROH": 0.2219
+    },
+    "catch@FNR5pp": {
+      "realFNR": 0.0,
+      "catchBOH": 0.28,
+      "catchROH": 0.2219
+    },
+    "catch@FNR10pp": {
+      "realFNR": 0.0833,
+      "catchBOH": 0.34,
+      "catchROH": 0.2406
+    }
+  }
+}

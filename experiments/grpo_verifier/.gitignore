@@ -1,0 +1,5 @@
+# data artifacts / runs — regenerate via prep_1996_grpo.py, do not commit
+*.tgz
+*.jsonl
+runs/
+data/
