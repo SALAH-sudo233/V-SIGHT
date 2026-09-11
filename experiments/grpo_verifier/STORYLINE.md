@@ -5,6 +5,32 @@
 
 ---
 
+## 0. Abstract（草稿）
+
+视觉指称定位模型在"物体是否存在"上已相当可靠，却在"属性/关系是否正确绑定"上系统性地失败——
+我们在 RefCOCOg-500 的 11 个 RL grounding 模型上量化出这条裂缝：判别任务的关系/属性幻觉率
+（ROH）比基础物体幻觉率（BOH）高出 11–31pp，定位任务中面对不存在的关系表达式几乎必然强行画框
+（ROH 前景误定位率逼近 99%）。这说明"能正确生成描述"与"能正确定位"是两种可分离的能力，
+而现有 train-free / 便宜信号的后处理对 ROH 形同随机。我们提出 **V-SIGHT**：以一次可控的额外 VLM
+验证对上游 grounding 输出做选择性 KEEP/REJECT 修正，并用**可验证奖励的 GRPO** 强化一个 3B verifier
+的关系绑定判别力。仅用 0.1% 的 LoRA 参数、单次推理预算，我们将 ROH 判别准确率从零样本 0.631 提升到
+0.698，且对 ROH 的净修正量是 BOH 的 2.7 倍。我们进一步给出一个诚实的负结果：RLVR 在提升判别力的同时
+会因熵坍缩摧毁 base 模型原有的置信校准，使需要"自知之明"的 DEFER 机制失效——揭示 accuracy 与
+calibration 在可验证奖励 RL 下的内在张力，并为 human-in-the-loop 飞轮指出解耦 / pairwise 校准的路径。
+
+## 0.1 贡献点（claims）
+
+1. **量化并区分 BOH/ROH**：用统一反事实协议在 11 个模型上证明 grounding ≠ hallucination mitigation，
+   ROH 系统性比 BOH 难（判别 gap 11–31pp、定位 ROH-FG 近饱和）。
+2. **证否便宜路线**：train-free 注意力 / trajectory / 便宜检测器 / 小 MLP 对 ROH 全部形同随机
+   （AUROC ≤0.58），确立"ROH 内在需要 VLM 级语义推理"。
+3. **可验证奖励 GRPO verifier**：0.1% LoRA、单次推理，ROH 0.631→0.698，净修正 ROH 是 BOH 的 2.7 倍；
+   给出奖励设计消融（二元 / ROH 加权 / proper scoring）。
+4. **RLVR 校准坍缩的负结果**：首次（在本任务上）刻画"RL 提升 accuracy 却摧毁 calibration"的张力，
+   给出 token-probability 校准诊断与解耦 / pairwise 修复方向。
+
+---
+
 ## 1. Introduction
 
 ### 1.1 问题定义
@@ -185,3 +211,67 @@ T2 负查询 ROH 误定位率逼近饱和）；train-free 与便宜信号对 ROH
 训练一个 3B verifier，把 ROH 判别从 0.631 提到 0.698、净修正 ROH 幻觉是 BOH 的 2.7 倍；
 但发现 RLVR 的熵坍缩会摧毁 base 模型本有的置信校准，揭示 accuracy 与 calibration 在 RL 下的张力，
 并为飞轮 DEFER 指出解耦 / pairwise 校准的后续路径。
+
+---
+
+## 6. Related Work（定位坐标）
+
+- **VLM grounding 与 RL grounding**：Qwen2.5-VL/Qwen3-VL、Seg-Zero、Visual-RFT、VisionReasoner、
+  TreeVGR、UniVG-R1 等以 RL（IoU 奖励）训练定位。本文指出其共同盲区：**正样本-only 的 IoU 奖励
+  从不惩罚"给不存在的目标画框"，导致对 ROH 近乎必然误定位**——把这批模型同时作为被测对象与被修正上游。
+- **多模态幻觉评测**：现有多聚焦对象存在性（BOH 类）。本文用反事实 KEEP/REJECT 协议把评测细分到
+  属性/关系绑定层（ROH），并证明二者可分离失败。
+- **幻觉缓解的后处理 / verifier**：train-free 注意力（MTLA 类）、自一致、trajectory 探针——本文实证
+  它们对 ROH 无判别力，主张 verifier 必须做 VLM 级语义验证。
+- **可验证奖励 RL（RLVR）**：本文将 RLVR 用于"验证"而非"生成"，并报告一个此前少被强调的副作用——
+  **RLVR 的熵坍缩破坏置信校准**，与选择性预测 / 校准文献接口。
+
+## 7. Method（形式化，供 Method 章）
+
+给定图像 $I$、指称短语 $q$、上游给出的候选框 $b$，verifier $\pi_\theta$ 输出结构化决策
+$y=\langle \text{decision}\in\{\text{KEEP},\text{REJECT}\},\ \text{conf}\in[0,1]
+angle$，其中 KEEP 表示
+"$q$ 在 $b$ 上的绑定成立"。训练用 GRPO：对每个 prompt 采 $G=8$ 个 rollout，组内相对优势
+$A_i=(r_i-\bar r)/\text{std}(r)$。奖励完全可验证、无 reward model：
+
+- 格式奖励 $r_\text{fmt}=0.3\cdot\mathbb{1}[\text{合法 typed-JSON}]$；
+- 决策奖励（三种消融）：
+  - v1 二元 $r=\mathbb{1}[\text{decision}=y^\*]$；
+  - v2 ROH 加权 $r=w\cdot\mathbb{1}[\cdot]$，$w=2$ if $q\in\{\text{attr,rel}\}$ else $1$，另加 Brier 校准项；
+  - v3 proper scoring（决策+校准合一）$r=w\cdot(\ln c\ \text{if correct else}\ \ln(1-c))$，$c$ 裁剪到 $[0.05,0.95]$。
+
+金标 $y^\*$ 来自反事实构造：正表达式→KEEP，四类原子负表达式→REJECT。推理时单次前向，
+可选 DEFER：当置信低于阈值 $\tau$ 时交人工（本文发现 GRPO 后自报/内部置信均塌缩，DEFER 需另行修复）。
+
+**飞轮定位**：verifier 挑出低置信/被 REJECT 的难例 → 人工二轮确认 → 回流重训。本文完成"引擎"
+（可验证奖励训练）与"判别"（ROH 提升），DEFER 选择性交付这一环受校准坍缩制约，是闭环的当前瓶颈。
+
+## 8. Limitations & Future Work
+
+- **ROH 天花板 ~0.70**：单纯堆 RL 步数在 ~600 步饱和；突破需关系层面的结构改进（role-conditioned
+  输入、target/reference 角色分离、关系联合损失），而非更多算力。
+- **校准坍缩**：GRPO 熵坍缩使 DEFER 失效。候选修复：(a) 决策用 GRPO 模型、置信用 base 模型的
+  decision-token 概率解耦；(b) 组内 pairwise 校准奖励（奖励"判对 conf > 判错 conf"的序关系，
+  组内多数正确压不垮序关系）；(c) 更强 KL 约束抑制熵坍缩。
+- **评测规模**：主评测 500-dev（4000 prompt）；1996-heldout 仅用于训练素材，最终大规模 held-out
+  确认待补。SWITCH/RELOCALIZE（不止 REJECT、还给出正确框）依赖 reference-box 人工审核，尚未纳入。
+- **batch 方差**：per-step 32 prompt 使 reward 曲线震荡大；正式跑应加大 batch 使曲线更干净可信。
+
+## 9. 章节映射（写作导航）
+
+| 论文章节 | 本文档来源 | 关键素材 |
+|---|---|---|
+| Abstract | §0 | 一段式,含 0.631→0.698、2.7×、校准坍缩 |
+| Introduction | §1.1–1.3 | BOH/ROH 定义、11-model gap、便宜路线证否、方法提出 |
+| Related Work | §6 | 四类坐标 |
+| Method | §7 + §2 setting | 形式化 + 超参表 |
+| Experiments-setup | §2 setting 表 | batch/超参/数据/评测口径 |
+| Experiments-main | §2 曲线表 + 图 | 准确率曲线 + reward 收敛图 |
+| Experiments-cases | §3 | ROH/BOH 翻转图 + 净修正统计 |
+| Experiments-baselines | §4 | 阶梯基线 + 奖励消融 |
+| Analysis/Negative | §2 其三 + §4 | 校准坍缩 + token-prob 诊断 |
+| Limitations | §8 | 四条 |
+
+> 资产位置：本目录 `figs/`（reward 曲线、ROH/BOH cases）、脚本
+> `prep_1996_*.py / vsight_reward_plugin_v*.py / eval_defer*.py / render_*.py`；
+> 训练/评测数字见 `TRAINING.md`；负结果全档见 `docs/updates_2026_09/NEGATIVE_RESULTS.md`。
