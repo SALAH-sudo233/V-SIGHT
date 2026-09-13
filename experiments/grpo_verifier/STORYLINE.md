@@ -5,30 +5,18 @@
 
 ---
 
-## 0. Abstract（草稿）
+## 0. Abstract（当前版本草稿）
 
-视觉指称定位模型在"物体是否存在"上已相当可靠，却在"属性/关系是否正确绑定"上系统性地失败——
-我们在 RefCOCOg-500 的 11 个 RL grounding 模型上量化出这条裂缝：判别任务的关系/属性幻觉率
-（ROH）比基础物体幻觉率（BOH）高出 11–31pp，定位任务中面对不存在的关系表达式几乎必然强行画框
-（ROH 前景误定位率逼近 99%）。这说明"能正确生成描述"与"能正确定位"是两种可分离的能力，
-而现有 train-free / 便宜信号的后处理对 ROH 形同随机。我们提出 **V-SIGHT**：以一次可控的额外 VLM
-验证对上游 grounding 输出做选择性 KEEP/REJECT 修正，并用**可验证奖励的 GRPO** 强化一个 3B verifier
-的关系绑定判别力。仅用 0.1% 的 LoRA 参数、单次推理预算，我们将 ROH 判别准确率从零样本 0.631 提升到
-0.698，且对 ROH 的净修正量是 BOH 的 2.7 倍。我们进一步给出一个诚实的负结果：RLVR 在提升判别力的同时
-会因熵坍缩摧毁 base 模型原有的置信校准，使需要"自知之明"的 DEFER 机制失效——揭示 accuracy 与
-calibration 在可验证奖励 RL 下的内在张力，并为 human-in-the-loop 飞轮指出解耦 / pairwise 校准的路径。
+视觉指称定位模型不仅需要判断目标物体是否存在，还需要判断属性和空间关系是否正确绑定。我们将这两类错误区分为 BOH（Basic-Object Hallucination）和 ROH（Relation/attribute-Object Hallucination），并建立统一的反事实 benchmark，在同一图像组上分别评估 11 个 grounding 模型的判别与定位行为。修复版评测显示，ROH 在 T1 判别任务中系统性难于 BOH，T2 中对不存在的关系/属性表达式又常常出现强行定位。基于这一观察，我们构建一个包含反事实评测、候选框验证、选择性修正和人工回流的 V-SIGHT 框架，并分析其适用边界。
 
-## 0.1 贡献点（claims）
+GRPO verifier 是当前正在进行的实验路线，而不是本文已定稿的核心贡献。为展示这条路线的可行性，本文报告当前最优开发集结果：Qwen2.5-VL-3B verifier 在 500-dev 全量 prompt 上的 ROH decision accuracy 从零样本 0.631 提升至 0.698。该结果仍需结合数据质量审核、独立测试和校准负结果解释，因此不将其表述为最终泛化结论。
+## 0.1 当前论文贡献点（仅写已完成部分）
 
-1. **量化并区分 BOH/ROH**：用统一反事实协议在 11 个模型上证明 grounding ≠ hallucination mitigation，
-   ROH 系统性比 BOH 难（判别 gap 11–31pp、定位 ROH-FG 近饱和）。
-2. **证否便宜路线**：train-free 注意力 / trajectory / 便宜检测器 / 小 MLP 对 ROH 全部形同随机
-   （AUROC ≤0.58），确立"ROH 内在需要 VLM 级语义推理"。
-3. **可验证奖励 GRPO verifier**：0.1% LoRA、单次推理，ROH 0.631→0.698，净修正 ROH 是 BOH 的 2.7 倍；
-   给出奖励设计消融（二元 / ROH 加权 / proper scoring）。
-4. **RLVR 校准坍缩的负结果**：首次（在本任务上）刻画"RL 提升 accuracy 却摧毁 calibration"的张力，
-   给出 token-probability 校准诊断与解耦 / pairwise 修复方向。
+1. **问题定义**：将视觉 grounding 幻觉拆分为 BOH（物体存在性）与 ROH（属性/关系绑定），并给出统一的反事实判别口径。
+2. **Benchmark 建立**：构建并修复 RefCOCOg-500 的 11-model 评测协议，明确 T1=判别 VQA、T2=VQA+grounding、T4=caption+grounding，使 BOH/ROH 可以在同一图像组上比较。
+3. **框架与诊断**：建立从上游 grounding 输出到候选框验证、选择性过滤和人工回流的修正框架，并用实验定位“目标存在性判断”和“关系/属性绑定判断”的能力差异。
 
+> GRPO verifier 仍处于实验阶段。本版只展示当前最优结果，不把 GRPO、校准策略或完整 agentic 飞轮写成已完成贡献；相关内容属于 ongoing experiments / negative-result analysis。
 ---
 
 ## 1. Introduction
@@ -66,14 +54,11 @@ train-free 注意力信号对 ROH 的判别 AUROC 低于 0.5（反相关）、de
 **ROH 内在需要 VLM 级的语义推理，任何绕开语义推理的廉价信号都对 ROH 无能为力**，
 "单次推理预算 + train-free 即插即用"这个原始工程假设因此被自己的实验推翻。
 
-### 1.3 方法提出
+### 1.3 方法框架与当前实验状态
 
-我们据此重新定位：**用一次可控的额外 VLM 验证，对上游 grounding 输出做选择性 KEEP/REJECT 修正；
-并用可验证奖励的 GRPO 强化一个 3B verifier 的 ROH 判别力。** verifier 是 LoRA 微调的
-Qwen2.5-VL-3B（r=8，仅 3.69M 可训练参数，占 0.098%），推理时单次前向；奖励完全可验证、
-不依赖 reward model——决策命中反事实金标即得分，输出合法 typed-JSON 得小额格式分。
-方法的诚实定位不是"零成本 train-free"，而是"一次轻量离线训练 + 推理单次预算 + human-in-the-loop 飞轮"。
+我们提出 V-SIGHT 修正框架：上游 grounding 模型先产生候选框，随后由验证模块判断表达式与候选框的绑定是否成立，并根据 KEEP/REJECT/DEFER 或人工回流执行后续处理。框架的已完成部分是问题定义、benchmark、候选框验证和修正流程；它不假设任何单一 verifier 已经解决 ROH。
 
+在此框架上，我们进一步探索 Qwen2.5-VL-3B 的 GRPO verifier。当前实验显示其在开发集上取得了正向的最优点，但训练数据质量、置信校准和独立泛化仍在验证。因此，GRPO 结果在本文中作为 ongoing experiment 的最佳观察点，而不是已经闭合的 agentic 飞轮贡献。
 ---
 
 ## 2. RL Setting 与训练曲线
@@ -154,37 +139,46 @@ verifier "知道自己何时不确定"。我们发现零样本 base 模型的 **
 
 ---
 
-## 3. Case 可视化：RL 前后的修正
+## 3. Case 可视化：只展示语义清楚的翻转案例
 
-真实翻转统计（500-dev 全量，零样本 → GRPO）：**BOH 修好 292 例、弄坏 248 例，净 +44；
-ROH 修好 373 例、弄坏 254 例，净 +119。ROH 的净修正量是 BOH 的约 2.7 倍**，且修好/弄坏比更高——
-GRPO 的增益主要落在更难的 ROH 上，与"补 ROH 短板"的设计意图一致。下面每个 case 的红框是上游给出的
-定位框，短语是被验证的指称表达；金标均为 REJECT（该框不该被这个短语接受），零样本误判 KEEP，GRPO 后纠正为 REJECT。
+当前 case 图中的部分例子存在数据质量风险，尤其是“standing person sitting on the bench”这类文本自相矛盾，以及可能存在指代不清或负例实际成立的样本。因此，旧 case 图不应直接作为论文证据。新版本只保留经过图像审核的高显著性案例，并在图注中明确：案例用于解释机制，不替代全量统计。
 
-**ROH（关系/属性绑定错误——最能体现方法价值）：**
+### 3.1 新 case 的筛选标准
+
+每个展示案例必须同时满足：
+
+- 红框完整覆盖目标，目标类别和主要属性清楚可见；
+- 正表达式能在整图中唯一定位该目标；
+- 负表达式只改变一个因素，且在整图中明确不成立；
+- 负表达式不是通过同一对象的语法自相矛盾得到拒绝；
+- relation 案例中的参照物真实存在、唯一可识别、关系方向明确；
+- 至少经过一次独立带图审核；若审核结果为 uncertain，则不进入主图。
+
+### 3.2 推荐的案例类型
+
+**ROH 主图优先展示：**
+
+1. 目标物体明确存在，但颜色/材质等属性与负表达式不符；
+2. 目标和参照物都明确存在，但左右、前后、上下关系被反转；
+3. 目标存在且框正确，但负表达式绑定到了另一实例，能清楚体现 instance binding，而不是文字荒诞性。
+
+**BOH 对照图优先展示：**
+
+1. 框内目标类别明确，负表达式替换为图中不存在的同类/近类物体；
+2. 正确目标和负表达式中的新增伴随物都可在整图中核查；
+3. 避免“camera-relative top/right”这类参考系不清的短语。
+
+旧图中的 `standing person sitting on the bench`、无法确认参照物的 relation，以及任何模型审核为 uncertain 的样例，应从主文 case 图移除，转入数据质量附录。
+
+### 3.3 统计结果（暂作为开发集观察）
+
+在 500-dev 全量评测中，当前记录的最优 GRPO checkpoint 为 v2 ck600：ALL 0.747、BOH 0.796、ROH 0.698；零样本对应为 ALL 0.689、BOH 0.748、ROH 0.631。该结果只说明当前开发配方的最佳观察点，不能单独证明数据清洗后仍保持同样增益，也不能替代独立测试。
 
 ![ROH cases](figs/cases_ROH.png)
 
-典型如"the wine glass **inside** the vase"（关系错：杯子在花瓶旁而非里面）、"the **standing** person
-sitting on the couch"（属性错：人是坐着的）、"the chair **behind** the person"（关系错）。零样本
-verifier 被物体确实存在所迷惑而 KEEP，GRPO 后学会了检查绑定本身、正确 REJECT。
-
-**BOH（物体不存在——较易，但仍有净收益）：**
-
 ![BOH cases](figs/cases_BOH.png)
 
-如"the ottoman next to the person""the remote control sitting on the couch"——所指物体在图中并不存在，
-GRPO 后被正确拒绝。
-
-> 图像源：vlm1 `$DATA/refcoco/train2014/`；渲染脚本 `render_cases.py`
-> 从 `defer_zeroshot.jsonl` × `defer_v3ck1000.jsonl` 逐行对齐 500-dev 自动挑翻转 case。
-
-### 3.1 Grounding 流程可视化（建议补图）
-
-上游 grounding 模型输出 bbox → verifier 判 KEEP/REJECT。可补一张"候选池 + 验证"流程图：
-GroundingDINO best-of-5 候选（recall 97% vs top-1 86%）叠加 verifier 最终决策，体现"生成候选 + 语义验证"两段式。
-
----
+> 当前图片仅能作为工作版示意；在数据审核完成前，不把任何旧 case 作为论文正文证据。尤其移除“standing person sitting on the bench”、参照物不清和负例可能实际成立的样例。后续新图应从审核通过且具有真实 before/after 翻转证据的样本中重渲染。
 
 ## 4. 对比的基线、模型与方法
 
@@ -198,19 +192,13 @@ Seg-Zero、Seg-R1、VisionReasoner、TreeVGR、Vision-R1、UniVG-R1、Orsta-7B�
 yes/no）把 ROH 判别抬到 AUROC 0.65–0.79 → B1c 集成为前序主结果（并救回塌陷的 Orsta，AUROC 0.565→0.714）。
 本文的 RL 基线是零样本 3B 的 decision 准确率（ROH 0.631），最优是 **GRPO 3B verifier（v2 ck600，ROH 0.698，+6.7pp）**。
 
-**奖励设计消融**：v1 二元（ROH 0.678）→ v2 ROH 加权 + Brier（ROH 0.698，校准塌缩）→ v3 对数评分合并
-（ROH 0.690，校准仍塌缩）；置信来源对比显示"自报 confidence"全程塌缩，而"decision token 概率"
-在零样本可用、GRPO 后被熵坍缩破坏。
+**GRPO 当前最优结果（开发实验）**：v2 ck600 的 ALL/BOH/ROH 为 0.747/0.796/0.698，零样本为 0.689/0.748/0.631。该表用于记录当前最佳实验点；奖励消融、数据质量和校准负结果仍在整理，不在本版宣称为最终结论。
 
 ---
 
 ## 5. 一句话 storyline
 
-grounding ≠ hallucination mitigation，ROH 系统性比 BOH 难（十一模型 T1 判别 gap 达 11–31pp，
-T2 负查询 ROH 误定位率逼近饱和）；train-free 与便宜信号对 ROH 无能为力。我们用可验证奖励的 GRPO
-训练一个 3B verifier，把 ROH 判别从 0.631 提到 0.698、净修正 ROH 幻觉是 BOH 的 2.7 倍；
-但发现 RLVR 的熵坍缩会摧毁 base 模型本有的置信校准，揭示 accuracy 与 calibration 在 RL 下的张力，
-并为飞轮 DEFER 指出解耦 / pairwise 校准的后续路径。
+grounding 不等于 hallucination mitigation：我们先用统一 benchmark 区分 BOH 与 ROH，并证明关系/属性绑定是独立且更困难的失败层；随后构建候选框验证与人工回流的 V-SIGHT 修正框架。GRPO verifier 的当前最优开发集结果为 ROH 0.631→0.698，但该路线仍处于实验和负结果攻克阶段，不作为已完成的最终贡献。
 
 ---
 
@@ -269,7 +257,7 @@ $A_i=(r_i-\bar r)/\text{std}(r)$。奖励完全可验证、无 reward model：
 | Experiments-main | §2 曲线表 + 图 | 准确率曲线 + reward 收敛图 |
 | Experiments-cases | §3 | ROH/BOH 翻转图 + 净修正统计 |
 | Experiments-baselines | §4 | 阶梯基线 + 奖励消融 |
-| Analysis/Negative | §2 其三 + §4 | 校准坍缩 + token-prob 诊断 |
+| Analysis/Negative | §2 其三 + §4 | 作为 ongoing experiment 的负结果，不列为当前贡献 |
 | Limitations | §8 | 四条 |
 
 > 资产位置：本目录 `figs/`（reward 曲线、ROH/BOH cases）、脚本
