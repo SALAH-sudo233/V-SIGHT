@@ -182,6 +182,16 @@ verifier "知道自己何时不确定"。我们发现零样本 base 模型的 **
 
 ## 4. 对比的基线、模型与方法
 
+### 4.1 跨 positive-sample-only RL 上游的泛化性
+
+V-SIGHT 的修正对象不是固定的单一 VLM，而是可以接在不同的上游 grounding 模型之后。我们将上游替换为多种采用正样本驱动 RL grounding 的视觉语言模型：LENS、Seg-zero、Qwen3-VL-8B 和 Orsta-7B，并采用 leave-one-model-out 的方式训练/校准修正器：每次留出一个上游模型作为未见测试域，其余模型只用于拟合。这样测到的是修正框架对上游模型分布变化的迁移，而不是在同一模型输出上调阈值。
+
+最终的 B1c 集成结合了零训练融合特征和弱标签 LoRA verifier。在四个上游模型上的 BOH/ROH AUROC 分别为：LENS **0.911/0.779**、Seg-zero **0.904/0.765**、Qwen3-VL **0.861/0.817**、Orsta **0.714/0.643**。在 FNR≤3pp 的安全门下，B1c 的 BOH/ROH 捕获率分别为：LENS **0.633/0.327**、Seg-zero **0.593/0.299**、Qwen3-VL **0.790/0.681**、Orsta **0.133/0.104**。
+
+这组结果支持一个窄而明确的泛化结论：**V-SIGHT 的候选框验证与过滤接口可以跨不同 positive-sample-only RL grounding 上游复用，并在未见上游模型上保留 ROH 判别信号。** 但它不是无条件的性能保证：Orsta 的 ROH 捕获率仍低，说明上游幻觉类型与训练负例分布不匹配时，修正器仍会退化；跨模型集成能够缓解，但不能消除该边界。
+
+> 该结果证明的是“跨上游模型的修正框架泛化”，不是“每个上游模型都达到同一水平”。主文应同时报告四个模型和 Orsta 的负例，避免只展示 LENS/Seg-zero 的正向结果。
+
 **上游被测/被修正的 grounding 模型（十一模型评测）**：Qwen2.5-VL-7B、Qwen3-VL-8B、Visual-RFT、
 Seg-Zero、Seg-R1、VisionReasoner、TreeVGR、Vision-R1、UniVG-R1、Orsta-7B、LENS（论文索引见
 `papers/eval_models/INDEX.md`）。任务口径 T1=判别 VQA、T2=VQA+grounding、T4=描述后定位；
