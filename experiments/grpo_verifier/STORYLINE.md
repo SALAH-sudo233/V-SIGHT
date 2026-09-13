@@ -174,9 +174,9 @@ verifier "知道自己何时不确定"。我们发现零样本 base 模型的 **
 
 在 500-dev 全量评测中，当前记录的最优 GRPO checkpoint 为 v2 ck600：ALL 0.747、BOH 0.796、ROH 0.698；零样本对应为 ALL 0.689、BOH 0.748、ROH 0.631。该结果只说明当前开发配方的最佳观察点，不能单独证明数据清洗后仍保持同样增益，也不能替代独立测试。
 
-![ROH cases](figs/cases_ROH.png)
+![ROH audited cases](figs/cases_ROH_audited.png)
 
-![BOH cases](figs/cases_BOH.png)
+![BOH audited cases](figs/cases_BOH_audited.png)
 
 > 当前图片仅能作为工作版示意；在数据审核完成前，不把任何旧 case 作为论文正文证据。尤其移除“standing person sitting on the bench”、参照物不清和负例可能实际成立的样例。后续新图应从审核通过且具有真实 before/after 翻转证据的样本中重渲染。
 
