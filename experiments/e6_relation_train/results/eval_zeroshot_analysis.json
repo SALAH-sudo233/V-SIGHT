@@ -1,0 +1,14 @@
+{
+  "schema": "vsight_e6b_eval_v1",
+  "mode": "flat",
+  "lora": "zeroshot",
+  "n_holdout": 854,
+  "n_pos": 63,
+  "n_neg": 791,
+  "AUROC_candidate_correct": 0.8555,
+  "AUROC_pos_vs_ROHneg": 0.7803,
+  "mean_pyes_pos": 0.823,
+  "mean_pyes_neg": 0.3548,
+  "negflag<0.5": 0.6359,
+  "negflag<0.7": 0.7282
+}

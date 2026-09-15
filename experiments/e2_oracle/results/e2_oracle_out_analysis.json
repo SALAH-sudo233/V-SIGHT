@@ -1,0 +1,85 @@
+{
+  "schema": "vsight_e2_evidence_oracle_v1",
+  "caveat": "human boxes are gold, may exceed detector candidate pool -> perception/evidence upper bound, NOT fixed-pool recoverability",
+  "n_items": 334,
+  "conditions": {
+    "E2a_agent_target": {
+      "BOH": {
+        "n_pos": 0,
+        "n_neg": 0,
+        "AUROC_correct_vs_halluc": NaN,
+        "AUROC_correct_vs_wronginstance": null,
+        "mean_pyes_pos": null,
+        "mean_pyes_wronginstance": null
+      },
+      "ROH": {
+        "n_pos": 123,
+        "n_neg": 118,
+        "AUROC_correct_vs_halluc": 0.6545,
+        "AUROC_correct_vs_wronginstance": 0.6564,
+        "mean_pyes_pos": 0.9199,
+        "mean_pyes_wronginstance": 0.6948
+      },
+      "ALL": {
+        "n_pos": 123,
+        "n_neg": 118,
+        "AUROC_correct_vs_halluc": 0.6545,
+        "AUROC_correct_vs_wronginstance": 0.6564,
+        "mean_pyes_pos": 0.9199,
+        "mean_pyes_wronginstance": 0.6948
+      }
+    },
+    "E2c_human_target": {
+      "BOH": {
+        "n_pos": 0,
+        "n_neg": 0,
+        "AUROC_correct_vs_halluc": NaN,
+        "AUROC_correct_vs_wronginstance": null,
+        "mean_pyes_pos": null,
+        "mean_pyes_wronginstance": null
+      },
+      "ROH": {
+        "n_pos": 123,
+        "n_neg": 133,
+        "AUROC_correct_vs_halluc": 0.5403,
+        "AUROC_correct_vs_wronginstance": 0.5403,
+        "mean_pyes_pos": 0.9199,
+        "mean_pyes_wronginstance": 0.8936
+      },
+      "ALL": {
+        "n_pos": 123,
+        "n_neg": 133,
+        "AUROC_correct_vs_halluc": 0.5403,
+        "AUROC_correct_vs_wronginstance": 0.5403,
+        "mean_pyes_pos": 0.9199,
+        "mean_pyes_wronginstance": 0.8936
+      }
+    },
+    "E2d_joint_boxes": {
+      "BOH": {
+        "n_pos": 0,
+        "n_neg": 0,
+        "AUROC_correct_vs_halluc": NaN,
+        "AUROC_correct_vs_wronginstance": null,
+        "mean_pyes_pos": null,
+        "mean_pyes_wronginstance": null
+      },
+      "ROH": {
+        "n_pos": 123,
+        "n_neg": 130,
+        "AUROC_correct_vs_halluc": 0.5551,
+        "AUROC_correct_vs_wronginstance": 0.5551,
+        "mean_pyes_pos": 0.8983,
+        "mean_pyes_wronginstance": 0.8647
+      },
+      "ALL": {
+        "n_pos": 123,
+        "n_neg": 130,
+        "AUROC_correct_vs_halluc": 0.5551,
+        "AUROC_correct_vs_wronginstance": 0.5551,
+        "mean_pyes_pos": 0.8983,
+        "mean_pyes_wronginstance": 0.8647
+      }
+    }
+  }
+}

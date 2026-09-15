@@ -1,0 +1,292 @@
+{
+  "image_id": 119815,
+  "source": {
+    "ref": {
+      "sent_ids": [
+        112894,
+        112895,
+        112896
+      ],
+      "file_name": "COCO_train2014_000000119815_2.jpg",
+      "ann_id": 508567,
+      "ref_id": 39704,
+      "image_id": 119815,
+      "split": "train",
+      "sentences": [
+        {
+          "tokens": [
+            "woman",
+            "in",
+            "red"
+          ],
+          "raw": "woman in red",
+          "sent_id": 112894,
+          "sent": "woman in red"
+        },
+        {
+          "tokens": [
+            "woman",
+            "in",
+            "red",
+            "jacket",
+            "with",
+            "green",
+            "bag"
+          ],
+          "raw": "woman in red jacket with green bag",
+          "sent_id": 112895,
+          "sent": "woman in red jacket with green bag"
+        },
+        {
+          "tokens": [
+            "left",
+            "woman",
+            "in",
+            "red",
+            "coat"
+          ],
+          "raw": "left woman in red coat",
+          "sent_id": 112896,
+          "sent": "left woman in red coat"
+        }
+      ],
+      "category_id": 1
+    },
+    "annotation": {
+      "segmentation": [
+        [
+          65.74,
+          84.8,
+          66.7,
+          81.94,
+          69.56,
+          75.27,
+          83.85,
+          73.37,
+          98.14,
+          86.71,
+          99.09,
+          96.23,
+          97.19,
+          101.95,
+          100.04,
+          113.38,
+          100.04,
+          114.34,
+          105.76,
+          139.11,
+          110.53,
+          145.78,
+          120.05,
+          148.64,
+          123.87,
+          181.03,
+          123.87,
+          186.75,
+          124.82,
+          194.37,
+          101.0,
+          202.95,
+          99.09,
+          202.0,
+          100.04,
+          202.95,
+          120.05,
+          253.45,
+          125.77,
+          275.36,
+          117.2,
+          286.8,
+          103.86,
+          288.7,
+          85.75,
+          286.8,
+          86.71,
+          282.98,
+          101.0,
+          279.17,
+          98.14,
+          277.27,
+          95.28,
+          251.54,
+          79.08,
+          222.96,
+          75.27,
+          216.29,
+          65.74,
+          224.86,
+          47.64,
+          263.93,
+          32.4,
+          282.98,
+          29.54,
+          284.89,
+          11.43,
+          270.6,
+          11.43,
+          265.83,
+          12.39,
+          262.98,
+          18.1,
+          268.69,
+          26.68,
+          262.98,
+          44.78,
+          234.39,
+          50.5,
+          228.67,
+          59.07,
+          203.9,
+          59.07,
+          203.9,
+          57.17,
+          196.28,
+          49.55,
+          194.37,
+          49.55,
+          163.88,
+          55.26,
+          144.83,
+          52.4,
+          130.53,
+          53.36,
+          128.63,
+          55.26,
+          125.77,
+          58.12,
+          118.15,
+          64.79,
+          115.29,
+          65.74,
+          107.67,
+          68.6,
+          98.14
+        ]
+      ],
+      "area": 10468.15945,
+      "iscrowd": 0,
+      "image_id": 119815,
+      "bbox": [
+        11.43,
+        73.37,
+        114.34,
+        215.33
+      ],
+      "category_id": 1,
+      "id": 508567
+    },
+    "image": {
+      "license": 5,
+      "file_name": "COCO_train2014_000000119815.jpg",
+      "coco_url": "http://mscoco.org/images/119815",
+      "height": 424,
+      "width": 640,
+      "date_captured": "2013-11-22 01:52:56",
+      "flickr_url": "http://farm4.staticflickr.com/3334/3248738773_d9b51384ea_z.jpg",
+      "id": 119815
+    }
+  },
+  "generation_before": {
+    "usable": true,
+    "target_description": "The woman at the far left wearing a red jacket and carrying a bright green shopping bag.",
+    "bbox_valid": true,
+    "positive": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative": {
+      "object": "The mannequin wearing a red jacket to the left of the woman in the white jacket.",
+      "co_occurrence": "The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.",
+      "attribute": "The woman wearing a purple jacket to the left of the woman in the white jacket.",
+      "relation": "The woman wearing a red jacket to the right of the woman in the white jacket."
+    },
+    "evidence": {
+      "object": "The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.",
+      "co_occurrence": "No Dalmatian dog is visible anywhere in the image.",
+      "attribute": "The boxed woman's jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.",
+      "relation": "The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right."
+    }
+  },
+  "proposed_after": {
+    "usable": true,
+    "target_description": "The woman at the far left wearing a red jacket and carrying a bright green shopping bag.",
+    "bbox_valid": true,
+    "positive": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative": {
+      "object": "The mannequin wearing a red jacket to the left of the woman in the white jacket.",
+      "co_occurrence": "The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.",
+      "attribute": "The woman wearing a purple jacket to the left of the woman in the white jacket.",
+      "relation": "The woman wearing a red jacket to the right of the woman in the white jacket."
+    },
+    "evidence": {
+      "object": "The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.",
+      "co_occurrence": "No Dalmatian dog is visible anywhere in the image.",
+      "attribute": "The boxed woman's jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.",
+      "relation": "The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right."
+    }
+  },
+  "audit_order_positive": {
+    "object": "B",
+    "co_occurrence": "B",
+    "attribute": "B",
+    "relation": "A"
+  },
+  "audit": {
+    "pairs": [
+      {
+        "type": "object",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The box covers the walking woman in a red jacket carrying a green bag, left of the uniquely visible woman in a white jacket. No red-jacketed mannequin appears anywhere in either image. Only the target noun changes."
+      },
+      {
+        "type": "co_occurrence",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed red-jacketed woman uniquely matches B. Neither image shows a Dalmatian accompanying her, or any visible Dalmatian elsewhere. A only adds the absent companion."
+      },
+      {
+        "type": "attribute",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed woman's jacket is red, not purple. No woman wearing a purple jacket is visible to the left of the white-jacketed woman in either image. Only jacket color changes."
+      },
+      {
+        "type": "relation",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed red-jacketed woman is to the left of the uniquely identifiable white-jacketed woman. No red-jacketed woman is visible to that reference woman's right. Only the spatial relation changes, retaining the target and reference descriptions."
+      }
+    ],
+    "overall_pass": true
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "image_id": 478262,
+  "source": {
+    "ref": {
+      "sent_ids": [
+        25752,
+        25753,
+        25754
+      ],
+      "file_name": "COCO_train2014_000000478262_2.jpg",
+      "ann_id": 1267149,
+      "ref_id": 9041,
+      "image_id": 478262,
+      "split": "train",
+      "sentences": [
+        {
+          "tokens": [
+            "girl",
+            "in",
+            "green"
+          ],
+          "raw": "girl in green",
+          "sent_id": 25752,
+          "sent": "girl in green"
+        },
+        {
+          "tokens": [
+            "girl",
+            "with",
+            "green",
+            "shorts"
+          ],
+          "raw": "GIRL WITH GREEN SHORTS",
+          "sent_id": 25753,
+          "sent": "girl with green shorts"
+        },
+        {
+          "tokens": [
+            "girl",
+            "white",
+            "shirt",
+            "green",
+            "shorts"
+          ],
+          "raw": "girl, white shirt green shorts",
+          "sent_id": 25754,
+          "sent": "girl white shirt green shorts"
+        }
+      ],
+      "category_id": 1
+    },
+    "annotation": {
+      "segmentation": [
+        [
+          289.89,
+          316.01,
+          247.75,
+          320.22,
+          245.22,
+          314.33,
+          263.76,
+          305.9,
+          251.12,
+          253.65,
+          261.24,
+          216.57,
+          273.03,
+          185.39,
+          278.09,
+          157.58,
+          278.09,
+          137.36,
+          199.72,
+          93.54,
+          203.93,
+          88.48,
+          214.04,
+          85.11,
+          222.47,
+          96.91,
+          262.08,
+          108.71,
+          280.62,
+          115.45,
+          283.15,
+          89.33,
+          297.47,
+          82.58,
+          305.06,
+          82.58,
+          321.07,
+          98.6,
+          321.91,
+          108.71,
+          327.81,
+          93.54,
+          343.82,
+          99.44,
+          347.19,
+          105.34,
+          333.71,
+          131.46,
+          321.91,
+          135.67,
+          314.33,
+          184.55,
+          312.64,
+          227.53,
+          305.9,
+          237.64,
+          282.3,
+          255.34,
+          289.89,
+          308.43
+        ]
+      ],
+      "area": 11086.60245,
+      "iscrowd": 0,
+      "image_id": 478262,
+      "bbox": [
+        199.72,
+        82.58,
+        147.47,
+        237.64
+      ],
+      "category_id": 1,
+      "id": 1267149
+    },
+    "image": {
+      "license": 1,
+      "file_name": "COCO_train2014_000000478262.jpg",
+      "coco_url": "http://mscoco.org/images/478262",
+      "height": 375,
+      "width": 500,
+      "date_captured": "2013-11-18 17:36:31",
+      "flickr_url": "http://farm2.staticflickr.com/1383/843049666_80d1f430ed_z.jpg",
+      "id": 478262
+    }
+  },
+  "generation_before": {
+    "usable": true,
+    "target_description": "Woman wearing a white tank top and green shorts",
+    "bbox_valid": true,
+    "positive": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative": {
+      "object": "The green-and-white ball is to the right of the man in a blue shirt.",
+      "co_occurrence": "The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.",
+      "attribute": "The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.",
+      "relation": "The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt."
+    },
+    "evidence": {
+      "object": "The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.",
+      "co_occurrence": "The woman has no tennis racket, and no tennis racket is visible anywhere in the image.",
+      "attribute": "The boxed woman's tank top is visibly white, not blue.",
+      "relation": "The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left."
+    }
+  },
+  "proposed_after": {
+    "usable": true,
+    "target_description": "Woman wearing a white tank top and green shorts",
+    "bbox_valid": true,
+    "positive": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative": {
+      "object": "The mannequin wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+      "co_occurrence": "The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.",
+      "attribute": "The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.",
+      "relation": "The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt."
+    },
+    "evidence": {
+      "object": "The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.",
+      "co_occurrence": "The woman has no tennis racket, and no tennis racket is visible anywhere in the image.",
+      "attribute": "The boxed woman's tank top is visibly white, not blue.",
+      "relation": "The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left."
+    }
+  },
+  "audit_order_positive": {
+    "object": "A",
+    "co_occurrence": "A",
+    "attribute": "B",
+    "relation": "A"
+  },
+  "audit": {
+    "pairs": [
+      {
+        "type": "object",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "In both images, the box location corresponds to the unique foreground woman in a white tank top with pink side panels and green shorts, to the right of the foreground man in blue. The red box encloses her body and outstretched arms. No mannequin is visible anywhere. Only the target noun changes."
+      },
+      {
+        "type": "co_occurrence",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed woman uniquely matches A in both images. Her outstretched hands are empty; she is not holding a tennis racket. No other woman wearing the specified white tank top and green shorts holds a racket anywhere in the scene. B only adds the absent racket companion."
+      },
+      {
+        "type": "attribute",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "In both images, the boxed woman's tank top is white with pink side panels, not blue, and her shorts are green. No woman elsewhere visibly matches the blue-tank-top and green-shorts combination. B uniquely identifies the boxed woman. Only the tank-top color changes."
+      },
+      {
+        "type": "relation",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "In both images, the unique woman in the specified outfit stands on the image-right of the clearly visible foreground man in a blue shirt. She is not on his image-left, and no other woman in that outfit matches B elsewhere. The target and reference remain unchanged; only right versus left changes."
+      }
+    ],
+    "overall_pass": true
+  }
+}

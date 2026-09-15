@@ -1,0 +1,231 @@
+{
+  "image_id": 224420,
+  "source": {
+    "ref": {
+      "sent_ids": [
+        87879,
+        87880,
+        87881
+      ],
+      "file_name": "COCO_train2014_000000224420_0.jpg",
+      "ann_id": 354121,
+      "ref_id": 30901,
+      "image_id": 224420,
+      "split": "train",
+      "sentences": [
+        {
+          "tokens": [
+            "car",
+            "on",
+            "left"
+          ],
+          "raw": "car on left",
+          "sent_id": 87879,
+          "sent": "car on left"
+        },
+        {
+          "tokens": [
+            "car",
+            "on",
+            "left",
+            "side"
+          ],
+          "raw": "Car on left side",
+          "sent_id": 87880,
+          "sent": "car on left side"
+        },
+        {
+          "tokens": [
+            "car",
+            "on",
+            "left"
+          ],
+          "raw": "car on left",
+          "sent_id": 87881,
+          "sent": "car on left"
+        }
+      ],
+      "category_id": 3
+    },
+    "annotation": {
+      "segmentation": [
+        [
+          115.75,
+          174.07,
+          163.86,
+          167.11,
+          208.81,
+          165.21,
+          243.0,
+          170.27,
+          261.36,
+          178.5,
+          286.68,
+          191.16,
+          291.74,
+          194.33,
+          331.63,
+          191.8,
+          363.28,
+          199.39,
+          367.08,
+          219.02,
+          365.81,
+          231.68,
+          361.38,
+          244.34,
+          317.7,
+          251.3,
+          294.91,
+          253.2,
+          283.51,
+          255.74,
+          260.72,
+          238.01,
+          175.89,
+          245.61,
+          163.86,
+          246.24,
+          160.07,
+          262.07,
+          150.57,
+          265.23,
+          142.34,
+          262.07,
+          134.11,
+          261.43,
+          129.68,
+          260.8,
+          128.41,
+          255.1,
+          119.55,
+          221.55
+        ]
+      ],
+      "area": 17097.3061,
+      "iscrowd": 0,
+      "image_id": 224420,
+      "bbox": [
+        115.75,
+        165.21,
+        251.33,
+        100.02
+      ],
+      "category_id": 3,
+      "id": 354121
+    },
+    "image": {
+      "license": 4,
+      "file_name": "COCO_train2014_000000224420.jpg",
+      "coco_url": "http://mscoco.org/images/224420",
+      "height": 427,
+      "width": 640,
+      "date_captured": "2013-11-18 17:02:27",
+      "flickr_url": "http://farm4.staticflickr.com/3248/2726617397_f5551ed7ea_z.jpg",
+      "id": 224420
+    }
+  },
+  "generation_before": {
+    "usable": true,
+    "target_description": "The silver sedan on the left, partly obscured by vegetation.",
+    "bbox_valid": true,
+    "positive": "The silver sedan to the left of the white SUV.",
+    "negative": {
+      "object": "The silver motorcycle to the left of the white SUV.",
+      "co_occurrence": "The silver sedan to the left of the white SUV, with a traffic cone on its roof.",
+      "attribute": "The red sedan to the left of the white SUV.",
+      "relation": "The silver sedan to the right of the white SUV."
+    },
+    "evidence": {
+      "object": "The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.",
+      "co_occurrence": "There is no traffic cone on the sedan's roof, and no traffic cone is visible elsewhere in the image.",
+      "attribute": "The sedan has visibly silver body panels, not red ones; no red sedan is present.",
+      "relation": "The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right."
+    }
+  },
+  "proposed_after": {
+    "usable": true,
+    "target_description": "The silver sedan on the left, partly obscured by vegetation.",
+    "bbox_valid": true,
+    "positive": "The silver sedan to the left of the white SUV.",
+    "negative": {
+      "object": "The silver motorcycle to the left of the white SUV.",
+      "co_occurrence": "The silver sedan to the left of the white SUV, with a traffic cone on its roof.",
+      "attribute": "The red sedan to the left of the white SUV.",
+      "relation": "The silver sedan to the right of the white SUV."
+    },
+    "evidence": {
+      "object": "The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.",
+      "co_occurrence": "There is no traffic cone on the sedan's roof, and no traffic cone is visible elsewhere in the image.",
+      "attribute": "The sedan has visibly silver body panels, not red ones; no red sedan is present.",
+      "relation": "The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right."
+    }
+  },
+  "audit_order_positive": {
+    "object": "A",
+    "co_occurrence": "A",
+    "attribute": "A",
+    "relation": "B"
+  },
+  "audit": {
+    "pairs": [
+      {
+        "type": "object",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The red box encloses the visible silver sedan left of the uniquely identifiable white SUV. No silver motorcycle is visible anywhere in either image. Only the target noun changes."
+      },
+      {
+        "type": "co_occurrence",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed silver sedan is the only sedan left of the white SUV. No traffic cone is visible on its roof; the orange-and-blue airborne object above it is a disc, not a cone. B adds only the absent companion condition."
+      },
+      {
+        "type": "attribute",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The sedan inside the red box has visibly silver body panels and sits left of the white SUV. No red sedan is visible anywhere in the full scene. Only the sedan's color attribute changes."
+      },
+      {
+        "type": "relation",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed silver sedan is visibly left of the unique white SUV, not right of it. No silver sedan appears to the SUV's right anywhere in the images. The target and reference remain unchanged; only right versus left changes."
+      }
+    ],
+    "overall_pass": true
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "image_id": 472639,
+  "source": {
+    "ref": {
+      "sent_ids": [
+        27069,
+        27070,
+        27071
+      ],
+      "file_name": "COCO_train2014_000000472639_1.jpg",
+      "ann_id": 35515,
+      "ref_id": 9503,
+      "image_id": 472639,
+      "split": "train",
+      "sentences": [
+        {
+          "tokens": [
+            "biggest",
+            "monitor"
+          ],
+          "raw": "biggest monitor",
+          "sent_id": 27069,
+          "sent": "biggest monitor"
+        },
+        {
+          "tokens": [
+            "front",
+            "monitor"
+          ],
+          "raw": "front monitor",
+          "sent_id": 27070,
+          "sent": "front monitor"
+        },
+        {
+          "tokens": [
+            "the",
+            "monitor",
+            "dead",
+            "center",
+            "apple",
+            "logo"
+          ],
+          "raw": "the monitor dead center (apple logo)",
+          "sent_id": 27071,
+          "sent": "the monitor dead center apple logo"
+        }
+      ],
+      "category_id": 72
+    },
+    "annotation": {
+      "segmentation": [
+        [
+          205.65,
+          75.37,
+          457.65,
+          78.86,
+          448.66,
+          266.56,
+          214.85,
+          266.98
+        ]
+      ],
+      "area": 46067.9866,
+      "iscrowd": 0,
+      "image_id": 472639,
+      "bbox": [
+        205.65,
+        75.37,
+        252.0,
+        191.61
+      ],
+      "category_id": 72,
+      "id": 35515
+    },
+    "image": {
+      "license": 1,
+      "file_name": "COCO_train2014_000000472639.jpg",
+      "coco_url": "http://mscoco.org/images/472639",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-15 16:06:17",
+      "flickr_url": "http://farm3.staticflickr.com/2366/2086093551_cfa401124d_z.jpg",
+      "id": 472639
+    }
+  },
+  "generation_before": {
+    "usable": true,
+    "target_description": "The large central Apple monitor with a black screen surround and silver lower bezel.",
+    "bbox_valid": true,
+    "positive": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative": {
+      "object": "The television with a silver lower bezel above the white keyboard.",
+      "co_occurrence": "The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.",
+      "attribute": "The monitor with a red lower bezel above the white keyboard.",
+      "relation": "The monitor with a silver lower bezel below the white keyboard."
+    },
+    "evidence": {
+      "object": "The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.",
+      "co_occurrence": "No separate webcam is perched on the central monitor or either display's top edge.",
+      "attribute": "The central monitor's lower bezel is visibly silver, not red; neither display has a red lower bezel.",
+      "relation": "The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it."
+    }
+  },
+  "proposed_after": {
+    "usable": true,
+    "target_description": "The large central Apple monitor with a black screen surround and silver lower bezel.",
+    "bbox_valid": true,
+    "positive": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative": {
+      "object": "The microwave with a silver lower bezel above the white keyboard.",
+      "co_occurrence": "The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.",
+      "attribute": "The monitor with a red lower bezel above the white keyboard.",
+      "relation": "The monitor with a silver lower bezel below the white keyboard."
+    },
+    "evidence": {
+      "object": "The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.",
+      "co_occurrence": "No separate webcam is perched on the central monitor or either display's top edge.",
+      "attribute": "The central monitor's lower bezel is visibly silver, not red; neither display has a red lower bezel.",
+      "relation": "The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it."
+    }
+  },
+  "audit_order_positive": {
+    "object": "B",
+    "co_occurrence": "B",
+    "attribute": "B",
+    "relation": "A"
+  },
+  "audit": {
+    "pairs": [
+      {
+        "type": "object",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The box encloses the central iMac display body, with its broad silver lower bezel directly above the white keyboard. The separate left monitor is offset to the left and has a narrow surrounding frame. No microwave is visible anywhere. Only the target noun changes."
+      },
+      {
+        "type": "co_occurrence",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The central display uniquely matches the silver-lower-bezel monitor directly above the white keyboard. Its entire top edge is visible, with no webcam perched on it. Neither display has such an external webcam; a built-in camera would not satisfy 'perched on its top edge.' A adds only the absent companion."
+      },
+      {
+        "type": "attribute",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed central display has a silver lower bezel, not a red one. Neither monitor in the full scene has a red lower bezel; the red rectangle in the second image is an annotation, not part of the object. Only the bezel color changes."
+      },
+      {
+        "type": "relation",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The single white keyboard is clearly visible on the lower desk tray. The boxed silver-bezel display is directly above it, and no monitor is below it anywhere in the scene. Only 'above' changes to 'below'; the target and the existing, unique reference remain unchanged."
+      }
+    ],
+    "overall_pass": true
+  }
+}

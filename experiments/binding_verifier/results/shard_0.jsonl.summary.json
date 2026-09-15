@@ -1,0 +1,40 @@
+{
+  "schema_version": "vsight_cable_composite_run_v3",
+  "records": 1035,
+  "source_manifest_sha256": "de7b8e651c97b559dc4e38cf65aa8bdbadd09cef64ade8018c0c95a732fd0485",
+  "detector_revision": "/home/u2025141034/.cache/huggingface/hub/models--IDEA-Research--grounding-dino-base/snapshots/12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+  "detector_config_sha256": "eda416dae6f49419ff831b1c190ec430a060b19aae688dbaf2425a075b650608",
+  "prompt_compiler_revision": "composite_prompt_v1",
+  "configuration_sha256": "6acfc880239a68f64213d22fbf9252cd041730341796baf25f6cb0334a1c2559",
+  "shard_index": 0,
+  "num_shards": 4,
+  "upstream_mllm_calls_per_query": 1,
+  "upstream_box_records": 0,
+  "upstream_null_records": 1035,
+  "detector_image_encoder_forwards_per_query": 1,
+  "proposal_cap": 5,
+  "phrase_alignment": "legacy_label",
+  "raft_intervention": false,
+  "trace_bind": false,
+  "trace_status_counts": {},
+  "trace_added_latency_ms": {
+    "p50": null,
+    "p95": null
+  },
+  "latency_ms": {
+    "p50": 124.76054998114705,
+    "p95": 142.48759602196515
+  },
+  "latency_measurement": "cuda_synchronized_wall",
+  "gpu_peak_memory_mb": 2295.65625,
+  "decoder_counterfactual": {
+    "branches_per_query_mean": 0.0,
+    "replays_per_query_mean": 0.0,
+    "additional_image_encoder_forwards_per_query_max": 0,
+    "latency_ms": {
+      "p50": null,
+      "p95": null
+    }
+  },
+  "output_sha256": "e510a304d4a631b2ec43bed988b3adc5b67350d114666bcde6a6bc3fcf730a92"
+}

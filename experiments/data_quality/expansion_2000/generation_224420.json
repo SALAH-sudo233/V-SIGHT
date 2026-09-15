@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"car\", \"on\", \"left\"], \"raw\": \"car on left\", \"sent_id\": 87879, \"sent\": \"car on left\"}, {\"tokens\": [\"car\", \"on\", \"left\", \"side\"], \"raw\": \"Car on left side\", \"sent_id\": 87880, \"sent\": \"car on left side\"}, {\"tokens\": [\"car\", \"on\", \"left\"], \"raw\": \"car on left\", \"sent_id\": 87881, \"sent\": \"car on left\"}], \"bbox_xyxy\": [115.75, 165.21, 367.08000000000004, 265.23], \"size\": [640, 427]}",
+  "images_sha256": [
+    "352a36fad472fbf2b056423492a340e79c60ce33e34a5111b8c2fe448c289cc5",
+    "734e744103f0e60b353cfbfbf5e49989ff11d68b705c73b67dfe6c45cb6c1dbf"
+  ],
+  "response": {
+    "id": "resp_0640d0793d87b5bf016aa3b30bf71487d0b34d4cedc9aa45f1",
+    "object": "chat.completion",
+    "created": 1789113100,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"usable\": true,\n  \"target_description\": \"The silver sedan on the left, partly obscured by vegetation.\",\n  \"bbox_valid\": true,\n  \"positive\": \"The silver sedan to the left of the white SUV.\",\n  \"negative\": {\n    \"object\": \"The silver motorcycle to the left of the white SUV.\",\n    \"co_occurrence\": \"The silver sedan to the left of the white SUV, with a traffic cone on its roof.\",\n    \"attribute\": \"The red sedan to the left of the white SUV.\",\n    \"relation\": \"The silver sedan to the right of the white SUV.\"\n  },\n  \"evidence\": {\n    \"object\": \"The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.\",\n    \"co_occurrence\": \"There is no traffic cone on the sedan's roof, and no traffic cone is visible elsewhere in the image.\",\n    \"attribute\": \"The sedan has visibly silver body panels, not red ones; no red sedan is present.\",\n    \"relation\": \"The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right.\"\n  }\n}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 241,
+      "total_tokens": 1681,
+      "prompt_tokens": 1440,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "The silver sedan on the left, partly obscured by vegetation.",
+    "bbox_valid": true,
+    "positive": "The silver sedan to the left of the white SUV.",
+    "negative": {
+      "object": "The silver motorcycle to the left of the white SUV.",
+      "co_occurrence": "The silver sedan to the left of the white SUV, with a traffic cone on its roof.",
+      "attribute": "The red sedan to the left of the white SUV.",
+      "relation": "The silver sedan to the right of the white SUV."
+    },
+    "evidence": {
+      "object": "The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.",
+      "co_occurrence": "There is no traffic cone on the sedan's roof, and no traffic cone is visible elsewhere in the image.",
+      "attribute": "The sedan has visibly silver body panels, not red ones; no red sedan is present.",
+      "relation": "The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right."
+    }
+  }
+}

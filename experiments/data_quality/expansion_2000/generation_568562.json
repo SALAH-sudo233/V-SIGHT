@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"baby\"], \"raw\": \"baby\", \"sent_id\": 3446, \"sent\": \"baby\"}, {\"tokens\": [\"front\", \"zebra\"], \"raw\": \"front zebra\", \"sent_id\": 3447, \"sent\": \"front zebra\"}, {\"tokens\": [\"a\", \"baby\", \"zebra\"], \"raw\": \"A baby zebra.\", \"sent_id\": 3448, \"sent\": \"a baby zebra\"}], \"bbox_xyxy\": [282.34, 200.3, 584.96, 440.46000000000004], \"size\": [640, 480]}",
+  "images_sha256": [
+    "dbc698d79d306d3dbbb1343448117d3e0594caa43b66a7d4d73898dc1ddf3b5e",
+    "49156019d332e8da78d315bcb954c39244bc5e1ef0d9fcffe5edbb6aaa78f551"
+  ],
+  "response": {
+    "id": "resp_0fbc1c504866685f016aa3b3201bc887d08ed0c82cc82c62e5",
+    "object": "chat.completion",
+    "created": 1789113120,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"usable\": true,\n  \"target_description\": \"The smaller zebra foal with its head lowered toward the grass.\",\n  \"bbox_valid\": true,\n  \"positive\": \"The striped zebra foal whose head is lower in the image than the adult zebra's head.\",\n  \"negative\": {\n    \"object\": \"The striped horse foal whose head is lower in the image than the adult zebra's head.\",\n    \"co_occurrence\": \"The striped zebra foal whose head is lower in the image than the adult zebra's head, accompanied by a red bucket.\",\n    \"attribute\": \"The solid-colored zebra foal whose head is lower in the image than the adult zebra's head.\",\n    \"relation\": \"The striped zebra foal whose head is higher in the image than the adult zebra's head.\"\n  },\n  \"evidence\": {\n    \"object\": \"The boxed animal is a zebra foal; no horse foal appears anywhere in the image.\",\n    \"co_occurrence\": \"No red bucket appears anywhere in the image.\",\n    \"attribute\": \"The foal has clearly visible contrasting stripes, not a solid-colored coat.\",\n    \"relation\": \"The foal's head is near the grass at the lower right, clearly lower in image coordinates than the adult zebra's upright head.\"\n  }\n}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 351,
+      "total_tokens": 1821,
+      "prompt_tokens": 1470,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 75
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "The smaller zebra foal with its head lowered toward the grass.",
+    "bbox_valid": true,
+    "positive": "The striped zebra foal whose head is lower in the image than the adult zebra's head.",
+    "negative": {
+      "object": "The striped horse foal whose head is lower in the image than the adult zebra's head.",
+      "co_occurrence": "The striped zebra foal whose head is lower in the image than the adult zebra's head, accompanied by a red bucket.",
+      "attribute": "The solid-colored zebra foal whose head is lower in the image than the adult zebra's head.",
+      "relation": "The striped zebra foal whose head is higher in the image than the adult zebra's head."
+    },
+    "evidence": {
+      "object": "The boxed animal is a zebra foal; no horse foal appears anywhere in the image.",
+      "co_occurrence": "No red bucket appears anywhere in the image.",
+      "attribute": "The foal has clearly visible contrasting stripes, not a solid-colored coat.",
+      "relation": "The foal's head is near the grass at the lower right, clearly lower in image coordinates than the adult zebra's upright head."
+    }
+  }
+}

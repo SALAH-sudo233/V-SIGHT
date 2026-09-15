@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"biggest\", \"monitor\"], \"raw\": \"biggest monitor\", \"sent_id\": 27069, \"sent\": \"biggest monitor\"}, {\"tokens\": [\"front\", \"monitor\"], \"raw\": \"front monitor\", \"sent_id\": 27070, \"sent\": \"front monitor\"}, {\"tokens\": [\"the\", \"monitor\", \"dead\", \"center\", \"apple\", \"logo\"], \"raw\": \"the monitor dead center (apple logo)\", \"sent_id\": 27071, \"sent\": \"the monitor dead center apple logo\"}], \"bbox_xyxy\": [205.65, 75.37, 457.65, 266.98], \"size\": [640, 480]}",
+  "images_sha256": [
+    "90af3c04b378084e01a1da3c1c56975527f1302c0f76a5fb5a4760b58a696aa3",
+    "342cf7c16aa92dc35e4ce4b28683d7c5d832b984c92f039c5d55c1d6d68553e3"
+  ],
+  "response": {
+    "id": "resp_024a83795686b40d016aa3b2f7aac887d0873ee0ed329c0bbd",
+    "object": "chat.completion",
+    "created": 1789113079,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"usable\": true,\n  \"target_description\": \"The large central Apple monitor with a black screen surround and silver lower bezel.\",\n  \"bbox_valid\": true,\n  \"positive\": \"The monitor with a silver lower bezel above the white keyboard.\",\n  \"negative\": {\n    \"object\": \"The television with a silver lower bezel above the white keyboard.\",\n    \"co_occurrence\": \"The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.\",\n    \"attribute\": \"The monitor with a red lower bezel above the white keyboard.\",\n    \"relation\": \"The monitor with a silver lower bezel below the white keyboard.\"\n  },\n  \"evidence\": {\n    \"object\": \"The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.\",\n    \"co_occurrence\": \"No separate webcam is perched on the central monitor or either display's top edge.\",\n    \"attribute\": \"The central monitor's lower bezel is visibly silver, not red; neither display has a red lower bezel.\",\n    \"relation\": \"The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it.\"\n  }\n}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 250,
+      "total_tokens": 1738,
+      "prompt_tokens": 1488,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "The large central Apple monitor with a black screen surround and silver lower bezel.",
+    "bbox_valid": true,
+    "positive": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative": {
+      "object": "The television with a silver lower bezel above the white keyboard.",
+      "co_occurrence": "The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.",
+      "attribute": "The monitor with a red lower bezel above the white keyboard.",
+      "relation": "The monitor with a silver lower bezel below the white keyboard."
+    },
+    "evidence": {
+      "object": "The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.",
+      "co_occurrence": "No separate webcam is perched on the central monitor or either display's top edge.",
+      "attribute": "The central monitor's lower bezel is visibly silver, not red; neither display has a red lower bezel.",
+      "relation": "The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it."
+    }
+  }
+}

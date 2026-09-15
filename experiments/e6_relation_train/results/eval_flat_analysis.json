@@ -1,0 +1,14 @@
+{
+  "schema": "vsight_e6b_eval_v1",
+  "mode": "flat",
+  "lora": "/home/u2025141034/SVD/V-SIGHT_AGENTIC_FLYWHEEL/experiments/roh_boh_gate_a_500dev/results/e6_lora_flat",
+  "n_holdout": 854,
+  "n_pos": 63,
+  "n_neg": 791,
+  "AUROC_candidate_correct": 0.8973,
+  "AUROC_pos_vs_ROHneg": 0.8544,
+  "mean_pyes_pos": 0.6612,
+  "mean_pyes_neg": 0.1978,
+  "negflag<0.5": 0.8255,
+  "negflag<0.7": 0.9166
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "vsight_remote_source_verification_v1",
+  "verified_via": "direct_ssh_password_session",
+  "host": "10.160.16.3",
+  "port": 23384,
+  "remote_user": "u2025141034",
+  "credential_written": false,
+  "sources": [
+    {
+      "set": "1996",
+      "remote_path": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",
+      "remote_rows": 7984,
+      "remote_sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7",
+      "local_retrieved_copy": "C:\\Users\\30796\\AppData\\Local\\Temp\\grpo\\refcocog_1996_heldout.manual_v2.remote.json",
+      "local_copy_exact_equal_to_preserved_source": true
+    },
+    {
+      "set": "500dev",
+      "remote_path": "/home/u2025141034/benchmark/repaired/refcocog_500_dev.semantic_strict.json",
+      "remote_rows": 2000,
+      "remote_sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f",
+      "local_preserved_copy": "C:\\Users\\30796\\Desktop\\V-SIGHT-assets\\repo\\legacy\\candidate_pool_v1\\data\\refcocog_500_dev.semantic_strict.json",
+      "remote_sha_differs_from_local_preserved_copy": true,
+      "note": "The remote and preserved local 500-dev copies have equal row count but different bytes. The local pairs_dump was not overwritten; resolving this requires retrieving the remote 500-dev file before rebuilding the index."
+    }
+  ],
+  "image_root_remote": "/home/u2025141034/models/LENS/data/refcoco/train2014",
+  "remote_image_file_count_observed": 82783,
+  "original_local_sources_modified": false,
+  "next_required_action": "retrieve remote 500-dev JSON and image evidence, then rebuild pairs_dump from both remote sources"
+}

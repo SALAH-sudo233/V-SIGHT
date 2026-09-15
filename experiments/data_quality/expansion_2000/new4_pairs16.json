@@ -1,0 +1,738 @@
+[
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000472639.jpg",
+    "chosen": "The monitor with a silver lower bezel above the white keyboard.",
+    "rejected": "The microwave with a silver lower bezel above the white keyboard.",
+    "sample_id": "expansion_ref9503_COCO_train2014_000000472639__obj",
+    "hallucination_type": "object",
+    "positive_text": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative_text": "The microwave with a silver lower bezel above the white keyboard.",
+    "positive_bbox": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "chosen_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+    "pair_id": "expansion_ref9503_COCO_train2014_000000472639::object",
+    "difficulty_tier": "object",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9503,
+      "source_ann_id": 35515,
+      "audit_file": "verification_472639.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000472639.jpg",
+    "chosen": "The monitor with a silver lower bezel above the white keyboard.",
+    "rejected": "The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.",
+    "sample_id": "expansion_ref9503_COCO_train2014_000000472639__cooc",
+    "hallucination_type": "co_occurrence",
+    "positive_text": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative_text": "The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.",
+    "positive_bbox": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "chosen_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+    "pair_id": "expansion_ref9503_COCO_train2014_000000472639::co_occurrence",
+    "difficulty_tier": "co_occurrence",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9503,
+      "source_ann_id": 35515,
+      "audit_file": "verification_472639.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000472639.jpg",
+    "chosen": "The monitor with a silver lower bezel above the white keyboard.",
+    "rejected": "The monitor with a red lower bezel above the white keyboard.",
+    "sample_id": "expansion_ref9503_COCO_train2014_000000472639__attr",
+    "hallucination_type": "attribute",
+    "positive_text": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative_text": "The monitor with a red lower bezel above the white keyboard.",
+    "positive_bbox": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "chosen_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+    "pair_id": "expansion_ref9503_COCO_train2014_000000472639::attribute",
+    "difficulty_tier": "attribute",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9503,
+      "source_ann_id": 35515,
+      "audit_file": "verification_472639.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000472639.jpg",
+    "chosen": "The monitor with a silver lower bezel above the white keyboard.",
+    "rejected": "The monitor with a silver lower bezel below the white keyboard.",
+    "sample_id": "expansion_ref9503_COCO_train2014_000000472639__rel",
+    "hallucination_type": "relation",
+    "positive_text": "The monitor with a silver lower bezel above the white keyboard.",
+    "negative_text": "The monitor with a silver lower bezel below the white keyboard.",
+    "positive_bbox": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "chosen_bbox_xyxy": [
+      205.65,
+      75.37,
+      457.65,
+      266.98
+    ],
+    "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+    "pair_id": "expansion_ref9503_COCO_train2014_000000472639::relation",
+    "difficulty_tier": "relation",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9503_COCO_train2014_000000472639",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9503,
+      "source_ann_id": 35515,
+      "audit_file": "verification_472639.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000478262.jpg",
+    "chosen": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "rejected": "The mannequin wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "sample_id": "expansion_ref9041_COCO_train2014_000000478262__obj",
+    "hallucination_type": "object",
+    "positive_text": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative_text": "The mannequin wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "positive_bbox": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "chosen_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+    "pair_id": "expansion_ref9041_COCO_train2014_000000478262::object",
+    "difficulty_tier": "object",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9041,
+      "source_ann_id": 1267149,
+      "audit_file": "verification_478262.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000478262.jpg",
+    "chosen": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "rejected": "The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.",
+    "sample_id": "expansion_ref9041_COCO_train2014_000000478262__cooc",
+    "hallucination_type": "co_occurrence",
+    "positive_text": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative_text": "The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.",
+    "positive_bbox": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "chosen_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+    "pair_id": "expansion_ref9041_COCO_train2014_000000478262::co_occurrence",
+    "difficulty_tier": "co_occurrence",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9041,
+      "source_ann_id": 1267149,
+      "audit_file": "verification_478262.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000478262.jpg",
+    "chosen": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "rejected": "The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.",
+    "sample_id": "expansion_ref9041_COCO_train2014_000000478262__attr",
+    "hallucination_type": "attribute",
+    "positive_text": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative_text": "The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.",
+    "positive_bbox": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "chosen_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+    "pair_id": "expansion_ref9041_COCO_train2014_000000478262::attribute",
+    "difficulty_tier": "attribute",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9041,
+      "source_ann_id": 1267149,
+      "audit_file": "verification_478262.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000478262.jpg",
+    "chosen": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "rejected": "The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt.",
+    "sample_id": "expansion_ref9041_COCO_train2014_000000478262__rel",
+    "hallucination_type": "relation",
+    "positive_text": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative_text": "The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt.",
+    "positive_bbox": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "chosen_bbox_xyxy": [
+      199.72,
+      82.58,
+      347.19,
+      320.21999999999997
+    ],
+    "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+    "pair_id": "expansion_ref9041_COCO_train2014_000000478262::relation",
+    "difficulty_tier": "relation",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref9041_COCO_train2014_000000478262",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 9041,
+      "source_ann_id": 1267149,
+      "audit_file": "verification_478262.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000224420.jpg",
+    "chosen": "The silver sedan to the left of the white SUV.",
+    "rejected": "The silver motorcycle to the left of the white SUV.",
+    "sample_id": "expansion_ref30901_COCO_train2014_000000224420__obj",
+    "hallucination_type": "object",
+    "positive_text": "The silver sedan to the left of the white SUV.",
+    "negative_text": "The silver motorcycle to the left of the white SUV.",
+    "positive_bbox": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "chosen_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+    "pair_id": "expansion_ref30901_COCO_train2014_000000224420::object",
+    "difficulty_tier": "object",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 30901,
+      "source_ann_id": 354121,
+      "audit_file": "verification_224420.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000224420.jpg",
+    "chosen": "The silver sedan to the left of the white SUV.",
+    "rejected": "The silver sedan to the left of the white SUV, with a traffic cone on its roof.",
+    "sample_id": "expansion_ref30901_COCO_train2014_000000224420__cooc",
+    "hallucination_type": "co_occurrence",
+    "positive_text": "The silver sedan to the left of the white SUV.",
+    "negative_text": "The silver sedan to the left of the white SUV, with a traffic cone on its roof.",
+    "positive_bbox": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "chosen_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+    "pair_id": "expansion_ref30901_COCO_train2014_000000224420::co_occurrence",
+    "difficulty_tier": "co_occurrence",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 30901,
+      "source_ann_id": 354121,
+      "audit_file": "verification_224420.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000224420.jpg",
+    "chosen": "The silver sedan to the left of the white SUV.",
+    "rejected": "The red sedan to the left of the white SUV.",
+    "sample_id": "expansion_ref30901_COCO_train2014_000000224420__attr",
+    "hallucination_type": "attribute",
+    "positive_text": "The silver sedan to the left of the white SUV.",
+    "negative_text": "The red sedan to the left of the white SUV.",
+    "positive_bbox": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "chosen_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+    "pair_id": "expansion_ref30901_COCO_train2014_000000224420::attribute",
+    "difficulty_tier": "attribute",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 30901,
+      "source_ann_id": 354121,
+      "audit_file": "verification_224420.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000224420.jpg",
+    "chosen": "The silver sedan to the left of the white SUV.",
+    "rejected": "The silver sedan to the right of the white SUV.",
+    "sample_id": "expansion_ref30901_COCO_train2014_000000224420__rel",
+    "hallucination_type": "relation",
+    "positive_text": "The silver sedan to the left of the white SUV.",
+    "negative_text": "The silver sedan to the right of the white SUV.",
+    "positive_bbox": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "chosen_bbox_xyxy": [
+      115.75,
+      165.21,
+      367.08000000000004,
+      265.23
+    ],
+    "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+    "pair_id": "expansion_ref30901_COCO_train2014_000000224420::relation",
+    "difficulty_tier": "relation",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref30901_COCO_train2014_000000224420",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 30901,
+      "source_ann_id": 354121,
+      "audit_file": "verification_224420.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000119815.jpg",
+    "chosen": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "rejected": "The mannequin wearing a red jacket to the left of the woman in the white jacket.",
+    "sample_id": "expansion_ref39704_COCO_train2014_000000119815__obj",
+    "hallucination_type": "object",
+    "positive_text": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative_text": "The mannequin wearing a red jacket to the left of the woman in the white jacket.",
+    "positive_bbox": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "chosen_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+    "pair_id": "expansion_ref39704_COCO_train2014_000000119815::object",
+    "difficulty_tier": "object",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 39704,
+      "source_ann_id": 508567,
+      "audit_file": "verification_119815.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000119815.jpg",
+    "chosen": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "rejected": "The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.",
+    "sample_id": "expansion_ref39704_COCO_train2014_000000119815__cooc",
+    "hallucination_type": "co_occurrence",
+    "positive_text": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative_text": "The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.",
+    "positive_bbox": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "chosen_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+    "pair_id": "expansion_ref39704_COCO_train2014_000000119815::co_occurrence",
+    "difficulty_tier": "co_occurrence",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 39704,
+      "source_ann_id": 508567,
+      "audit_file": "verification_119815.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000119815.jpg",
+    "chosen": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "rejected": "The woman wearing a purple jacket to the left of the woman in the white jacket.",
+    "sample_id": "expansion_ref39704_COCO_train2014_000000119815__attr",
+    "hallucination_type": "attribute",
+    "positive_text": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative_text": "The woman wearing a purple jacket to the left of the woman in the white jacket.",
+    "positive_bbox": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "chosen_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+    "pair_id": "expansion_ref39704_COCO_train2014_000000119815::attribute",
+    "difficulty_tier": "attribute",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 39704,
+      "source_ann_id": 508567,
+      "audit_file": "verification_119815.json"
+    }
+  },
+  {
+    "source": "RefCOCOg",
+    "image_filename": "COCO_train2014_000000119815.jpg",
+    "chosen": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "rejected": "The woman wearing a red jacket to the right of the woman in the white jacket.",
+    "sample_id": "expansion_ref39704_COCO_train2014_000000119815__rel",
+    "hallucination_type": "relation",
+    "positive_text": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative_text": "The woman wearing a red jacket to the right of the woman in the white jacket.",
+    "positive_bbox": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "positive_bbox_format": "xyxy",
+    "gt_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "chosen_bbox_xyxy": [
+      11.43,
+      73.37,
+      125.77000000000001,
+      288.70000000000005
+    ],
+    "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+    "pair_id": "expansion_ref39704_COCO_train2014_000000119815::relation",
+    "difficulty_tier": "relation",
+    "expansion_origin": "RefCOCOg refs(google).p train",
+    "expansion_method": "image_conditioned_generation_independent_blinded_image_review",
+    "pair_metadata": {
+      "schema_version": "roh_vcd_strict_pair_v2",
+      "base_sample_id": "expansion_ref39704_COCO_train2014_000000119815",
+      "positive_is_shared_with_group": true,
+      "positive_bbox_is_shared_with_group": true,
+      "pair_alignment_validated": true,
+      "semantic_status": "vlm_image_review_passed_not_human_gold",
+      "negative_origin": "generated_strict_counterfactual",
+      "source_ref_id": 39704,
+      "source_ann_id": 508567,
+      "audit_file": "verification_119815.json"
+    }
+  }
+]

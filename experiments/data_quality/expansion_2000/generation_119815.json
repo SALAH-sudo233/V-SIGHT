@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"woman\", \"in\", \"red\"], \"raw\": \"woman in red\", \"sent_id\": 112894, \"sent\": \"woman in red\"}, {\"tokens\": [\"woman\", \"in\", \"red\", \"jacket\", \"with\", \"green\", \"bag\"], \"raw\": \"woman in red jacket with green bag\", \"sent_id\": 112895, \"sent\": \"woman in red jacket with green bag\"}, {\"tokens\": [\"left\", \"woman\", \"in\", \"red\", \"coat\"], \"raw\": \"left woman in red coat\", \"sent_id\": 112896, \"sent\": \"left woman in red coat\"}], \"bbox_xyxy\": [11.43, 73.37, 125.77000000000001, 288.70000000000005], \"size\": [640, 424]}",
+  "images_sha256": [
+    "be2b548fe5a961e721ba2aa68893c13af37c58158fdad9ec5251337059688572",
+    "b68768b2fb7ce31eb38fff7c96e1ac59f30139efb266256f6e3a0e955867822c"
+  ],
+  "response": {
+    "id": "resp_0842d2a14d8f9b5c016aa3b31ea8dc87d0b6cfa31099161f84",
+    "object": "chat.completion",
+    "created": 1789113118,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"usable\": true,\n  \"target_description\": \"The woman at the far left wearing a red jacket and carrying a bright green shopping bag.\",\n  \"bbox_valid\": true,\n  \"positive\": \"The woman wearing a red jacket to the left of the woman in the white jacket.\",\n  \"negative\": {\n    \"object\": \"The mannequin wearing a red jacket to the left of the woman in the white jacket.\",\n    \"co_occurrence\": \"The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.\",\n    \"attribute\": \"The woman wearing a purple jacket to the left of the woman in the white jacket.\",\n    \"relation\": \"The woman wearing a red jacket to the right of the woman in the white jacket.\"\n  },\n  \"evidence\": {\n    \"object\": \"The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.\",\n    \"co_occurrence\": \"No Dalmatian dog is visible anywhere in the image.\",\n    \"attribute\": \"The boxed woman's jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.\",\n    \"relation\": \"The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right.\"\n  }\n}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 293,
+      "total_tokens": 1763,
+      "prompt_tokens": 1470,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "The woman at the far left wearing a red jacket and carrying a bright green shopping bag.",
+    "bbox_valid": true,
+    "positive": "The woman wearing a red jacket to the left of the woman in the white jacket.",
+    "negative": {
+      "object": "The mannequin wearing a red jacket to the left of the woman in the white jacket.",
+      "co_occurrence": "The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.",
+      "attribute": "The woman wearing a purple jacket to the left of the woman in the white jacket.",
+      "relation": "The woman wearing a red jacket to the right of the woman in the white jacket."
+    },
+    "evidence": {
+      "object": "The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.",
+      "co_occurrence": "No Dalmatian dog is visible anywhere in the image.",
+      "attribute": "The boxed woman's jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.",
+      "relation": "The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right."
+    }
+  }
+}

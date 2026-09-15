@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"girl\", \"in\", \"green\"], \"raw\": \"girl in green\", \"sent_id\": 25752, \"sent\": \"girl in green\"}, {\"tokens\": [\"girl\", \"with\", \"green\", \"shorts\"], \"raw\": \"GIRL WITH GREEN SHORTS\", \"sent_id\": 25753, \"sent\": \"girl with green shorts\"}, {\"tokens\": [\"girl\", \"white\", \"shirt\", \"green\", \"shorts\"], \"raw\": \"girl, white shirt green shorts\", \"sent_id\": 25754, \"sent\": \"girl white shirt green shorts\"}], \"bbox_xyxy\": [199.72, 82.58, 347.19, 320.21999999999997], \"size\": [500, 375]}",
+  "images_sha256": [
+    "13ac6c113e4a874c8ff277a4a9de4b0e7bb5aa726448c4d98523d2957a7ec8f7",
+    "50d8a05abfd7340c4d588c4a71de78d1cb1096b3a6682c9d4f627b5b98a4f448"
+  ],
+  "response": {
+    "id": "resp_01c381eb977e6b40016aa3b2f32d5c87d2bad14b71aa1fad00",
+    "object": "chat.completion",
+    "created": 1789113076,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"usable\":true,\"target_description\":\"Woman wearing a white tank top and green shorts\",\"bbox_valid\":true,\"positive\":\"The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.\",\"negative\":{\"object\":\"The green-and-white ball is to the right of the man in a blue shirt.\",\"co_occurrence\":\"The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.\",\"attribute\":\"The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.\",\"relation\":\"The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt.\"},\"evidence\":{\"object\":\"The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.\",\"co_occurrence\":\"The woman has no tennis racket, and no tennis racket is visible anywhere in the image.\",\"attribute\":\"The boxed woman's tank top is visibly white, not blue.\",\"relation\":\"The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left.\"}}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 519,
+      "total_tokens": 1763,
+      "prompt_tokens": 1244,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 274
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "Woman wearing a white tank top and green shorts",
+    "bbox_valid": true,
+    "positive": "The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.",
+    "negative": {
+      "object": "The green-and-white ball is to the right of the man in a blue shirt.",
+      "co_occurrence": "The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.",
+      "attribute": "The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.",
+      "relation": "The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt."
+    },
+    "evidence": {
+      "object": "The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.",
+      "co_occurrence": "The woman has no tennis racket, and no tennis racket is visible anywhere in the image.",
+      "attribute": "The boxed woman's tank top is visibly white, not blue.",
+      "relation": "The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left."
+    }
+  }
+}

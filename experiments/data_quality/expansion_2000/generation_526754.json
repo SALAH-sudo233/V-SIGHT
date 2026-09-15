@@ -1,0 +1,57 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "You construct high-quality image-grounded counterfactual pairs. First image is original, second same image with candidate target bbox in red. Verify target bbox using real image; do not trust supplied source expressions. Need ONE shared positive expression uniquely identifying boxed whole target, and four different negatives. Each negative must be grammatically natural, non-self-contradictory, clearly false for this target AND no valid matching target anywhere in full image. Negatives must differ from positive in exactly the designated semantic factor, preserving other clauses where possible. object: replace target noun with an absent plausible category (NOT add an object). co_occurrence: retain target and add a clearly absent companion object; reference must be visually checkable absent. attribute: change one visibly clear color/material/attribute to a false one, no other changes. relation: change/reverse a spatial relation between this target and an EXISTING identifiable reference; preserve target and reference identities; do not use absent references, imagined actions or impossible comic scenarios. Thus shared positive MUST contain a visibly certain target attribute and a clear spatial relation to existing reference. Avoid depth/occlusion ambiguities. If impossible mark usable false. Return JSON {\"usable\":true/false,\"target_description\":\"...\",\"bbox_valid\":true/false,\"positive\":\"...\",\"negative\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"},\"evidence\":{\"object\":\"...\",\"co_occurrence\":\"...\",\"attribute\":\"...\",\"relation\":\"...\"}}. Source (fallible): {\"source_sentences\": [{\"tokens\": [\"zebra\", \"creature\", \"front\", \"and\", \"center\"], \"raw\": \"zebra creature front and center\", \"sent_id\": 13689, \"sent\": \"zebra creature front and center\"}, {\"tokens\": [\"zebra\"], \"raw\": \"zebra\", \"sent_id\": 13690, \"sent\": \"zebra\"}, {\"tokens\": [\"whole\", \"zebra\"], \"raw\": \"whole zebra\", \"sent_id\": 13691, \"sent\": \"whole zebra\"}], \"bbox_xyxy\": [57.79, 177.34, 491.20000000000005, 629.53], \"size\": [537, 640]}",
+  "images_sha256": [
+    "b70b6e481b6231b6f14b35dea0b83b20b4b8b6a39c44599027b57cec5d31668f",
+    "28ef0c9a0e81a0729fe9e65948beb587b83b7745f82189c8be5c76166ebaf5ec"
+  ],
+  "response": {
+    "id": "resp_0c95bad1fe5220d9016aa3b2f9ec3087d29704af694e18104b",
+    "object": "chat.completion",
+    "created": 1789113082,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"usable\":true,\"target_description\":\"The entire left zebra inside the red bounding box\",\"bbox_valid\":true,\"positive\":\"The black-and-white striped zebra stands to the left of another zebra.\",\"negative\":{\"object\":\"The black-and-white striped giraffe stands to the left of another zebra.\",\"co_occurrence\":\"The black-and-white striped zebra stands to the left of another zebra beside a lion.\",\"attribute\":\"The brown-and-white striped zebra stands to the left of another zebra.\",\"relation\":\"The black-and-white striped zebra stands to the right of another zebra.\"},\"evidence\":{\"object\":\"The boxed animal is a zebra, while no giraffe appears anywhere in the image.\",\"co_occurrence\":\"The boxed zebra and a partial second zebra are visible, but no lion is present.\",\"attribute\":\"The target has clearly black-and-white stripes, not brown-and-white stripes.\",\"relation\":\"The boxed zebra is positioned to the left of the partial zebra on the right.\"}}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 384,
+      "total_tokens": 1966,
+      "prompt_tokens": 1582,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 187
+      }
+    }
+  },
+  "parsed": {
+    "usable": true,
+    "target_description": "The entire left zebra inside the red bounding box",
+    "bbox_valid": true,
+    "positive": "The black-and-white striped zebra stands to the left of another zebra.",
+    "negative": {
+      "object": "The black-and-white striped giraffe stands to the left of another zebra.",
+      "co_occurrence": "The black-and-white striped zebra stands to the left of another zebra beside a lion.",
+      "attribute": "The brown-and-white striped zebra stands to the left of another zebra.",
+      "relation": "The black-and-white striped zebra stands to the right of another zebra."
+    },
+    "evidence": {
+      "object": "The boxed animal is a zebra, while no giraffe appears anywhere in the image.",
+      "co_occurrence": "The boxed zebra and a partial second zebra are visible, but no lion is present.",
+      "attribute": "The target has clearly black-and-white stripes, not brown-and-white stripes.",
+      "relation": "The boxed zebra is positioned to the left of the partial zebra on the right."
+    }
+  }
+}
