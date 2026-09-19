@@ -1,0 +1,114 @@
+{
+ "InternVL3.5-8B": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "LENS": {
+  "n": 500,
+  "counts": {
+   "ok": 491,
+   "empty": 8,
+   "too_short": 1
+  },
+  "ok_rate": 0.982,
+  "samples": {
+   "empty": "",
+   "too_short": "An image illustrating:"
+  }
+ },
+ "Orsta-7B": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "Qwen3-VL-8B": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "Seg-R1": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "Seg-zero": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "TreeVGR": {
+  "n": 500,
+  "counts": {
+   "ok": 499,
+   "too_short": 1
+  },
+  "ok_rate": 0.998,
+  "samples": {
+   "too_short": "Four"
+  }
+ },
+ "UniVG-R1": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "Vision-R1": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "VisionReasoner": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "llava-ov-7b": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "qwen2.5-vl-7b": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ },
+ "visual-rft": {
+  "n": 500,
+  "counts": {
+   "ok": 500
+  },
+  "ok_rate": 1.0,
+  "samples": {}
+ }
+}

@@ -1,0 +1,33 @@
+{
+  "protocol": "E2a only; prepared-train-image-disjoint, agent selected a box. Baselines reuse stored inference on exact same IDs; not a sealed final test.",
+  "rerun_n": 70,
+  "error_n": 0,
+  "comparison_n_pos": 32,
+  "comparison_n_wrong": 37,
+  "comparison_images": 69,
+  "not_applicable": {
+    "REJECT": 25,
+    "ABSTAIN": 5
+  },
+  "metrics": {
+    "E6": {
+      "AUROC": 0.7010135135135135,
+      "wrong_flag": 0.40540540540540543
+    },
+    "old": {
+      "AUROC": 0.7766047297297297,
+      "wrong_flag": 0.3783783783783784
+    },
+    "zero": {
+      "AUROC": 0.6668074324324325,
+      "wrong_flag": 0.16216216216216217
+    }
+  },
+  "E6_minus_old_paired_image_bootstrap_95CI": [
+    -0.17227794889716036,
+    0.01429482851741821
+  ],
+  "bootstrap_replicates": 2000,
+  "seed": 20260910,
+  "warning": "Human-target E2c/E2d score should not retain wrong-instance negative label; do not use runner automatic AUROC for these oracle conditions."
+}

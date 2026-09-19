@@ -1,0 +1,17 @@
+{
+  "source_sha256": "07404c1069c2f9c13320190aadd6ad2926035a10344bcf2dd60457c5147af2e8",
+  "n_sft": 2000,
+  "n_sanity": 256,
+  "n_grpo": 15712,
+  "sft_images": 1290,
+  "sanity_images": 32,
+  "image_overlap": 0,
+  "schema_gate": 0.95,
+  "seed": 42,
+  "label_status": "Construction-label ablation only; not independently verified binding or process labels. No target supervision.",
+  "files": {
+    "sanity.jsonl": "c67193a91025276fee6f79e87f0e2267195d1728a854af8a5fbb1a2761c614b1",
+    "sft.jsonl": "55444bfc94b97d41d633e1cce011df2a8fe6e8ebe609f04b34a73b600102956a",
+    "grpo.jsonl": "c33d492d45f41dc66351942930b7f262b1dea004122a0c1e6ca13202abf3bb9b"
+  }
+}

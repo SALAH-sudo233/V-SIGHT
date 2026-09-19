@@ -1,0 +1,49 @@
+{
+  "schema": "vsight_auto_repair_pairs_dump_manifest_v2",
+  "created_utc": "2026-09-12T15:26:18.924918+00:00",
+  "conversion_script": "C:\\Users\\30796\\Desktop\\V-SIGHT-assets\\data_quality_audit\\rebuild_pairs_dump.py",
+  "source_files": [
+    {
+      "set": "1996",
+      "path": "C:\\Users\\30796\\AppData\\Local\\Temp\\grpo\\refcocog_1996_heldout.manual_v2.remote.json",
+      "source_origin": "retrieved_directly_from_vlm1_via_scp",
+      "sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7",
+      "source_rows": 7984
+    },
+    {
+      "set": "500dev",
+      "path": "C:\\Users\\30796\\AppData\\Local\\Temp\\grpo\\refcocog_500_dev.remote.json",
+      "source_origin": "retrieved_directly_from_vlm1_via_scp",
+      "sha256": "23ad4c0d93128a787995f7810b977745f9747378ac21b2bd13f4a6f14b58311f",
+      "source_rows": 2000
+    }
+  ],
+  "conversion": {
+    "input_counts": {
+      "1996": 7984,
+      "500dev": 2000
+    },
+    "output_count": 9984,
+    "output_counts": {
+      "1996": 7984,
+      "500dev": 2000
+    },
+    "unique_set_sid": 9984,
+    "duplicate_count": 0,
+    "fields": [
+      "set",
+      "sid",
+      "ht",
+      "img",
+      "bbox",
+      "pos",
+      "neg"
+    ]
+  },
+  "output": {
+    "path": "C:\\Users\\30796\\AppData\\Local\\Temp\\grpo\\pairs_dump.json",
+    "sha256": "0b43066c67a2e44e766f95a7a360e94930675e5efe3bfabb27aaa5f8481033d9",
+    "bytes": 3324365
+  },
+  "original_sources_modified": false
+}

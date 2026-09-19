@@ -1,0 +1,29 @@
+{
+  "schema": "vsight_e2g_guided_v1",
+  "verifier": "base3b_guided",
+  "mode": "guided",
+  "n": 334,
+  "avg_gen_tokens": 128.9,
+  "conditions": {
+    "E2a_agent_target": {
+      "n_pos": 123,
+      "n_neg": 118,
+      "AUROC_correct_vs_halluc": 0.6115,
+      "AUROC_correct_vs_wronginstance": 0.6013,
+      "mean_pyes_pos": 0.6948,
+      "mean_pyes_wronginstance": 0.5999,
+      "wrongbox_flagged_below_0.5": 0.2973,
+      "wrongbox_flagged_below_0.7": 0.3333
+    },
+    "E2c_human_target": {
+      "n_pos": 123,
+      "n_neg": 133,
+      "AUROC_correct_vs_halluc": 0.5915,
+      "AUROC_correct_vs_wronginstance": 0.5915,
+      "mean_pyes_pos": 0.6948,
+      "mean_pyes_wronginstance": 0.6339,
+      "wrongbox_flagged_below_0.5": 0.2556,
+      "wrongbox_flagged_below_0.7": 0.2707
+    }
+  }
+}

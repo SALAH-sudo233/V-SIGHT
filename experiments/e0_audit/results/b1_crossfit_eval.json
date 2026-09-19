@@ -1,0 +1,274 @@
+{
+  "schema": "vsight_b1_crossfit_eval_v1",
+  "protocol": "OLD=weights on all train rows, threshold+eval on all held-model rows (coupled). NEW=weights on train dev500_fusion_fit, threshold on held dev500_calibration, eval on held dev500_development (image-disjoint).",
+  "b1a_only": {
+    "OLD_coupled": {
+      "LENS": {
+        "AUROC_BOH": 0.8887,
+        "AUROC_ROH": 0.7491,
+        "catch@3pp": {
+          "realFNR": 0.0282,
+          "catchBOH": 0.3352,
+          "catchROH": 0.1143
+        }
+      },
+      "Orsta-7B": {
+        "AUROC_BOH": 0.7919,
+        "AUROC_ROH": 0.7007,
+        "catch@3pp": {
+          "realFNR": 0.0265,
+          "catchBOH": 0.2975,
+          "catchROH": 0.2185
+        }
+      },
+      "Qwen3-VL-8B": {
+        "AUROC_BOH": 0.86,
+        "AUROC_ROH": 0.7992,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.68,
+          "catchROH": 0.6
+        }
+      },
+      "Seg-zero": {
+        "AUROC_BOH": 0.8908,
+        "AUROC_ROH": 0.742,
+        "catch@3pp": {
+          "realFNR": 0.0291,
+          "catchBOH": 0.4061,
+          "catchROH": 0.1689
+        }
+      }
+    },
+    "NEW_decoupled": {
+      "LENS": {
+        "n_fit": 1871,
+        "n_cal": 678,
+        "n_dev": 706,
+        "AUROC_BOH": 0.9081,
+        "AUROC_ROH": 0.7577,
+        "catch@3pp": {
+          "realFNR": 0.0541,
+          "catchBOH": 0.3434,
+          "catchROH": 0.1361
+        }
+      },
+      "Orsta-7B": {
+        "n_fit": 2311,
+        "n_cal": 397,
+        "n_dev": 420,
+        "AUROC_BOH": 0.858,
+        "AUROC_ROH": 0.7512,
+        "catch@3pp": {
+          "realFNR": 0.0213,
+          "catchBOH": 0.1948,
+          "catchROH": 0.1582
+        }
+      },
+      "Qwen3-VL-8B": {
+        "n_fit": 2541,
+        "n_cal": 254,
+        "n_dev": 259,
+        "AUROC_BOH": 0.9161,
+        "AUROC_ROH": 0.7431,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.7419,
+          "catchROH": 0.5294
+        }
+      },
+      "Seg-zero": {
+        "n_fit": 1851,
+        "n_cal": 694,
+        "n_dev": 741,
+        "AUROC_BOH": 0.9022,
+        "AUROC_ROH": 0.7502,
+        "catch@3pp": {
+          "realFNR": 0.069,
+          "catchBOH": 0.4187,
+          "catchROH": 0.2126
+        }
+      }
+    }
+  },
+  "b1b_only": {
+    "OLD_coupled": {
+      "LENS": {
+        "AUROC_BOH": 0.8548,
+        "AUROC_ROH": 0.739,
+        "catch@3pp": {
+          "realFNR": 0.0242,
+          "catchBOH": 0.5088,
+          "catchROH": 0.2367
+        }
+      },
+      "Orsta-7B": {
+        "AUROC_BOH": 0.5652,
+        "AUROC_ROH": 0.5525,
+        "catch@3pp": {
+          "realFNR": 0.0199,
+          "catchBOH": 0.0502,
+          "catchROH": 0.0348
+        }
+      },
+      "Qwen3-VL-8B": {
+        "AUROC_BOH": 0.8633,
+        "AUROC_ROH": 0.8332,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.61,
+          "catchROH": 0.5094
+        }
+      },
+      "Seg-zero": {
+        "AUROC_BOH": 0.8435,
+        "AUROC_ROH": 0.7247,
+        "catch@3pp": {
+          "realFNR": 0.0291,
+          "catchBOH": 0.5257,
+          "catchROH": 0.2558
+        }
+      }
+    },
+    "NEW_decoupled": {
+      "LENS": {
+        "n_fit": 1871,
+        "n_cal": 678,
+        "n_dev": 706,
+        "AUROC_BOH": 0.8762,
+        "AUROC_ROH": 0.7565,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.4566,
+          "catchROH": 0.1905
+        }
+      },
+      "Orsta-7B": {
+        "n_fit": 2311,
+        "n_cal": 397,
+        "n_dev": 420,
+        "AUROC_BOH": 0.619,
+        "AUROC_ROH": 0.5906,
+        "catch@3pp": {
+          "realFNR": 0.0426,
+          "catchBOH": 0.1039,
+          "catchROH": 0.0663
+        }
+      },
+      "Qwen3-VL-8B": {
+        "n_fit": 2541,
+        "n_cal": 254,
+        "n_dev": 259,
+        "AUROC_BOH": 0.8613,
+        "AUROC_ROH": 0.7961,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.6129,
+          "catchROH": 0.4314
+        }
+      },
+      "Seg-zero": {
+        "n_fit": 1851,
+        "n_cal": 694,
+        "n_dev": 741,
+        "AUROC_BOH": 0.8602,
+        "AUROC_ROH": 0.7434,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.4394,
+          "catchROH": 0.1761
+        }
+      }
+    }
+  },
+  "b1c_ensemble": {
+    "OLD_coupled": {
+      "LENS": {
+        "AUROC_BOH": 0.9106,
+        "AUROC_ROH": 0.7789,
+        "catch@3pp": {
+          "realFNR": 0.0282,
+          "catchBOH": 0.6327,
+          "catchROH": 0.3265
+        }
+      },
+      "Orsta-7B": {
+        "AUROC_BOH": 0.7135,
+        "AUROC_ROH": 0.6433,
+        "catch@3pp": {
+          "realFNR": 0.0265,
+          "catchBOH": 0.1326,
+          "catchROH": 0.1043
+        }
+      },
+      "Qwen3-VL-8B": {
+        "AUROC_BOH": 0.8608,
+        "AUROC_ROH": 0.8174,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.79,
+          "catchROH": 0.6813
+        }
+      },
+      "Seg-zero": {
+        "AUROC_BOH": 0.9036,
+        "AUROC_ROH": 0.7651,
+        "catch@3pp": {
+          "realFNR": 0.0291,
+          "catchBOH": 0.5929,
+          "catchROH": 0.2993
+        }
+      }
+    },
+    "NEW_decoupled": {
+      "LENS": {
+        "n_fit": 1871,
+        "n_cal": 678,
+        "n_dev": 706,
+        "AUROC_BOH": 0.9335,
+        "AUROC_ROH": 0.7968,
+        "catch@3pp": {
+          "realFNR": 0.0135,
+          "catchBOH": 0.5849,
+          "catchROH": 0.2619
+        }
+      },
+      "Orsta-7B": {
+        "n_fit": 2311,
+        "n_cal": 397,
+        "n_dev": 420,
+        "AUROC_BOH": 0.7994,
+        "AUROC_ROH": 0.703,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.2208,
+          "catchROH": 0.2194
+        }
+      },
+      "Qwen3-VL-8B": {
+        "n_fit": 2541,
+        "n_cal": 254,
+        "n_dev": 259,
+        "AUROC_BOH": 0.8903,
+        "AUROC_ROH": 0.749,
+        "catch@3pp": {
+          "realFNR": 0.2,
+          "catchBOH": 0.8387,
+          "catchROH": 0.6176
+        }
+      },
+      "Seg-zero": {
+        "n_fit": 1851,
+        "n_cal": 694,
+        "n_dev": 741,
+        "AUROC_BOH": 0.9263,
+        "AUROC_ROH": 0.7834,
+        "catch@3pp": {
+          "realFNR": 0.0,
+          "catchBOH": 0.4948,
+          "catchROH": 0.1728
+        }
+      }
+    }
+  }
+}

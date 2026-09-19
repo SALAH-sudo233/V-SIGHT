@@ -1,0 +1,100 @@
+{
+  "model": "gpt-6-astra",
+  "prompt": "Independently audit each A/B referring-expression pair against BOTH attached actual images (original full scene and red candidate bbox). Do NOT infer labels from ordering; they are randomized. Assess full image, not only box. Accept only: exactly one expression uniquely identifies the boxed target; the other has NO matching target anywhere in image, is grammatical and not internally contradictory. Check bbox coverage and target identity (red box is fallible). Type object must replace target noun only, co_occurrence add absent companion, attribute change only attribute, relation change only spatial relation to an EXISTING unique reference while retaining target/reference. Flag synonym substitutions (monitor/television), ambiguity, insufficient absence evidence, non-unique positives, both-true, type mismatch, multi-factor changes. For each pair return {\"type\":...,\"A_matches_box\":\"yes|no|uncertain\",\"B_matches_box\":\"yes|no|uncertain\",\"A_has_match_anywhere\":\"yes|no|uncertain\",\"B_has_match_anywhere\":\"yes|no|uncertain\",\"positive_unique\":true/false,\"bbox_valid\":true/false,\"grammar_ok\":true/false,\"single_factor_type_correct\":true/false,\"reference_clear\":true/false,\"pass\":true/false,\"reason\":\"specific visible evidence\"}. Return JSON {\"pairs\":[...],\"overall_pass\":true/false}. For reference_clear true if relation reference visible unambiguous; false for ambiguous. Pairs: [{\"type\": \"object\", \"A\": \"The silver sedan to the left of the white SUV.\", \"B\": \"The silver motorcycle to the left of the white SUV.\"}, {\"type\": \"co_occurrence\", \"A\": \"The silver sedan to the left of the white SUV.\", \"B\": \"The silver sedan to the left of the white SUV, with a traffic cone on its roof.\"}, {\"type\": \"attribute\", \"A\": \"The silver sedan to the left of the white SUV.\", \"B\": \"The red sedan to the left of the white SUV.\"}, {\"type\": \"relation\", \"A\": \"The silver sedan to the right of the white SUV.\", \"B\": \"The silver sedan to the left of the white SUV.\"}]",
+  "images_sha256": [
+    "352a36fad472fbf2b056423492a340e79c60ce33e34a5111b8c2fe448c289cc5",
+    "734e744103f0e60b353cfbfbf5e49989ff11d68b705c73b67dfe6c45cb6c1dbf"
+  ],
+  "response": {
+    "id": "resp_0e02849241fb71e7016aa3b35f968887d0bca5238c89cae88f",
+    "object": "chat.completion",
+    "created": 1789113183,
+    "model": "gpt-6-astra",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"pairs\": [\n    {\n      \"type\": \"object\",\n      \"A_matches_box\": \"yes\",\n      \"B_matches_box\": \"no\",\n      \"A_has_match_anywhere\": \"yes\",\n      \"B_has_match_anywhere\": \"no\",\n      \"positive_unique\": true,\n      \"bbox_valid\": true,\n      \"grammar_ok\": true,\n      \"single_factor_type_correct\": true,\n      \"reference_clear\": true,\n      \"pass\": true,\n      \"reason\": \"The red box encloses the visible silver sedan left of the uniquely identifiable white SUV. No silver motorcycle is visible anywhere in either image. Only the target noun changes.\"\n    },\n    {\n      \"type\": \"co_occurrence\",\n      \"A_matches_box\": \"yes\",\n      \"B_matches_box\": \"no\",\n      \"A_has_match_anywhere\": \"yes\",\n      \"B_has_match_anywhere\": \"no\",\n      \"positive_unique\": true,\n      \"bbox_valid\": true,\n      \"grammar_ok\": true,\n      \"single_factor_type_correct\": true,\n      \"reference_clear\": true,\n      \"pass\": true,\n      \"reason\": \"The boxed silver sedan is the only sedan left of the white SUV. No traffic cone is visible on its roof; the orange-and-blue airborne object above it is a disc, not a cone. B adds only the absent companion condition.\"\n    },\n    {\n      \"type\": \"attribute\",\n      \"A_matches_box\": \"yes\",\n      \"B_matches_box\": \"no\",\n      \"A_has_match_anywhere\": \"yes\",\n      \"B_has_match_anywhere\": \"no\",\n      \"positive_unique\": true,\n      \"bbox_valid\": true,\n      \"grammar_ok\": true,\n      \"single_factor_type_correct\": true,\n      \"reference_clear\": true,\n      \"pass\": true,\n      \"reason\": \"The sedan inside the red box has visibly silver body panels and sits left of the white SUV. No red sedan is visible anywhere in the full scene. Only the sedan's color attribute changes.\"\n    },\n    {\n      \"type\": \"relation\",\n      \"A_matches_box\": \"no\",\n      \"B_matches_box\": \"yes\",\n      \"A_has_match_anywhere\": \"no\",\n      \"B_has_match_anywhere\": \"yes\",\n      \"positive_unique\": true,\n      \"bbox_valid\": true,\n      \"grammar_ok\": true,\n      \"single_factor_type_correct\": true,\n      \"reference_clear\": true,\n      \"pass\": true,\n      \"reason\": \"The boxed silver sedan is visibly left of the unique white SUV, not right of it. No silver sedan appears to the SUV's right anywhere in the images. The target and reference remain unchanged; only right versus left changes.\"\n    }\n  ],\n  \"overall_pass\": true\n}",
+          "reasoning_content": null,
+          "tool_calls": null
+        },
+        "finish_reason": "stop",
+        "native_finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "completion_tokens": 581,
+      "total_tokens": 2007,
+      "prompt_tokens": 1426,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cached_creation_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  },
+  "parsed": {
+    "pairs": [
+      {
+        "type": "object",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The red box encloses the visible silver sedan left of the uniquely identifiable white SUV. No silver motorcycle is visible anywhere in either image. Only the target noun changes."
+      },
+      {
+        "type": "co_occurrence",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed silver sedan is the only sedan left of the white SUV. No traffic cone is visible on its roof; the orange-and-blue airborne object above it is a disc, not a cone. B adds only the absent companion condition."
+      },
+      {
+        "type": "attribute",
+        "A_matches_box": "yes",
+        "B_matches_box": "no",
+        "A_has_match_anywhere": "yes",
+        "B_has_match_anywhere": "no",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The sedan inside the red box has visibly silver body panels and sits left of the white SUV. No red sedan is visible anywhere in the full scene. Only the sedan's color attribute changes."
+      },
+      {
+        "type": "relation",
+        "A_matches_box": "no",
+        "B_matches_box": "yes",
+        "A_has_match_anywhere": "no",
+        "B_has_match_anywhere": "yes",
+        "positive_unique": true,
+        "bbox_valid": true,
+        "grammar_ok": true,
+        "single_factor_type_correct": true,
+        "reference_clear": true,
+        "pass": true,
+        "reason": "The boxed silver sedan is visibly left of the unique white SUV, not right of it. No silver sedan appears to the SUV's right anywhere in the images. The target and reference remain unchanged; only right versus left changes."
+      }
+    ],
+    "overall_pass": true
+  }
+}

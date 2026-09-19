@@ -1,0 +1,17 @@
+# V-SIGHT automatic repair
+
+Run: `python runner.py --watch` from this directory. Exactly one worker owns a Windows byte-range lock; another launch is rejected (Windows may report PermissionError while reading the already-locked byte). The venv Python launcher and its runtime child are ONE worker, not two independent jobs. Do not kill the ongoing audit_v2 process.
+
+Current run is in current_run.json; actual worker PID in process.json. Versioned run contains corrected.jsonl (accepted only), events.jsonl (including needs_human / validation_failed / bounded errors), runner.log and heartbeat.json. A stalled heartbeat during a request can last up to 210 seconds. Polls new audit results every 45 seconds when idle. At most three operational-error attempts per original composite-key/content hash; rejected proposals are not automatically published or repeatedly polished to pass.
+
+The source pairs_dump.json and audit_v2 files are read-only. No train/dev blending or expansion_2000 edits. Quarantine records are prioritized; newly flagged audit records are eligible without regenerating cleaning snapshots. Source content must match audit content. Raw audit A/B reasons and proposals are never used for repair decisions.
+
+Each evidence/<content_id>/<attempt>/ includes source.json, original.jpg, boxed.jpg, generation_input.json, generation.json, validation_input.json, validation.json, mapping.json, before_after.html, and accepted.json only on pass. Raw API response, usage, requested/returned model, prompt/input/image SHA256 are retained. Credentials only enter the in-memory Authorization header; never logged.
+
+Generator and validator are separate image-conditioned requests to gpt-6-astra, NOT cross-model consensus and NOT human gold. Validator sees randomized A/B with no intended role labels, generation rationale or previous verdict. It sees an original target identity anchor, so independence means separate request/context rather than complete absence of shared source information. Red bbox remains unchanged. Fail-closed typed checks enforce unique positive, whole-scene false negative, type purity, natural language, reference visibility, target preservation and visible absence certainty.
+
+First smoke genuinely generated and independently accepted attribute repair for hallu_500000_COCO_train2014_000000445503__attr. Before: 'man in blue shirt on left' / 'man in red shirt on left'. After: 'man wearing glasses and a blue long-sleeved shirt seated in the left foreground' / same with red. A further visual tool inspection agreed, noting small distant spectators are intrinsically less clear. Machine acceptance is not an absolute guarantee.
+
+Tests: `python test_runner.py` exercises fail-closed schema, role reversal, uncertain absence, required fields, stable canonical hash and content/type sensitivity. Ran red then green; a missing enum-field acceptance bug was caught and fixed before continuous launch. Concurrent-launch test really failed on the occupied OS lock. Published first record rechecked against the final gate; raw usage and evidence/image/HTML files checked on disk.
+
+Known scope: semantic purity is enforced by independently prompted VLM plus typed hard gate, not a formal semantic proof. Validation-failed and needs_human records remain unpublished. Operational errors stop after 3 attempts for the same content; changed source contents receive new IDs. No claim that all original pairs are repaired.

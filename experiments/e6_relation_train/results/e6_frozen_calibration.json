@@ -1,0 +1,253 @@
+{
+  "protocol": "Raw P(yes); threshold on calibration only, evaluation on development only; paired common keys. No new VLM inference.",
+  "audit": {
+    "raw_counts": {
+      "old": 7007,
+      "e6": 7007
+    },
+    "common_keys": 7007,
+    "old_only": 0,
+    "e6_only": 0,
+    "metadata_mismatch": 0,
+    "candidate_query_equality": "Not auditable from score files; source records still required",
+    "prepared_train_images": 374,
+    "train_dev500_overlap": 0,
+    "train_E2_overlap": 204,
+    "E2_total_images": 294,
+    "note": "Train overlap uses prepared train split; actual balanced training subset may be smaller."
+  },
+  "models": {
+    "LENS": {
+      "old": {
+        "n_cal": 678,
+        "n_dev": 706,
+        "n_cal_correct": 70,
+        "n_dev_correct": 74,
+        "threshold": 0.24508501313237172,
+        "realFNR": 0.0,
+        "BOH": {
+          "n_negative": 265,
+          "AUROC": 0.8466343702192759,
+          "catch": 0.21509433962264152
+        },
+        "ROH": {
+          "n_negative": 294,
+          "AUROC": 0.7203759882331311,
+          "catch": 0.09523809523809523
+        },
+        "relation": {
+          "n_negative": 147,
+          "AUROC": 0.7121253906968192,
+          "catch": 0.11564625850340136
+        },
+        "attribute": {
+          "n_negative": 147,
+          "AUROC": 0.728626585769443,
+          "catch": 0.07482993197278912
+        }
+      },
+      "e6": {
+        "n_cal": 678,
+        "n_dev": 706,
+        "n_cal_correct": 70,
+        "n_dev_correct": 74,
+        "threshold": 0.13296424019782924,
+        "realFNR": 0.02702702702702703,
+        "BOH": {
+          "n_negative": 265,
+          "AUROC": 0.9127231004589496,
+          "catch": 0.6377358490566037
+        },
+        "ROH": {
+          "n_negative": 294,
+          "AUROC": 0.7925859533002391,
+          "catch": 0.24149659863945577
+        },
+        "relation": {
+          "n_negative": 147,
+          "AUROC": 0.7644787644787645,
+          "catch": 0.19047619047619047
+        },
+        "attribute": {
+          "n_negative": 147,
+          "AUROC": 0.8206931421217135,
+          "catch": 0.2925170068027211
+        }
+      }
+    },
+    "Orsta-7B": {
+      "old": {
+        "n_cal": 397,
+        "n_dev": 420,
+        "n_cal_correct": 42,
+        "n_dev_correct": 47,
+        "threshold": 0.5621765008857981,
+        "realFNR": 0.0425531914893617,
+        "BOH": {
+          "n_negative": 77,
+          "AUROC": 0.6655153357281017,
+          "catch": 0.14285714285714285
+        },
+        "ROH": {
+          "n_negative": 196,
+          "AUROC": 0.6514871906209292,
+          "catch": 0.1326530612244898
+        },
+        "relation": {
+          "n_negative": 111,
+          "AUROC": 0.6613954379911827,
+          "catch": 0.13513513513513514
+        },
+        "attribute": {
+          "n_negative": 85,
+          "AUROC": 0.6385481852315394,
+          "catch": 0.12941176470588237
+        }
+      },
+      "e6": {
+        "n_cal": 397,
+        "n_dev": 420,
+        "n_cal_correct": 42,
+        "n_dev_correct": 47,
+        "threshold": 0.0953494648991095,
+        "realFNR": 0.0,
+        "BOH": {
+          "n_negative": 77,
+          "AUROC": 0.6901077645758497,
+          "catch": 0.18181818181818182
+        },
+        "ROH": {
+          "n_negative": 196,
+          "AUROC": 0.6475792444637429,
+          "catch": 0.08673469387755102
+        },
+        "relation": {
+          "n_negative": 111,
+          "AUROC": 0.6447191872723788,
+          "catch": 0.07207207207207207
+        },
+        "attribute": {
+          "n_negative": 85,
+          "AUROC": 0.651314142678348,
+          "catch": 0.10588235294117647
+        }
+      }
+    },
+    "Qwen3-VL-8B": {
+      "old": {
+        "n_cal": 254,
+        "n_dev": 259,
+        "n_cal_correct": 3,
+        "n_dev_correct": 5,
+        "threshold": 0.008577485413711986,
+        "realFNR": 0.2,
+        "BOH": {
+          "n_negative": 31,
+          "AUROC": 0.6709677419354839,
+          "catch": 0.25806451612903225
+        },
+        "ROH": {
+          "n_negative": 102,
+          "AUROC": 0.5745098039215686,
+          "catch": 0.30392156862745096
+        },
+        "relation": {
+          "n_negative": 63,
+          "AUROC": 0.5634920634920635,
+          "catch": 0.30158730158730157
+        },
+        "attribute": {
+          "n_negative": 39,
+          "AUROC": 0.5923076923076923,
+          "catch": 0.3076923076923077
+        }
+      },
+      "e6": {
+        "n_cal": 254,
+        "n_dev": 259,
+        "n_cal_correct": 3,
+        "n_dev_correct": 5,
+        "threshold": 0.11920292202211755,
+        "realFNR": 0.2,
+        "BOH": {
+          "n_negative": 31,
+          "AUROC": 0.5709677419354838,
+          "catch": 0.3225806451612903
+        },
+        "ROH": {
+          "n_negative": 102,
+          "AUROC": 0.5,
+          "catch": 0.21568627450980393
+        },
+        "relation": {
+          "n_negative": 63,
+          "AUROC": 0.49682539682539684,
+          "catch": 0.19047619047619047
+        },
+        "attribute": {
+          "n_negative": 39,
+          "AUROC": 0.5051282051282051,
+          "catch": 0.2564102564102564
+        }
+      }
+    },
+    "Seg-zero": {
+      "old": {
+        "n_cal": 694,
+        "n_dev": 741,
+        "n_cal_correct": 80,
+        "n_dev_correct": 87,
+        "threshold": 0.22270013882530884,
+        "realFNR": 0.011494252873563218,
+        "BOH": {
+          "n_negative": 289,
+          "AUROC": 0.804319293640377,
+          "catch": 0.20069204152249134
+        },
+        "ROH": {
+          "n_negative": 301,
+          "AUROC": 0.6746668194142131,
+          "catch": 0.06976744186046512
+        },
+        "relation": {
+          "n_negative": 150,
+          "AUROC": 0.6654022988505747,
+          "catch": 0.07333333333333333
+        },
+        "attribute": {
+          "n_negative": 151,
+          "AUROC": 0.6838699855370328,
+          "catch": 0.06622516556291391
+        }
+      },
+      "e6": {
+        "n_cal": 694,
+        "n_dev": 741,
+        "n_cal_correct": 80,
+        "n_dev_correct": 87,
+        "threshold": 0.0953494648991095,
+        "realFNR": 0.0,
+        "BOH": {
+          "n_negative": 289,
+          "AUROC": 0.90973630831643,
+          "catch": 0.5778546712802768
+        },
+        "ROH": {
+          "n_negative": 301,
+          "AUROC": 0.7671363653721313,
+          "catch": 0.1893687707641196
+        },
+        "relation": {
+          "n_negative": 150,
+          "AUROC": 0.7391570881226054,
+          "catch": 0.14
+        },
+        "attribute": {
+          "n_negative": 151,
+          "AUROC": 0.794930349394839,
+          "catch": 0.23841059602649006
+        }
+      }
+    }
+  }
+}

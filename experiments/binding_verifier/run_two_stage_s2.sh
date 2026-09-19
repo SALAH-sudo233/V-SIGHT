@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+cd "$HOME/SVD/grpo_verifier"; export LD_LIBRARY_PATH="$HOME/.miniconda3/envs/grpo_ayb/lib:${LD_LIBRARY_PATH:-}"; export CUDA_VISIBLE_DEVICES=0,2,3,4; export NPROC_PER_NODE=4
+MODEL="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3"; ADAPTER="$HOME/SVD/grpo_verifier/runs/two_stage_s1/v0-20260914-073717/checkpoint-200"; DATA="$HOME/SVD/grpo_verifier/two_stage_s2.jsonl"; PLUGIN="$HOME/SVD/grpo_verifier/vsight_reward_plugin_two_stage.py"
+for p in "$MODEL" "$ADAPTER" "$DATA" "$PLUGIN"; do test -e "$p" || { echo MISSING:$p; exit 2; }; done
+mkdir -p runs/two_stage_s2
+nohup "$HOME/.miniconda3/envs/grpo_ayb/bin/swift" rlhf --rlhf_type grpo --model "$MODEL" --adapters "$ADAPTER" --external_plugins "$PLUGIN" --reward_funcs vsight_two_format vsight_two_binding vsight_two_decision --reward_weights 0.1 1.0 1.0 --tuner_type lora --lora_rank 8 --lora_alpha 16 --target_modules q_proj k_proj v_proj o_proj --dataset "$DATA" --num_generations 8 --max_completion_length 48 --per_device_train_batch_size 8 --gradient_accumulation_steps 2 --max_steps 400 --learning_rate 1e-6 --temperature 1.0 --beta 0.02 --warmup_ratio 0.05 --seed 46 --data_seed 46 --use_vllm false --torch_dtype bfloat16 --gradient_checkpointing true --log_completions true --logging_steps 1 --save_steps 100 --save_total_limit 5 --output_dir runs/two_stage_s2 > "$HOME/two_stage_s2.log" 2>&1 & echo PID=$!

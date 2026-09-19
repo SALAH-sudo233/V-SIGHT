@@ -1,0 +1,237 @@
+<!doctype html><meta charset="utf-8"><title>V-SIGHT training expansion: 4 new images</title><style>body{font:16px sans-serif;max-width:1400px;margin:auto}img{max-width:48%}pre{white-space:pre-wrap}section{border-top:2px solid #888;padding:20px}</style><h1>1996 → 2000 training expansion / 16 added pairs</h1><p>New additions passed separate-context actual-image VLM audit. NOT human gold. Original 1996 unchanged and not certified by this expansion.</p>
+<section><h2>COCO 472639</h2><img src="images/COCO_train2014_000000472639.jpg"><img src="images/boxed_COCO_train2014_000000472639.jpg"><h3>Original pool expressions → final positive/negative</h3><pre>{
+  &quot;image_id&quot;: 472639,
+  &quot;image&quot;: &quot;COCO_train2014_000000472639.jpg&quot;,
+  &quot;image_sha256&quot;: &quot;90af3c04b378084e01a1da3c1c56975527f1302c0f76a5fb5a4760b58a696aa3&quot;,
+  &quot;source_sentences&quot;: [
+    &quot;biggest monitor&quot;,
+    &quot;front monitor&quot;,
+    &quot;the monitor dead center apple logo&quot;
+  ],
+  &quot;source_bbox_xywh&quot;: [
+    205.65,
+    75.37,
+    252.0,
+    191.61
+  ],
+  &quot;final_bbox_xyxy&quot;: [
+    205.65,
+    75.37,
+    457.65,
+    266.98
+  ],
+  &quot;generation_before&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The large central Apple monitor with a black screen surround and silver lower bezel.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The monitor with a silver lower bezel above the white keyboard.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The television with a silver lower bezel above the white keyboard.&quot;,
+      &quot;co_occurrence&quot;: &quot;The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.&quot;,
+      &quot;attribute&quot;: &quot;The monitor with a red lower bezel above the white keyboard.&quot;,
+      &quot;relation&quot;: &quot;The monitor with a silver lower bezel below the white keyboard.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;No separate webcam is perched on the central monitor or either display&#x27;s top edge.&quot;,
+      &quot;attribute&quot;: &quot;The central monitor&#x27;s lower bezel is visibly silver, not red; neither display has a red lower bezel.&quot;,
+      &quot;relation&quot;: &quot;The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it.&quot;
+    }
+  },
+  &quot;final_after&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The large central Apple monitor with a black screen surround and silver lower bezel.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The monitor with a silver lower bezel above the white keyboard.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The microwave with a silver lower bezel above the white keyboard.&quot;,
+      &quot;co_occurrence&quot;: &quot;The monitor with a silver lower bezel above the white keyboard, with a webcam perched on its top edge.&quot;,
+      &quot;attribute&quot;: &quot;The monitor with a red lower bezel above the white keyboard.&quot;,
+      &quot;relation&quot;: &quot;The monitor with a silver lower bezel below the white keyboard.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed object is an Apple desktop monitor, and no television is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;No separate webcam is perched on the central monitor or either display&#x27;s top edge.&quot;,
+      &quot;attribute&quot;: &quot;The central monitor&#x27;s lower bezel is visibly silver, not red; neither display has a red lower bezel.&quot;,
+      &quot;relation&quot;: &quot;The white keyboard is on the lower desk tray, clearly below both monitors. No monitor is below it.&quot;
+    }
+  },
+  &quot;audit&quot;: &quot;verification_472639.json&quot;
+}</pre></section>
+<section><h2>COCO 478262</h2><img src="images/COCO_train2014_000000478262.jpg"><img src="images/boxed_COCO_train2014_000000478262.jpg"><h3>Original pool expressions → final positive/negative</h3><pre>{
+  &quot;image_id&quot;: 478262,
+  &quot;image&quot;: &quot;COCO_train2014_000000478262.jpg&quot;,
+  &quot;image_sha256&quot;: &quot;13ac6c113e4a874c8ff277a4a9de4b0e7bb5aa726448c4d98523d2957a7ec8f7&quot;,
+  &quot;source_sentences&quot;: [
+    &quot;girl in green&quot;,
+    &quot;girl with green shorts&quot;,
+    &quot;girl white shirt green shorts&quot;
+  ],
+  &quot;source_bbox_xywh&quot;: [
+    199.72,
+    82.58,
+    147.47,
+    237.64
+  ],
+  &quot;final_bbox_xyxy&quot;: [
+    199.72,
+    82.58,
+    347.19,
+    320.21999999999997
+  ],
+  &quot;generation_before&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;Woman wearing a white tank top and green shorts&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The green-and-white ball is to the right of the man in a blue shirt.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.&quot;,
+      &quot;attribute&quot;: &quot;The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.&quot;,
+      &quot;relation&quot;: &quot;The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman has no tennis racket, and no tennis racket is visible anywhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The boxed woman&#x27;s tank top is visibly white, not blue.&quot;,
+      &quot;relation&quot;: &quot;The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left.&quot;
+    }
+  },
+  &quot;final_after&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;Woman wearing a white tank top and green shorts&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The woman wearing a white tank top and green shorts is to the right of the man in a blue shirt.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The mannequin wearing a white tank top and green shorts is to the right of the man in a blue shirt.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman wearing a white tank top and green shorts is holding a tennis racket and is to the right of the man in a blue shirt.&quot;,
+      &quot;attribute&quot;: &quot;The woman wearing a blue tank top and green shorts is to the right of the man in a blue shirt.&quot;,
+      &quot;relation&quot;: &quot;The woman wearing a white tank top and green shorts is to the left of the man in a blue shirt.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed target is a woman, not a ball; no green-and-white ball matching this description appears anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman has no tennis racket, and no tennis racket is visible anywhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The boxed woman&#x27;s tank top is visibly white, not blue.&quot;,
+      &quot;relation&quot;: &quot;The boxed woman is visibly to the right of the man wearing a blue shirt, not to his left.&quot;
+    }
+  },
+  &quot;audit&quot;: &quot;verification_478262.json&quot;
+}</pre></section>
+<section><h2>COCO 224420</h2><img src="images/COCO_train2014_000000224420.jpg"><img src="images/boxed_COCO_train2014_000000224420.jpg"><h3>Original pool expressions → final positive/negative</h3><pre>{
+  &quot;image_id&quot;: 224420,
+  &quot;image&quot;: &quot;COCO_train2014_000000224420.jpg&quot;,
+  &quot;image_sha256&quot;: &quot;352a36fad472fbf2b056423492a340e79c60ce33e34a5111b8c2fe448c289cc5&quot;,
+  &quot;source_sentences&quot;: [
+    &quot;car on left&quot;,
+    &quot;car on left side&quot;,
+    &quot;car on left&quot;
+  ],
+  &quot;source_bbox_xywh&quot;: [
+    115.75,
+    165.21,
+    251.33,
+    100.02
+  ],
+  &quot;final_bbox_xyxy&quot;: [
+    115.75,
+    165.21,
+    367.08000000000004,
+    265.23
+  ],
+  &quot;generation_before&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The silver sedan on the left, partly obscured by vegetation.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The silver sedan to the left of the white SUV.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The silver motorcycle to the left of the white SUV.&quot;,
+      &quot;co_occurrence&quot;: &quot;The silver sedan to the left of the white SUV, with a traffic cone on its roof.&quot;,
+      &quot;attribute&quot;: &quot;The red sedan to the left of the white SUV.&quot;,
+      &quot;relation&quot;: &quot;The silver sedan to the right of the white SUV.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;There is no traffic cone on the sedan&#x27;s roof, and no traffic cone is visible elsewhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The sedan has visibly silver body panels, not red ones; no red sedan is present.&quot;,
+      &quot;relation&quot;: &quot;The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right.&quot;
+    }
+  },
+  &quot;final_after&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The silver sedan on the left, partly obscured by vegetation.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The silver sedan to the left of the white SUV.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The silver motorcycle to the left of the white SUV.&quot;,
+      &quot;co_occurrence&quot;: &quot;The silver sedan to the left of the white SUV, with a traffic cone on its roof.&quot;,
+      &quot;attribute&quot;: &quot;The red sedan to the left of the white SUV.&quot;,
+      &quot;relation&quot;: &quot;The silver sedan to the right of the white SUV.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed vehicle is a sedan; no motorcycle is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;There is no traffic cone on the sedan&#x27;s roof, and no traffic cone is visible elsewhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The sedan has visibly silver body panels, not red ones; no red sedan is present.&quot;,
+      &quot;relation&quot;: &quot;The silver sedan is clearly to the image-left of the identifiable white SUV, not to its right.&quot;
+    }
+  },
+  &quot;audit&quot;: &quot;verification_224420.json&quot;
+}</pre></section>
+<section><h2>COCO 119815</h2><img src="images/COCO_train2014_000000119815.jpg"><img src="images/boxed_COCO_train2014_000000119815.jpg"><h3>Original pool expressions → final positive/negative</h3><pre>{
+  &quot;image_id&quot;: 119815,
+  &quot;image&quot;: &quot;COCO_train2014_000000119815.jpg&quot;,
+  &quot;image_sha256&quot;: &quot;be2b548fe5a961e721ba2aa68893c13af37c58158fdad9ec5251337059688572&quot;,
+  &quot;source_sentences&quot;: [
+    &quot;woman in red&quot;,
+    &quot;woman in red jacket with green bag&quot;,
+    &quot;left woman in red coat&quot;
+  ],
+  &quot;source_bbox_xywh&quot;: [
+    11.43,
+    73.37,
+    114.34,
+    215.33
+  ],
+  &quot;final_bbox_xyxy&quot;: [
+    11.43,
+    73.37,
+    125.77000000000001,
+    288.70000000000005
+  ],
+  &quot;generation_before&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The woman at the far left wearing a red jacket and carrying a bright green shopping bag.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The woman wearing a red jacket to the left of the woman in the white jacket.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The mannequin wearing a red jacket to the left of the woman in the white jacket.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.&quot;,
+      &quot;attribute&quot;: &quot;The woman wearing a purple jacket to the left of the woman in the white jacket.&quot;,
+      &quot;relation&quot;: &quot;The woman wearing a red jacket to the right of the woman in the white jacket.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;No Dalmatian dog is visible anywhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The boxed woman&#x27;s jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.&quot;,
+      &quot;relation&quot;: &quot;The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right.&quot;
+    }
+  },
+  &quot;final_after&quot;: {
+    &quot;usable&quot;: true,
+    &quot;target_description&quot;: &quot;The woman at the far left wearing a red jacket and carrying a bright green shopping bag.&quot;,
+    &quot;bbox_valid&quot;: true,
+    &quot;positive&quot;: &quot;The woman wearing a red jacket to the left of the woman in the white jacket.&quot;,
+    &quot;negative&quot;: {
+      &quot;object&quot;: &quot;The mannequin wearing a red jacket to the left of the woman in the white jacket.&quot;,
+      &quot;co_occurrence&quot;: &quot;The woman wearing a red jacket to the left of the woman in the white jacket, accompanied by a Dalmatian dog.&quot;,
+      &quot;attribute&quot;: &quot;The woman wearing a purple jacket to the left of the woman in the white jacket.&quot;,
+      &quot;relation&quot;: &quot;The woman wearing a red jacket to the right of the woman in the white jacket.&quot;
+    },
+    &quot;evidence&quot;: {
+      &quot;object&quot;: &quot;The boxed subject is a walking woman, not a mannequin; no mannequin is visible anywhere in the image.&quot;,
+      &quot;co_occurrence&quot;: &quot;No Dalmatian dog is visible anywhere in the image.&quot;,
+      &quot;attribute&quot;: &quot;The boxed woman&#x27;s jacket is visibly red, not purple; no woman in a purple jacket is visible to the left of the woman in white.&quot;,
+      &quot;relation&quot;: &quot;The woman in the white jacket is near the center, clearly to the right of the boxed woman. No woman wearing a red jacket is visible to her right.&quot;
+    }
+  },
+  &quot;audit&quot;: &quot;verification_119815.json&quot;
+}</pre></section>

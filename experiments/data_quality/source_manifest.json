@@ -1,0 +1,271 @@
+{
+  "schema_version": "roh_vcd_manual_review_export_v2",
+  "source_path": "/home/u2025141034/benchmark/repaired/refcocog_2000_heldout.strict.json",
+  "source_sha256": "5967ddce6b17625fe07bb0cdfb087e799d8a2b581bde8828d6fb25f86c99cc5f",
+  "proposal_log_path": "/home/u2025141034/benchmark/repaired/provenance/refcocog_1996_manual_v2/manual_review_proposals.jsonl",
+  "proposal_log_sha256": "2f5bcb65a0984ba0f75617cfb59dddd58997cd0c885f88e3869fff73733e767f",
+  "latest_review_group_count": 26,
+  "latest_decision_counts": {
+    "keep_excluded": 4,
+    "propose_repair": 22
+  },
+  "directly_promoted_human_review_groups": [
+    {
+      "base_sample_id": "hallu_500206_COCO_train2014_000000508990",
+      "proposal_timestamp_utc": "2026-07-29T14:11:25.224310+00:00",
+      "positive_text": "chair in front of ottoman",
+      "negative_texts": {
+        "object": "table with a lampshade",
+        "co_occurrence": "chair next to a grand piano",
+        "attribute": "red leather chair in front of ottoman",
+        "relation": "chair on the ottoman"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500319_COCO_train2014_000000139339",
+      "proposal_timestamp_utc": "2026-07-29T14:11:13.278395+00:00",
+      "positive_text": "black shirt gray shorts with yellow frisbee",
+      "negative_texts": {
+        "object": "boy in black shirt and gray shorts holding a blue frisbee",
+        "co_occurrence": "woman in black shirt and gray shorts standing next to a dog",
+        "attribute": "woman in black shirt and white shorts with yellow frisbee",
+        "relation": "woman in black shirt and gray shorts throwing yellow frisbee into basket"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500439_COCO_train2014_000000173451",
+      "proposal_timestamp_utc": "2026-07-29T14:11:03.780066+00:00",
+      "positive_text": "closest to us giraffe next to",
+      "negative_texts": {
+        "object": "zebra next to the wooden pole",
+        "co_occurrence": "giraffe next to an elephant",
+        "attribute": "solid brown giraffe next to the pole",
+        "relation": "giraffe standing on the Sydney Opera House"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500517_COCO_train2014_000000018554",
+      "proposal_timestamp_utc": "2026-07-29T14:10:42.592578+00:00",
+      "positive_text": "woman not eating banana",
+      "negative_texts": {
+        "object": "dog not eating apple",
+        "co_occurrence": "woman not eating banana with sunglasses",
+        "attribute": "woman not eating unpeeled banana",
+        "relation": "woman not eating banana near railing"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500771_COCO_train2014_000000122811",
+      "proposal_timestamp_utc": "2026-07-29T14:12:33.680239+00:00",
+      "positive_text": "right train",
+      "negative_texts": {
+        "object": "subway with a helicopter body",
+        "co_occurrence": "right train next to a blue swimming pool",
+        "attribute": "bright pink right train",
+        "relation": "right train floating above the tracks"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500827_COCO_train2014_000000458969",
+      "proposal_timestamp_utc": "2026-07-29T14:13:19.996014+00:00",
+      "positive_text": "tv in front of middle boy",
+      "negative_texts": {
+        "object": "laptop in front of middle boy",
+        "co_occurrence": "remote in front of middle boy",
+        "attribute": "black tv in front of middle boy",
+        "relation": "tv behind middle boy"
+      }
+    },
+    {
+      "base_sample_id": "hallu_500851_COCO_train2014_000000213036",
+      "proposal_timestamp_utc": "2026-07-29T14:14:07.781961+00:00",
+      "positive_text": "a man wearing a red hat",
+      "negative_texts": {
+        "object": "a monkey wearing a red helmet",
+        "co_occurrence": "a man wearing a red hat holding a fishing rod",
+        "attribute": "a man wearing a blue hat",
+        "relation": "a man wearing a red hat standing next to a woman in a green jacket"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600001_COCO_train2014_000000156128",
+      "proposal_timestamp_utc": "2026-07-29T14:14:52.356611+00:00",
+      "positive_text": "i cant tell orange on the left that is not in the bowl with the others",
+      "negative_texts": {
+        "object": "green apple on the left that is not in the bowl with the others",
+        "co_occurrence": "orange on the left next to a banana that is not in the bowl with the others",
+        "attribute": "smooth orange on the left that is not in the bowl with the others",
+        "relation": "orange on the left inside the glass bowl with the others"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600049_COCO_train2014_000000120670",
+      "proposal_timestamp_utc": "2026-07-29T14:15:08.509367+00:00",
+      "positive_text": "larger elephant to the right of the baby in front",
+      "negative_texts": {
+        "object": "larger rhino to the right of the baby in front",
+        "co_occurrence": "larger elephant next to a zebra in front",
+        "attribute": "smaller elephant to the right of the baby in front",
+        "relation": "larger elephant to the left of the baby in front"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600052_COCO_train2014_000000550239",
+      "proposal_timestamp_utc": "2026-07-29T14:15:36.796649+00:00",
+      "positive_text": "elbow at left",
+      "negative_texts": {
+        "object": "hand at left",
+        "co_occurrence": "elbow holding a fork at left",
+        "attribute": "bare elbow at left",
+        "relation": "elbow resting on the cake"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600096_COCO_train2014_000000241265",
+      "proposal_timestamp_utc": "2026-07-29T14:17:42.663189+00:00",
+      "positive_text": "red shirt brown pants right side of screen",
+      "negative_texts": {
+        "object": "police holding a blue suitcase",
+        "co_occurrence": "man in red shirt standing next to a bicycle",
+        "attribute": "man wearing a red shirt and black pants",
+        "relation": "man in red shirt standing to the left of the woman in the white tank top"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600144_COCO_train2014_000000268141",
+      "proposal_timestamp_utc": "2026-07-29T14:18:05.721219+00:00",
+      "positive_text": "stool or chair to the left of cats butt",
+      "negative_texts": {
+        "object": "lamp to the left of cats butt",
+        "co_occurrence": "stool with a dog bed to the left of cats butt",
+        "attribute": "metal stool to the left of cats butt",
+        "relation": "stool to the right of cats butt"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600153_COCO_train2014_000000208845",
+      "proposal_timestamp_utc": "2026-07-29T14:18:51.035076+00:00",
+      "positive_text": "microwave",
+      "negative_texts": {
+        "object": "washmachine",
+        "co_occurrence": "microwave above a blender",
+        "attribute": "silver microwave",
+        "relation": "microwave below the stove"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600316_COCO_train2014_000000205700",
+      "proposal_timestamp_utc": "2026-07-29T14:19:03.598268+00:00",
+      "positive_text": "man on right",
+      "negative_texts": {
+        "object": "kid wearing a blue helmet",
+        "co_occurrence": "man holding a snowboard",
+        "attribute": "man in a green jacket",
+        "relation": "man standing behind the woman"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600324_COCO_train2014_000000396685",
+      "proposal_timestamp_utc": "2026-07-29T14:19:13.563313+00:00",
+      "positive_text": "peach bowl",
+      "negative_texts": {
+        "object": "banana bowl",
+        "co_occurrence": "peach bowl with yogurt",
+        "attribute": "green peach bowl",
+        "relation": "peach bowl below rice"
+      }
+    },
+    {
+      "base_sample_id": "hallu_600359_COCO_train2014_000000352421",
+      "proposal_timestamp_utc": "2026-07-29T14:20:33.573124+00:00",
+      "positive_text": "talking on phone blue pants",
+      "negative_texts": {
+        "object": "yellow cabin",
+        "co_occurrence": "talking on phone holding snowboard",
+        "attribute": "talking on phone red pants",
+        "relation": "talking on phone standing behind skier"
+      }
+    },
+    {
+      "base_sample_id": "hallu_800005_COCO_train2014_000000088609",
+      "proposal_timestamp_utc": "2026-07-29T14:20:48.971578+00:00",
+      "positive_text": "chair back at the back end of the table",
+      "negative_texts": {
+        "object": "wooden rocking horse behind the table",
+        "co_occurrence": "chair back and highchair at the back end of the table",
+        "attribute": "upholstered chair back at the back end of the table",
+        "relation": "chair back in front of the table"
+      }
+    },
+    {
+      "base_sample_id": "hallu_800118_COCO_train2014_000000337298",
+      "proposal_timestamp_utc": "2026-07-29T14:21:46.671555+00:00",
+      "positive_text": "burry person far right",
+      "negative_texts": {
+        "object": "blurry dog standing on the far right",
+        "co_occurrence": "blurry person holding an umbrella on the far right",
+        "attribute": "sharp focused person far right",
+        "relation": "blurry person far left touching the woman's shoulder"
+      }
+    },
+    {
+      "base_sample_id": "hallu_800174_COCO_train2014_000000576187",
+      "proposal_timestamp_utc": "2026-07-29T14:22:56.873969+00:00",
+      "positive_text": "right bike",
+      "negative_texts": {
+        "object": "woman on a car",
+        "co_occurrence": "right bike next to a red double-decker bus",
+        "attribute": "right bike with flashing red lights",
+        "relation": "right bike behind the white car"
+      }
+    },
+    {
+      "base_sample_id": "hallu_supp_0059_COCO_train2014_000000057772",
+      "proposal_timestamp_utc": "2026-07-29T14:24:47.885750+00:00",
+      "positive_text": "left girl",
+      "negative_texts": {
+        "object": "football player wearing a blue swimsuit",
+        "co_occurrence": "girl sitting next to a laptop",
+        "attribute": "girl with blue hair",
+        "relation": "girl on the desk"
+      }
+    },
+    {
+      "base_sample_id": "hallu_supp_0139_COCO_train2014_000000468373",
+      "proposal_timestamp_utc": "2026-07-29T14:26:00.174733+00:00",
+      "positive_text": "brown bear",
+      "negative_texts": {
+        "object": "a robot head",
+        "co_occurrence": "brown bear next to a toy truck",
+        "attribute": "green bear",
+        "relation": "brown bear standing on the floor"
+      }
+    },
+    {
+      "base_sample_id": "hallu_supp_0169_COCO_train2014_000000396976",
+      "proposal_timestamp_utc": "2026-07-29T14:26:48.692269+00:00",
+      "positive_text": "man in front center to the left of man in bluewhite shirt",
+      "negative_texts": {
+        "object": "a dog on  lap to the left of man in bluewhite shirt",
+        "co_occurrence": "man in front center holding a guitar to the left of man in bluewhite shirt",
+        "attribute": "man in red plaid shirt to the left of man in bluewhite shirt",
+        "relation": "man in front center to the right of man in bluewhite shirt"
+      }
+    }
+  ],
+  "excluded_after_human_review_ids": [
+    "hallu_500520_COCO_train2014_000000106269",
+    "hallu_500970_COCO_train2014_000000403305",
+    "hallu_supp_0069_COCO_train2014_000000395022",
+    "hallu_supp_0274_COCO_train2014_000000252492"
+  ],
+  "output_path": "/home/u2025141034/benchmark/repaired/refcocog_1996_heldout.manual_v2.json",
+  "output_sha256": "237600d765f1f7e61d17582b0daa392f9a8519e98bb20093f976a91b6e8fcad7",
+  "output_group_count": 1996,
+  "output_pair_count": 7984,
+  "notes": [
+    "The immutable source dataset was not modified.",
+    "Texts are the final human-edited values, promoted under explicit user authorization.",
+    "This export establishes provenance and structural consistency only; it is not an independent semantic re-review."
+  ]
+}
