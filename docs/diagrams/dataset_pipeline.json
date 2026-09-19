@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "V-SIGHT Dataset Construction & Evaluation Pipeline",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1070,
+      620
+    ]
+  },
+  "stages": [
+    {
+      "label": "Raw sources"
+    },
+    {
+      "label": "Base assembly"
+    },
+    {
+      "label": "Counterfactual expansion"
+    },
+    {
+      "label": "Repair & isolation"
+    },
+    {
+      "label": "Measurement"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "refcocog",
+      "type": "database",
+      "label": "RefCOCOg + COCO",
+      "sublabel": "refs · instances",
+      "tag": "human",
+      "stage": 0,
+      "row": 0,
+      "width": 130
+    },
+    {
+      "id": "legacy",
+      "type": "external",
+      "label": "prior benchmarks",
+      "sublabel": "100-exp · mixed",
+      "stage": 0,
+      "row": 2,
+      "width": 130
+    },
+    {
+      "id": "build500",
+      "type": "backend",
+      "label": "build_500_base",
+      "sublabel": "dedup by image",
+      "stage": 1,
+      "row": 1,
+      "width": 130
+    },
+    {
+      "id": "expand",
+      "type": "backend",
+      "label": "expand.py",
+      "sublabel": "1 pos + 4 negatives",
+      "tag": "VLM",
+      "stage": 2,
+      "row": 0,
+      "width": 130
+    },
+    {
+      "id": "expand2000",
+      "type": "backend",
+      "label": "expand_to_2000",
+      "sublabel": "new imgs, resumable",
+      "tag": "VLM",
+      "stage": 2,
+      "row": 2,
+      "width": 130
+    },
+    {
+      "id": "fix500",
+      "type": "security",
+      "label": "fix_500_edges",
+      "sublabel": "reviewed edits",
+      "stage": 3,
+      "row": 0,
+      "width": 130
+    },
+    {
+      "id": "dev500",
+      "type": "database",
+      "label": "500-dev strict",
+      "sublabel": "EVAL ONLY",
+      "tag": "sealed",
+      "stage": 3,
+      "row": 1,
+      "width": 130
+    },
+    {
+      "id": "train2000",
+      "type": "database",
+      "label": "train2000 v1",
+      "sublabel": "TRAIN ONLY",
+      "tag": "train",
+      "stage": 3,
+      "row": 2,
+      "width": 130
+    },
+    {
+      "id": "coordfix",
+      "type": "security",
+      "label": "bbox_coords",
+      "sublabel": "norm1000/norm01/px",
+      "stage": 4,
+      "row": 0,
+      "width": 130
+    },
+    {
+      "id": "eval13",
+      "type": "backend",
+      "label": "13 models x 4",
+      "sublabel": "T1 T2 T3 T4",
+      "stage": 4,
+      "row": 1,
+      "width": 130
+    },
+    {
+      "id": "report",
+      "type": "frontend",
+      "label": "audited metrics",
+      "sublabel": "ROHG · FG@Neg",
+      "stage": 4,
+      "row": 2,
+      "width": 130
+    }
+  ],
+  "flows": [
+    {
+      "from": "refcocog",
+      "to": "build500",
+      "label": "RefCOCOg entries + boxes"
+    },
+    {
+      "from": "legacy",
+      "to": "build500",
+      "label": "reuse prior annotations"
+    },
+    {
+      "from": "build500",
+      "to": "expand",
+      "label": "500 unique images"
+    },
+    {
+      "from": "build500",
+      "to": "expand2000",
+      "label": "exclude used images"
+    },
+    {
+      "from": "expand",
+      "to": "fix500",
+      "label": "4 negative types",
+      "labelDy": -23
+    },
+    {
+      "from": "fix500",
+      "to": "dev500",
+      "label": "publish after review",
+      "variant": "emphasis",
+      "labelDy": -52
+    },
+    {
+      "from": "expand2000",
+      "to": "train2000",
+      "label": "8000 counterfactual pairs",
+      "labelDy": -23
+    },
+    {
+      "from": "dev500",
+      "to": "eval13",
+      "label": "2500 queries per task",
+      "labelDy": -23
+    },
+    {
+      "from": "coordfix",
+      "to": "eval13",
+      "label": "rescale box before IoU",
+      "variant": "security",
+      "labelDy": -52
+    },
+    {
+      "from": "eval13",
+      "to": "report",
+      "label": "validity-audited outputs",
+      "variant": "emphasis",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Pairing contract",
+      "items": [
+        "Each group has exactly ONE immutable positive expression and bbox",
+        "The four negatives are counterfactual edits of that same positive target",
+        "object / co_occurrence = BOH · attribute / relation = ROH"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Isolation, enforced not assumed",
+      "items": [
+        "500-dev is measurement-only and never trained on",
+        "train2000 uses only RefCOCOg train images absent from 500-dev",
+        "Disjointness verified on COCO image id, not filename"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Why the gates exist",
+      "items": [
+        "Coordinate conventions differ per model; unrescaled [0,1000] boxes score IoU≈0",
+        "Qwen3-VL T2 mean IoU 0.055 → 0.198 once rescaled by real image size",
+        "UniVG-R1 answered the caption task with boxes: its 0.000 hallucination rate was an artefact"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Reproducibility",
+      "items": [
+        "VLM keys read from environment only; no secret in any committed script",
+        "Generation is resumable via JSONL state; source files are never overwritten",
+        "Repairs are explicit reviewed edits keyed by sample::type, not silent regeneration"
+      ]
+    }
+  ]
+}
